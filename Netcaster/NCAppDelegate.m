@@ -16,8 +16,38 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+   /* NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSManagedObject *group = [NSEntityDescription
+                              insertNewObjectForEntityForName:@"Group"
+                              inManagedObjectContext:context];
+    [group setValue:@"Test Group" forKey:@"title"];
+    
+    NSManagedObject *show = [NSEntityDescription
+                                          insertNewObjectForEntityForName:@"Show"
+                                          inManagedObjectContext:context];
+    [show setValue:@"Test Show" forKey:@"title"];
+    [show setValue:group forKey:@"group"];
+    
+    NSManagedObject *episode = [NSEntityDescription
+                                       insertNewObjectForEntityForName:@"Episode"
+                                       inManagedObjectContext:context];
+    [episode setValue:@"Test Episode" forKey:@"title"];
+    [episode setValue:show forKey:@"show"];
+    
+    [show setValue:[NSOrderedSet orderedSetWithObject:episode] forKey:@"episodes"];
+    [group setValue:[NSOrderedSet orderedSetWithObject:show] forKey:@"shows"];
+    
+    
+    NSError *error;
+    if (![context save:&error]) 
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    
+    
+    NSLog(@"%@", [self managedObjectContext]);*/
 }
+
+#pragma mark - Core Data
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.stuartjmoore.Netcaster" in the user's Application Support directory.
 - (NSURL *)applicationFilesDirectory
