@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1725431B16185195009A0FD6 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725431A16185195009A0FD6 /* Channel.m */; };
+		1725431E16185195009A0FD6 /* Livestream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725431D16185195009A0FD6 /* Livestream.m */; };
+		1725432116185195009A0FD6 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432016185195009A0FD6 /* Item.m */; };
+		1725432416185195009A0FD6 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432316185195009A0FD6 /* Page.m */; };
+		1725432716185195009A0FD6 /* Episode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432616185195009A0FD6 /* Episode.m */; };
+		1725432A16185195009A0FD6 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432916185195009A0FD6 /* Group.m */; };
+		1725432D16185195009A0FD6 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432C16185195009A0FD6 /* Show.m */; };
+		1725433016185195009A0FD6 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432F16185195009A0FD6 /* Feed.m */; };
+		1725433316185195009A0FD6 /* Enclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433216185195009A0FD6 /* Enclosure.m */; };
 		1759C6001616D83900FE0869 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1759C5FF1616D83900FE0869 /* Cocoa.framework */; };
 		1759C60A1616D83900FE0869 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1759C6081616D83900FE0869 /* InfoPlist.strings */; };
 		1759C60C1616D83900FE0869 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C60B1616D83900FE0869 /* main.m */; };
@@ -15,13 +24,27 @@
 		1759C6161616D83900FE0869 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1759C6141616D83900FE0869 /* MainMenu.xib */; };
 		1759C6191616D83A00FE0869 /* Netcaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */; };
 		1759C6211616DFD600FE0869 /* NCShowsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6201616DFD600FE0869 /* NCShowsList.m */; };
-		1759C6241616EFE300FE0869 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6231616EFE300FE0869 /* Group.m */; };
-		1759C6271616F50500FE0869 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6261616F50500FE0869 /* Show.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1725430D161826FA009A0FD6 /* Episode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Episode.h; sourceTree = "<group>"; };
-		1725430E161826FA009A0FD6 /* Episode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Episode.m; sourceTree = "<group>"; };
+		1725431916185195009A0FD6 /* Channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Channel.h; path = ../Channel.h; sourceTree = "<group>"; };
+		1725431A16185195009A0FD6 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Channel.m; path = ../Channel.m; sourceTree = "<group>"; };
+		1725431C16185195009A0FD6 /* Livestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Livestream.h; path = ../Livestream.h; sourceTree = "<group>"; };
+		1725431D16185195009A0FD6 /* Livestream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Livestream.m; path = ../Livestream.m; sourceTree = "<group>"; };
+		1725431F16185195009A0FD6 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../Item.h; sourceTree = "<group>"; };
+		1725432016185195009A0FD6 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = ../Item.m; sourceTree = "<group>"; };
+		1725432216185195009A0FD6 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = ../Page.h; sourceTree = "<group>"; };
+		1725432316185195009A0FD6 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = ../Page.m; sourceTree = "<group>"; };
+		1725432516185195009A0FD6 /* Episode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Episode.h; path = ../Episode.h; sourceTree = "<group>"; };
+		1725432616185195009A0FD6 /* Episode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Episode.m; path = ../Episode.m; sourceTree = "<group>"; };
+		1725432816185195009A0FD6 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = ../Group.h; sourceTree = "<group>"; };
+		1725432916185195009A0FD6 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = ../Group.m; sourceTree = "<group>"; };
+		1725432B16185195009A0FD6 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Show.h; path = ../Show.h; sourceTree = "<group>"; };
+		1725432C16185195009A0FD6 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Show.m; path = ../Show.m; sourceTree = "<group>"; };
+		1725432E16185195009A0FD6 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Feed.h; path = ../Feed.h; sourceTree = "<group>"; };
+		1725432F16185195009A0FD6 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feed.m; path = ../Feed.m; sourceTree = "<group>"; };
+		1725433116185195009A0FD6 /* Enclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enclosure.h; path = ../Enclosure.h; sourceTree = "<group>"; };
+		1725433216185195009A0FD6 /* Enclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enclosure.m; path = ../Enclosure.m; sourceTree = "<group>"; };
 		1759C5FB1616D83900FE0869 /* Netcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1759C5FF1616D83900FE0869 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1759C6021616D83900FE0869 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -38,10 +61,6 @@
 		1759C6181616D83A00FE0869 /* Netcaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Netcaster.xcdatamodel; sourceTree = "<group>"; };
 		1759C61F1616DFD600FE0869 /* NCShowsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCShowsList.h; sourceTree = "<group>"; };
 		1759C6201616DFD600FE0869 /* NCShowsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCShowsList.m; sourceTree = "<group>"; };
-		1759C6221616EFE300FE0869 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
-		1759C6231616EFE300FE0869 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
-		1759C6251616F50500FE0869 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
-		1759C6261616F50500FE0869 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Show.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +75,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1725433416185238009A0FD6 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1725432816185195009A0FD6 /* Group.h */,
+				1725432916185195009A0FD6 /* Group.m */,
+				1725431F16185195009A0FD6 /* Item.h */,
+				1725432016185195009A0FD6 /* Item.m */,
+				1725432216185195009A0FD6 /* Page.h */,
+				1725432316185195009A0FD6 /* Page.m */,
+				1725431916185195009A0FD6 /* Channel.h */,
+				1725431A16185195009A0FD6 /* Channel.m */,
+				1725431C16185195009A0FD6 /* Livestream.h */,
+				1725431D16185195009A0FD6 /* Livestream.m */,
+				1725432B16185195009A0FD6 /* Show.h */,
+				1725432C16185195009A0FD6 /* Show.m */,
+				1725432E16185195009A0FD6 /* Feed.h */,
+				1725432F16185195009A0FD6 /* Feed.m */,
+				1725432516185195009A0FD6 /* Episode.h */,
+				1725432616185195009A0FD6 /* Episode.m */,
+				1725433116185195009A0FD6 /* Enclosure.h */,
+				1725433216185195009A0FD6 /* Enclosure.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		1759C5F01616D83900FE0869 = {
 			isa = PBXGroup;
 			children = (
@@ -101,12 +145,7 @@
 				1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */,
 				1759C61F1616DFD600FE0869 /* NCShowsList.h */,
 				1759C6201616DFD600FE0869 /* NCShowsList.m */,
-				1759C6221616EFE300FE0869 /* Group.h */,
-				1759C6231616EFE300FE0869 /* Group.m */,
-				1759C6251616F50500FE0869 /* Show.h */,
-				1759C6261616F50500FE0869 /* Show.m */,
-				1725430D161826FA009A0FD6 /* Episode.h */,
-				1725430E161826FA009A0FD6 /* Episode.m */,
+				1725433416185238009A0FD6 /* Entities */,
 				1759C6061616D83900FE0869 /* Supporting Files */,
 			);
 			path = Netcaster;
@@ -193,8 +232,15 @@
 				1759C6131616D83900FE0869 /* NCAppDelegate.m in Sources */,
 				1759C6191616D83A00FE0869 /* Netcaster.xcdatamodeld in Sources */,
 				1759C6211616DFD600FE0869 /* NCShowsList.m in Sources */,
-				1759C6241616EFE300FE0869 /* Group.m in Sources */,
-				1759C6271616F50500FE0869 /* Show.m in Sources */,
+				1725431B16185195009A0FD6 /* Channel.m in Sources */,
+				1725431E16185195009A0FD6 /* Livestream.m in Sources */,
+				1725432116185195009A0FD6 /* Item.m in Sources */,
+				1725432416185195009A0FD6 /* Page.m in Sources */,
+				1725432716185195009A0FD6 /* Episode.m in Sources */,
+				1725432A16185195009A0FD6 /* Group.m in Sources */,
+				1725432D16185195009A0FD6 /* Show.m in Sources */,
+				1725433016185195009A0FD6 /* Feed.m in Sources */,
+				1725433316185195009A0FD6 /* Enclosure.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

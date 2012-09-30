@@ -1619,6 +1619,7 @@
 													<string key="NSFrame">{{1, 119}, {223, 15}}</string>
 													<reference key="NSSuperview" ref="273364127"/>
 													<reference key="NSWindow"/>
+													<reference key="NSNextKeyView"/>
 													<string key="NSReuseIdentifierKey">_NS:60</string>
 													<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 													<int key="NSsFlags">1</int>
@@ -1689,7 +1690,7 @@
 				<bool key="NSAvoidsEmptySelection">YES</bool>
 				<bool key="NSPreservesSelection">YES</bool>
 				<bool key="NSSelectsInsertedObjects">YES</bool>
-				<string key="NSTreeContentChildrenKey">shows</string>
+				<string key="NSTreeContentChildrenKey">items</string>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -2499,7 +2500,7 @@
 								</object>
 							</array>
 							<string key="NSFrame">{{1, 17}, {135, 17}}</string>
-							<reference key="NSNextKeyView"/>
+							<reference key="NSNextKeyView" ref="704329642"/>
 							<string key="NSReuseIdentifierKey">DataCell</string>
 						</object>
 						<reference key="destination" ref="704329642"/>

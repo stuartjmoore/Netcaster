@@ -15,19 +15,13 @@
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self)
+    if(self)
     {
-        /*NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"ShowInfo"
-                                                  inManagedObjectContext:managedObjectContext];
-        [fetchRequest setEntity:entity];
-        NSError *error;
-         NSArray *failedBankInfos = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        
-        NSLog(@"%@", failedBankInfos);*/
     }
     return self;
 }
+
+#pragma mark - Layout
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item
 {
@@ -36,21 +30,22 @@
 
 - (NSView *)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item
 {
-    NSTableCellView *view = nil;
-    NSTreeNode *node = item;
-    
-   // NSLog(@"%@", node.representedObject);
-    
-    if([node.representedObject isKindOfClass:Group.class])
-    {
-        view = [outlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
-    }
+    if([((NSTreeNode*)item).representedObject isKindOfClass:Group.class])
+        return [outlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
     else
-    {
-        view = [outlineView makeViewWithIdentifier:@"DataCell" owner:self];
-    }
+        return [outlineView makeViewWithIdentifier:@"DataCell" owner:self];
+}
+
+#pragma mark - Selection
+
+- (void)outlineViewSelectionDidChange:(NSNotification*)aNotification
+{
+	NSTreeNode *item = [self itemAtRow:self.selectedRow];
     
-    return view;
+	if(![item.representedObject isKindOfClass:Group.class])
+	{
+        NSLog(@"Selected");
+	}
 }
 
 @end

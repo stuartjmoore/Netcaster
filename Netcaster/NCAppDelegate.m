@@ -15,7 +15,13 @@
 @synthesize managedObjectContext = _managedObjectContext;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{/*
+{
+    
+    
+    
+    
+    
+    /*
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSManagedObject *group = [NSEntityDescription
