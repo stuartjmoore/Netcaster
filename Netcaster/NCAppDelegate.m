@@ -15,8 +15,8 @@
 @synthesize managedObjectContext = _managedObjectContext;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-   /* NSManagedObjectContext *context = [self managedObjectContext];
+{/*
+    NSManagedObjectContext *context = [self managedObjectContext];
     
     NSManagedObject *group = [NSEntityDescription
                               insertNewObjectForEntityForName:@"Group"
@@ -35,16 +35,14 @@
     [episode setValue:@"Test Episode" forKey:@"title"];
     [episode setValue:show forKey:@"show"];
     
-    [show setValue:[NSOrderedSet orderedSetWithObject:episode] forKey:@"episodes"];
-    [group setValue:[NSOrderedSet orderedSetWithObject:show] forKey:@"shows"];
+    [show setValue:[NSSet setWithObject:episode] forKey:@"episodes"];
+    [group setValue:[NSSet setWithObject:show] forKey:@"shows"];
     
     
     NSError *error;
     if (![context save:&error]) 
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    
-    
-    NSLog(@"%@", [self managedObjectContext]);*/
+    */
 }
 
 #pragma mark - Core Data

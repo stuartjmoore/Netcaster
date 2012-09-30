@@ -13,17 +13,17 @@
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="shows" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Show" inverseName="group" inverseEntity="Show" syncable="YES"/>
+        <relationship name="shows" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Show" inverseName="group" inverseEntity="Show" syncable="YES"/>
     </entity>
     <entity name="Show" representedClassName="Show" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Episode" inverseName="show" inverseEntity="Episode" syncable="YES"/>
+        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Episode" inverseName="show" inverseEntity="Episode" syncable="YES"/>
         <relationship name="group" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="shows" inverseEntity="Group" syncable="YES"/>
     </entity>
     <elements>
         <element name="Episode" positionX="160" positionY="-18" width="128" height="178"/>
-        <element name="Show" positionX="-29" positionY="-18" width="128" height="103"/>
         <element name="Group" positionX="-216" positionY="-18" width="128" height="73"/>
+        <element name="Show" positionX="-29" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

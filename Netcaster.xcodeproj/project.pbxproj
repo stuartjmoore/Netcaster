@@ -17,10 +17,11 @@
 		1759C6211616DFD600FE0869 /* NCShowsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6201616DFD600FE0869 /* NCShowsList.m */; };
 		1759C6241616EFE300FE0869 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6231616EFE300FE0869 /* Group.m */; };
 		1759C6271616F50500FE0869 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6261616F50500FE0869 /* Show.m */; };
-		1759C62A1616F50B00FE0869 /* Episode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6291616F50B00FE0869 /* Episode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1725430D161826FA009A0FD6 /* Episode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Episode.h; sourceTree = "<group>"; };
+		1725430E161826FA009A0FD6 /* Episode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Episode.m; sourceTree = "<group>"; };
 		1759C5FB1616D83900FE0869 /* Netcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1759C5FF1616D83900FE0869 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1759C6021616D83900FE0869 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -41,8 +42,6 @@
 		1759C6231616EFE300FE0869 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		1759C6251616F50500FE0869 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
 		1759C6261616F50500FE0869 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Show.m; sourceTree = "<group>"; };
-		1759C6281616F50B00FE0869 /* Episode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Episode.h; path = ../Episode.h; sourceTree = "<group>"; };
-		1759C6291616F50B00FE0869 /* Episode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Episode.m; path = ../Episode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,15 +98,15 @@
 				1759C6111616D83900FE0869 /* NCAppDelegate.h */,
 				1759C6121616D83900FE0869 /* NCAppDelegate.m */,
 				1759C6141616D83900FE0869 /* MainMenu.xib */,
+				1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */,
 				1759C61F1616DFD600FE0869 /* NCShowsList.h */,
 				1759C6201616DFD600FE0869 /* NCShowsList.m */,
-				1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */,
 				1759C6221616EFE300FE0869 /* Group.h */,
 				1759C6231616EFE300FE0869 /* Group.m */,
 				1759C6251616F50500FE0869 /* Show.h */,
 				1759C6261616F50500FE0869 /* Show.m */,
-				1759C6281616F50B00FE0869 /* Episode.h */,
-				1759C6291616F50B00FE0869 /* Episode.m */,
+				1725430D161826FA009A0FD6 /* Episode.h */,
+				1725430E161826FA009A0FD6 /* Episode.m */,
 				1759C6061616D83900FE0869 /* Supporting Files */,
 			);
 			path = Netcaster;
@@ -196,7 +195,6 @@
 				1759C6211616DFD600FE0869 /* NCShowsList.m in Sources */,
 				1759C6241616EFE300FE0869 /* Group.m in Sources */,
 				1759C6271616F50500FE0869 /* Show.m in Sources */,
-				1759C62A1616F50B00FE0869 /* Episode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +324,7 @@
 				1759C61E1616D83A00FE0869 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
