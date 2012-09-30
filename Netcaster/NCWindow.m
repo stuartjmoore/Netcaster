@@ -55,7 +55,7 @@
             if(groups == nil || groups.count == 0)
             {
                 group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
-                [group setValue:@"Shows" forKey:@"title"];
+                [group setTitle:@"Shows"];
             }
             else
             {
