@@ -16,11 +16,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    
-    
-    
-    
-    
     /*
     NSManagedObjectContext *context = [self managedObjectContext];
     

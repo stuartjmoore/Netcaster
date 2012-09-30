@@ -16,6 +16,8 @@
 		1725432D16185195009A0FD6 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432C16185195009A0FD6 /* Show.m */; };
 		1725433016185195009A0FD6 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432F16185195009A0FD6 /* Feed.m */; };
 		1725433316185195009A0FD6 /* Enclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433216185195009A0FD6 /* Enclosure.m */; };
+		1725433716187A91009A0FD6 /* NCAddModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433616187A91009A0FD6 /* NCAddModal.m */; };
+		1725433A16187C1F009A0FD6 /* NCWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433916187C1E009A0FD6 /* NCWindow.m */; };
 		1759C6001616D83900FE0869 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1759C5FF1616D83900FE0869 /* Cocoa.framework */; };
 		1759C60A1616D83900FE0869 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1759C6081616D83900FE0869 /* InfoPlist.strings */; };
 		1759C60C1616D83900FE0869 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C60B1616D83900FE0869 /* main.m */; };
@@ -45,6 +47,10 @@
 		1725432F16185195009A0FD6 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feed.m; path = ../Feed.m; sourceTree = "<group>"; };
 		1725433116185195009A0FD6 /* Enclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enclosure.h; path = ../Enclosure.h; sourceTree = "<group>"; };
 		1725433216185195009A0FD6 /* Enclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enclosure.m; path = ../Enclosure.m; sourceTree = "<group>"; };
+		1725433516187A91009A0FD6 /* NCAddModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCAddModal.h; sourceTree = "<group>"; };
+		1725433616187A91009A0FD6 /* NCAddModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCAddModal.m; sourceTree = "<group>"; };
+		1725433816187C1E009A0FD6 /* NCWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWindow.h; sourceTree = "<group>"; };
+		1725433916187C1E009A0FD6 /* NCWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWindow.m; sourceTree = "<group>"; };
 		1759C5FB1616D83900FE0869 /* Netcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1759C5FF1616D83900FE0869 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1759C6021616D83900FE0869 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -143,8 +149,12 @@
 				1759C6121616D83900FE0869 /* NCAppDelegate.m */,
 				1759C6141616D83900FE0869 /* MainMenu.xib */,
 				1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */,
+				1725433816187C1E009A0FD6 /* NCWindow.h */,
+				1725433916187C1E009A0FD6 /* NCWindow.m */,
 				1759C61F1616DFD600FE0869 /* NCShowsList.h */,
 				1759C6201616DFD600FE0869 /* NCShowsList.m */,
+				1725433516187A91009A0FD6 /* NCAddModal.h */,
+				1725433616187A91009A0FD6 /* NCAddModal.m */,
 				1725433416185238009A0FD6 /* Entities */,
 				1759C6061616D83900FE0869 /* Supporting Files */,
 			);
@@ -241,6 +251,8 @@
 				1725432D16185195009A0FD6 /* Show.m in Sources */,
 				1725433016185195009A0FD6 /* Feed.m in Sources */,
 				1725433316185195009A0FD6 /* Enclosure.m in Sources */,
+				1725433716187A91009A0FD6 /* NCAddModal.m in Sources */,
+				1725433A16187C1F009A0FD6 /* NCWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
