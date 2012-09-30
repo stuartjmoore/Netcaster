@@ -7,6 +7,7 @@
 //
 
 #import "NCShowsList.h"
+#import "Item.h"
 
 @implementation NCShowsList
 
@@ -38,13 +39,20 @@
 
 #pragma mark - Selection
 
-- (void)outlineViewSelectionDidChange:(NSNotification*)aNotification
+- (void)outlineViewSelectionDidChange:(NSNotification*)notification
 {
-	NSTreeNode *item = [self itemAtRow:self.selectedRow];
+    NCShowsList *list = notification.object;
+	NSTreeNode *node = [list itemAtRow:list.selectedRow];
     
-	if(![item.representedObject isKindOfClass:Group.class])
+	if([node.representedObject isKindOfClass:Item.class])
 	{
-        NSLog(@"Selected");
+        Item *item = node.representedObject;
+        
+        if([[item valueForKey:@"Type"] intValue] == ItemTypeShow)
+        {
+            Show *show = [item valueForKey:@"Show"];
+            NSLog(@"%@",show);
+        }
 	}
 }
 
