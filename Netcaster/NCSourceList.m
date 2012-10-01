@@ -18,7 +18,10 @@
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item
 {
-    return NO;
+    if([((NSTreeNode*)item).representedObject isKindOfClass:Group.class])
+        return YES;
+    else
+        return NO;
 }
 
 - (NSView *)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)column item:(id)item
@@ -50,6 +53,57 @@
         }
 	}
 }
+
+/*
+#pragma mark - Autosave
+
+- (id)outlineView:(NSOutlineView *)outlineView itemForPersistentObject:(id)object
+{
+    // Iterate all the items. This is not straightforward because the outline
+    // view items are nested. So you cannot just iterate the rows. Rows
+    // correspond to root nodes only. The outline view interface does not
+    // provide any means to query the hidden children within each collapsed row
+    // either. However, the root nodes do respond to -childNodes. That makes it
+    // possible to walk the tree.
+    NSMutableArray *items = [NSMutableArray array];
+    NSInteger i, rows = [outlineView numberOfRows];
+    for (i = 0; i < rows; i++)
+    {
+        [items addObject:[outlineView itemAtRow:i]];
+    }
+    for (i = 0; i < [items count] && ![object isEqualToString:[[[[[items objectAtIndex:i] representedObject] objectID] URIRepresentation] absoluteString]]; i++)
+    {
+        [items addObjectsFromArray:[[items objectAtIndex:i] childNodes]];
+    }
+    return i < [items count] ? [items objectAtIndex:i] : nil;
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView persistentObjectForItem:(id)item
+{
+    // "Persistent object" means a unique representation of the item's object,
+    // representing the objects identity, not its state. Outline view writes
+    // this to user defaults as soon as the item expands. That's when it asks
+    // for the persistent object, sending -outlineView:persistentObjectForItem:
+    // and execution arrives here. A minor problem arises when adding new
+    // items. The new item represents a new unsaved managed object. The managed
+    // object only has a temporary object identifier. It will receive a
+    // permanent one when saved. So, if the objectID answers a temporary one,
+    // ask the context to save and re-request the objectID. The second request
+    // gives a permanent identifier, assuming saving succeeds. Don't worry about
+    // committing unsaved edits at this point.
+    NSManagedObject *object = [item representedObject];
+    NSManagedObjectID *objectID = [object objectID];
+    if ([objectID isTemporaryID])
+    {
+        if (![[object managedObjectContext] save:NULL])
+        {
+            return nil;
+        }
+        objectID = [object objectID];
+    }
+    return [[objectID URIRepresentation] absoluteString];
+}
+*/
 /*
 #pragma mark - Drag and Drop
 

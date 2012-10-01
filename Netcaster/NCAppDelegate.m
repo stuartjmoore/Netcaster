@@ -14,8 +14,9 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
+    [self.showsList setAutosaveExpandedItems:YES];
 }
 
 #pragma mark - Core Data

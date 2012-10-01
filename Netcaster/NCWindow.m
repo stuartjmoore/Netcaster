@@ -21,6 +21,7 @@
     self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
     if(self)
     {
+        self.showsList.floatsGroupRows = NO;
         [self.showsList registerForDraggedTypes:[NSArray arrayWithObjects:@"ItemsDropType", nil]];
     }
     return self;
@@ -65,7 +66,7 @@
             if(groups == nil || groups.count == 0)
             {
                 group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
-                [group setTitle:@"Shows"];
+                [group setTitle:@"SHOWS"];
             }
             else
             {
@@ -76,7 +77,7 @@
         Show *show = [NSEntityDescription insertNewObjectForEntityForName:@"Show" inManagedObjectContext:context];
         {
             [show setTitle:@"New Show"];
-            [show setSubtitle:@"0"];
+            [show setSubtitle:@"99"];
             [show setGroup:group];
             
             Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
