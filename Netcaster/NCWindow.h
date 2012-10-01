@@ -13,7 +13,7 @@
 @interface NCWindow : NSWindow
 
 @property (nonatomic, weak) IBOutlet NCAddModal *addShowModal;
-@property (nonatomic, weak) IBOutlet NCShowsList *showsList;
+@property (nonatomic, weak) IBOutlet NSOutlineView *showsList;
 
 - (IBAction)addNewShow:(id)sender;
 - (IBAction)removeShowOrGroup:(id)sender;

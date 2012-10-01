@@ -1,26 +1,18 @@
 //
-//  NCShowsList.m
+//  NCSourceList.m
 //  Netcaster
 //
-//  Created by Stuart Moore on 9/29/12.
+//  Created by Stuart Moore on 10/1/12.
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
-#import "NCShowsList.h"
+#import "NCSourceList.h"
+#import "Group.h"
 #import "Item.h"
+#import "Show.h"
+#import "Feed.h"
 
-@implementation NCShowsList
-
-@synthesize managedObjectContext;
-
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if(self)
-    {
-    }
-    return self;
-}
+@implementation NCSourceList
 
 #pragma mark - Layout
 
@@ -41,17 +33,20 @@
 
 - (void)outlineViewSelectionDidChange:(NSNotification*)notification
 {
-    NCShowsList *list = notification.object;
+    NSOutlineView *list = notification.object;
 	NSTreeNode *node = [list itemAtRow:list.selectedRow];
     
 	if([node.representedObject isKindOfClass:Item.class])
 	{
         Item *item = node.representedObject;
         
-        if([[item valueForKey:@"Type"] intValue] == ItemTypeShow)
+        if(item.type.intValue == ItemTypeShow)
         {
-            Show *show = [item valueForKey:@"Show"];
-            NSLog(@"%@",show);
+            Show *show = item.show;
+            NSSet *feeds = show.feeds;
+            Feed *feed = feeds.anyObject;
+            
+            NSLog(@"%@", feed.url);
         }
 	}
 }

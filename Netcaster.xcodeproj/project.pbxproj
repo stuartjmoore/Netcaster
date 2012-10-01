@@ -25,7 +25,7 @@
 		1759C6131616D83900FE0869 /* NCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6121616D83900FE0869 /* NCAppDelegate.m */; };
 		1759C6161616D83900FE0869 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1759C6141616D83900FE0869 /* MainMenu.xib */; };
 		1759C6191616D83A00FE0869 /* Netcaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */; };
-		1759C6211616DFD600FE0869 /* NCShowsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6201616DFD600FE0869 /* NCShowsList.m */; };
+		1767E0AE1619895C00D4D2F4 /* NCSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0AD1619895C00D4D2F4 /* NCSourceList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +65,8 @@
 		1759C6121616D83900FE0869 /* NCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCAppDelegate.m; sourceTree = "<group>"; };
 		1759C6151616D83900FE0869 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1759C6181616D83A00FE0869 /* Netcaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Netcaster.xcdatamodel; sourceTree = "<group>"; };
-		1759C61F1616DFD600FE0869 /* NCShowsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCShowsList.h; sourceTree = "<group>"; };
-		1759C6201616DFD600FE0869 /* NCShowsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCShowsList.m; sourceTree = "<group>"; };
+		1767E0AC1619895C00D4D2F4 /* NCSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSourceList.h; sourceTree = "<group>"; };
+		1767E0AD1619895C00D4D2F4 /* NCSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSourceList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +151,8 @@
 				1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */,
 				1725433816187C1E009A0FD6 /* NCWindow.h */,
 				1725433916187C1E009A0FD6 /* NCWindow.m */,
-				1759C61F1616DFD600FE0869 /* NCShowsList.h */,
-				1759C6201616DFD600FE0869 /* NCShowsList.m */,
+				1767E0AC1619895C00D4D2F4 /* NCSourceList.h */,
+				1767E0AD1619895C00D4D2F4 /* NCSourceList.m */,
 				1725433516187A91009A0FD6 /* NCAddModal.h */,
 				1725433616187A91009A0FD6 /* NCAddModal.m */,
 				1725433416185238009A0FD6 /* Entities */,
@@ -241,7 +241,6 @@
 				1759C60C1616D83900FE0869 /* main.m in Sources */,
 				1759C6131616D83900FE0869 /* NCAppDelegate.m in Sources */,
 				1759C6191616D83A00FE0869 /* Netcaster.xcdatamodeld in Sources */,
-				1759C6211616DFD600FE0869 /* NCShowsList.m in Sources */,
 				1725431B16185195009A0FD6 /* Channel.m in Sources */,
 				1725431E16185195009A0FD6 /* Livestream.m in Sources */,
 				1725432116185195009A0FD6 /* Item.m in Sources */,
@@ -253,6 +252,7 @@
 				1725433316185195009A0FD6 /* Enclosure.m in Sources */,
 				1725433716187A91009A0FD6 /* NCAddModal.m in Sources */,
 				1725433A16187C1F009A0FD6 /* NCWindow.m in Sources */,
+				1767E0AE1619895C00D4D2F4 /* NCSourceList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

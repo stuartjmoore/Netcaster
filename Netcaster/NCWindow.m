@@ -9,7 +9,7 @@
 #import "NCWindow.h"
 #import "NCAppDelegate.h"
 #import "NCAddModal.h"
-#import "NCShowsList.h"
+#import "Group.h"
 #import "Item.h"
 #import "Show.h"
 #import "Feed.h"

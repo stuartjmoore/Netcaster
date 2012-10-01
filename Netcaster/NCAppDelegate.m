@@ -16,34 +16,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    /*
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    NSManagedObject *group = [NSEntityDescription
-                              insertNewObjectForEntityForName:@"Group"
-                              inManagedObjectContext:context];
-    [group setValue:@"Test Group" forKey:@"title"];
-    
-    NSManagedObject *show = [NSEntityDescription
-                                          insertNewObjectForEntityForName:@"Show"
-                                          inManagedObjectContext:context];
-    [show setValue:@"Test Show" forKey:@"title"];
-    [show setValue:group forKey:@"group"];
-    
-    NSManagedObject *episode = [NSEntityDescription
-                                       insertNewObjectForEntityForName:@"Episode"
-                                       inManagedObjectContext:context];
-    [episode setValue:@"Test Episode" forKey:@"title"];
-    [episode setValue:show forKey:@"show"];
-    
-    [show setValue:[NSSet setWithObject:episode] forKey:@"episodes"];
-    [group setValue:[NSSet setWithObject:show] forKey:@"shows"];
-    
-    
-    NSError *error;
-    if (![context save:&error]) 
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    */
 }
 
 #pragma mark - Core Data

@@ -821,7 +821,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="443187755"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">MainWindow</string>
 				<int key="NSWindowCollectionBehavior">128</int>
@@ -838,7 +838,7 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{219, 116}</string>
 				<object class="NSView" key="NSWindowView" id="710662607">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSTextField" id="321665786">
@@ -947,11 +947,10 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{579, 116}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="321444152"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMinSize">{219, 138}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
@@ -961,9 +960,6 @@
 			</object>
 			<object class="NSCustomObject" id="755631768">
 				<string key="NSClassName">NSFontManager</string>
-			</object>
-			<object class="NSCustomObject" id="926790709">
-				<string key="NSClassName">NCShowsList</string>
 			</object>
 			<object class="NSTreeController" id="751068272">
 				<bool key="NSEditable">YES</bool>
@@ -1192,9 +1188,9 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="876544602"/>
-						<reference key="destination" ref="926790709"/>
+						<reference key="destination" ref="751068272"/>
 					</object>
-					<int key="connectionID">935</int>
+					<int key="connectionID">977</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2353,11 +2349,6 @@
 						<reference key="parent" ref="957217568"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">790</int>
-						<reference key="object" ref="926790709"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">798</int>
 						<reference key="object" ref="751068272"/>
 						<reference key="parent" ref="0"/>
@@ -2764,7 +2755,6 @@
 				<string key="585.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="586.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="586.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="587.CustomClassName">NCShowsList</string>
 				<string key="587.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="587.ibExternalAutomaticallyCalculatesRowSizeFromViewHeight"/>
 				<string key="588.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2840,7 +2830,7 @@
 				<string key="738.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="739.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="790.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="798.CustomClassName">NCSourceList</string>
 				<string key="798.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2899,7 +2889,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">976</int>
+			<int key="maxID">977</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2967,11 +2957,11 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">NCShowsList</string>
-					<string key="superclassName">NSOutlineView</string>
+					<string key="className">NCSourceList</string>
+					<string key="superclassName">NSTreeController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NCShowsList.h</string>
+						<string key="minorKey">./Classes/NCSourceList.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -2993,7 +2983,7 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="addShowModal">NCAddModal</string>
-						<string key="showsList">NCShowsList</string>
+						<string key="showsList">NSOutlineView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="addShowModal">
@@ -3002,7 +2992,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="showsList">
 							<string key="name">showsList</string>
-							<string key="candidateClassName">NCShowsList</string>
+							<string key="candidateClassName">NSOutlineView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
