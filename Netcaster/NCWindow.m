@@ -16,6 +16,16 @@
 
 @implementation NCWindow
 
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
+{
+    self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
+    if(self)
+    {
+        [self.showsList registerForDraggedTypes:[NSArray arrayWithObjects:@"ItemsDropType", nil]];
+    }
+    return self;
+}
+
 #pragma mark - Menu bar Actions
 
 - (IBAction)addNewShow:(id)sender

@@ -76,7 +76,7 @@
         <element name="Feed" positionX="-2187" positionY="288" width="128" height="103"/>
         <element name="Group" positionX="-2574" positionY="-189" width="126" height="88"/>
         <element name="Item" positionX="-2387" positionY="-189" width="128" height="88"/>
-        <element name="Livestream" positionX="-2387" positionY="290" width="128" height="88"/>
+        <element name="Livestream" positionX="-2387" positionY="288" width="128" height="88"/>
         <element name="Page" positionX="-2574" positionY="-18" width="128" height="73"/>
         <element name="Show" positionX="-2189" positionY="-18" width="128" height="223"/>
     </elements>

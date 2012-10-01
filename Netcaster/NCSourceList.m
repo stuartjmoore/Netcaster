@@ -16,12 +16,12 @@
 
 #pragma mark - Layout
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item
+- (BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item
 {
     return NO;
 }
 
-- (NSView *)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item
+- (NSView *)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)column item:(id)item
 {
     if([((NSTreeNode*)item).representedObject isKindOfClass:Group.class])
         return [outlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
@@ -50,5 +50,39 @@
         }
 	}
 }
+/*
+#pragma mark - Drag and Drop
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray*)items toPasteboard:(NSPasteboard*)pasteboard
+{
+    //NSString *pasteBoardType = [self pasteboardTypeForTableView:outlineView];
+    //[pboard declareTypes:[NSArray arrayWithObject:pasteBoardType] owner:self];
+    
+    //NSData *rowData = [NSKeyedArchiver archivedDataWithRootObject:items];
+    //[pboard setData:rowData forType:pasteBoardType];
+    
+    NSLog(@"writeItems");
+    
+    //NSData *data = [NSKeyedArchiver archivedDataWithRootObject:items];
+	[pasteboard declareTypes:[NSArray arrayWithObject:@"ItemsDropType"] owner:self];
+	[pasteboard setData:[NSData data] forType:@"ItemsDropType"];
+    
+    //[outlineView setDropItem:nil dropChildIndex:0];
+    
+    return YES;
+}
+
+- (NSDragOperation)outlineView:(NSOutlineView *)outlineView validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
+{
+    NSLog(@"validateDrop");
+    return NSDragOperationMove;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index
+{
+    NSLog(@"acceptDrop");
+    return YES;
+}
+*/
 
 @end
