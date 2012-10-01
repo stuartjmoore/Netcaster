@@ -63,26 +63,20 @@
             }
         }
         
-        Item *item = [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:context];
+        Show *show = [NSEntityDescription insertNewObjectForEntityForName:@"Show" inManagedObjectContext:context];
         {
-            [item setTitle:@"New Show"];
-            [item setSubtitle:@""];
-            [item setGroup:group];
+            [show setTitle:@"New Show"];
+            [show setSubtitle:@"0"];
+            [show setGroup:group];
             
-            Show *show = [NSEntityDescription insertNewObjectForEntityForName:@"Show" inManagedObjectContext:context];
+            Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
             {
-                Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
-                {
-                    [feed setUrl:self.addShowModal.urlField.stringValue];
-                    [feed setShow:show];
-                }
-                [show addFeedsObject:feed];
-                [show setItem:item];
+                [feed setUrl:self.addShowModal.urlField.stringValue];
+                [feed setShow:show];
             }
-            [item setShow:show];
-            [item setType:[NSNumber numberWithInt:ItemTypeShow]];
+            [show addFeedsObject:feed];
         }
-        [group addItemsObject:item];
+        [group addItemsObject:show];
         
         if(![context save:&error])
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);

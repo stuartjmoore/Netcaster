@@ -2,7 +2,7 @@
 //  Group.h
 //  Netcaster
 //
-//  Created by Stuart Moore on 9/30/12.
+//  Created by Stuart Moore on 10/1/12.
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface Group : NSManagedObject
 
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * subtitle;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *items;
 @end
 

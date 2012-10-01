@@ -2,7 +2,7 @@
 //  Livestream.h
 //  Netcaster
 //
-//  Created by Stuart Moore on 9/30/12.
+//  Created by Stuart Moore on 10/1/12.
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface Livestream : NSManagedObject
 
-@property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) Channel *channel;
 
 @end

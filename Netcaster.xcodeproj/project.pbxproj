@@ -7,15 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1725431B16185195009A0FD6 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725431A16185195009A0FD6 /* Channel.m */; };
-		1725431E16185195009A0FD6 /* Livestream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725431D16185195009A0FD6 /* Livestream.m */; };
-		1725432116185195009A0FD6 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432016185195009A0FD6 /* Item.m */; };
-		1725432416185195009A0FD6 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432316185195009A0FD6 /* Page.m */; };
-		1725432716185195009A0FD6 /* Episode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432616185195009A0FD6 /* Episode.m */; };
-		1725432A16185195009A0FD6 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432916185195009A0FD6 /* Group.m */; };
-		1725432D16185195009A0FD6 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432C16185195009A0FD6 /* Show.m */; };
-		1725433016185195009A0FD6 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725432F16185195009A0FD6 /* Feed.m */; };
-		1725433316185195009A0FD6 /* Enclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433216185195009A0FD6 /* Enclosure.m */; };
 		1725433716187A91009A0FD6 /* NCAddModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433616187A91009A0FD6 /* NCAddModal.m */; };
 		1725433A16187C1F009A0FD6 /* NCWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433916187C1E009A0FD6 /* NCWindow.m */; };
 		1759C6001616D83900FE0869 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1759C5FF1616D83900FE0869 /* Cocoa.framework */; };
@@ -26,27 +17,18 @@
 		1759C6161616D83900FE0869 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1759C6141616D83900FE0869 /* MainMenu.xib */; };
 		1759C6191616D83A00FE0869 /* Netcaster.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1759C6171616D83A00FE0869 /* Netcaster.xcdatamodeld */; };
 		1767E0AE1619895C00D4D2F4 /* NCSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0AD1619895C00D4D2F4 /* NCSourceList.m */; };
+		1767E0B61619A0D000D4D2F4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0B51619A0D000D4D2F4 /* Feed.m */; };
+		1767E0BA1619A0D000D4D2F4 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0B91619A0D000D4D2F4 /* Show.m */; };
+		1767E0BD1619A0D100D4D2F4 /* Episode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0BC1619A0D100D4D2F4 /* Episode.m */; };
+		1767E0C01619A0D100D4D2F4 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0BF1619A0D100D4D2F4 /* Channel.m */; };
+		1767E0C31619A0D100D4D2F4 /* Enclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0C21619A0D100D4D2F4 /* Enclosure.m */; };
+		1767E0C61619A0D100D4D2F4 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0C51619A0D100D4D2F4 /* Item.m */; };
+		1767E0C91619A0D100D4D2F4 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0C81619A0D100D4D2F4 /* Group.m */; };
+		1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CB1619A0D100D4D2F4 /* Livestream.m */; };
+		1767E0CF1619A0D100D4D2F4 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CE1619A0D100D4D2F4 /* Page.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1725431916185195009A0FD6 /* Channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Channel.h; path = ../Channel.h; sourceTree = "<group>"; };
-		1725431A16185195009A0FD6 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Channel.m; path = ../Channel.m; sourceTree = "<group>"; };
-		1725431C16185195009A0FD6 /* Livestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Livestream.h; path = ../Livestream.h; sourceTree = "<group>"; };
-		1725431D16185195009A0FD6 /* Livestream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Livestream.m; path = ../Livestream.m; sourceTree = "<group>"; };
-		1725431F16185195009A0FD6 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../Item.h; sourceTree = "<group>"; };
-		1725432016185195009A0FD6 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = ../Item.m; sourceTree = "<group>"; };
-		1725432216185195009A0FD6 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = ../Page.h; sourceTree = "<group>"; };
-		1725432316185195009A0FD6 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = ../Page.m; sourceTree = "<group>"; };
-		1725432516185195009A0FD6 /* Episode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Episode.h; path = ../Episode.h; sourceTree = "<group>"; };
-		1725432616185195009A0FD6 /* Episode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Episode.m; path = ../Episode.m; sourceTree = "<group>"; };
-		1725432816185195009A0FD6 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = ../Group.h; sourceTree = "<group>"; };
-		1725432916185195009A0FD6 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = ../Group.m; sourceTree = "<group>"; };
-		1725432B16185195009A0FD6 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Show.h; path = ../Show.h; sourceTree = "<group>"; };
-		1725432C16185195009A0FD6 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Show.m; path = ../Show.m; sourceTree = "<group>"; };
-		1725432E16185195009A0FD6 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Feed.h; path = ../Feed.h; sourceTree = "<group>"; };
-		1725432F16185195009A0FD6 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feed.m; path = ../Feed.m; sourceTree = "<group>"; };
-		1725433116185195009A0FD6 /* Enclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enclosure.h; path = ../Enclosure.h; sourceTree = "<group>"; };
-		1725433216185195009A0FD6 /* Enclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enclosure.m; path = ../Enclosure.m; sourceTree = "<group>"; };
 		1725433516187A91009A0FD6 /* NCAddModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCAddModal.h; sourceTree = "<group>"; };
 		1725433616187A91009A0FD6 /* NCAddModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCAddModal.m; sourceTree = "<group>"; };
 		1725433816187C1E009A0FD6 /* NCWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWindow.h; sourceTree = "<group>"; };
@@ -67,6 +49,24 @@
 		1759C6181616D83A00FE0869 /* Netcaster.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Netcaster.xcdatamodel; sourceTree = "<group>"; };
 		1767E0AC1619895C00D4D2F4 /* NCSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSourceList.h; sourceTree = "<group>"; };
 		1767E0AD1619895C00D4D2F4 /* NCSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSourceList.m; sourceTree = "<group>"; };
+		1767E0B41619A0D000D4D2F4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		1767E0B51619A0D000D4D2F4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
+		1767E0B81619A0D000D4D2F4 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
+		1767E0B91619A0D000D4D2F4 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Show.m; sourceTree = "<group>"; };
+		1767E0BB1619A0D100D4D2F4 /* Episode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Episode.h; sourceTree = "<group>"; };
+		1767E0BC1619A0D100D4D2F4 /* Episode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Episode.m; sourceTree = "<group>"; };
+		1767E0BE1619A0D100D4D2F4 /* Channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Channel.h; sourceTree = "<group>"; };
+		1767E0BF1619A0D100D4D2F4 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Channel.m; sourceTree = "<group>"; };
+		1767E0C11619A0D100D4D2F4 /* Enclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enclosure.h; sourceTree = "<group>"; };
+		1767E0C21619A0D100D4D2F4 /* Enclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enclosure.m; sourceTree = "<group>"; };
+		1767E0C41619A0D100D4D2F4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		1767E0C51619A0D100D4D2F4 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		1767E0C71619A0D100D4D2F4 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		1767E0C81619A0D100D4D2F4 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		1767E0CA1619A0D100D4D2F4 /* Livestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Livestream.h; sourceTree = "<group>"; };
+		1767E0CB1619A0D100D4D2F4 /* Livestream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Livestream.m; sourceTree = "<group>"; };
+		1767E0CD1619A0D100D4D2F4 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
+		1767E0CE1619A0D100D4D2F4 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,24 +84,24 @@
 		1725433416185238009A0FD6 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				1725432816185195009A0FD6 /* Group.h */,
-				1725432916185195009A0FD6 /* Group.m */,
-				1725431F16185195009A0FD6 /* Item.h */,
-				1725432016185195009A0FD6 /* Item.m */,
-				1725432216185195009A0FD6 /* Page.h */,
-				1725432316185195009A0FD6 /* Page.m */,
-				1725431916185195009A0FD6 /* Channel.h */,
-				1725431A16185195009A0FD6 /* Channel.m */,
-				1725431C16185195009A0FD6 /* Livestream.h */,
-				1725431D16185195009A0FD6 /* Livestream.m */,
-				1725432B16185195009A0FD6 /* Show.h */,
-				1725432C16185195009A0FD6 /* Show.m */,
-				1725432E16185195009A0FD6 /* Feed.h */,
-				1725432F16185195009A0FD6 /* Feed.m */,
-				1725432516185195009A0FD6 /* Episode.h */,
-				1725432616185195009A0FD6 /* Episode.m */,
-				1725433116185195009A0FD6 /* Enclosure.h */,
-				1725433216185195009A0FD6 /* Enclosure.m */,
+				1767E0CD1619A0D100D4D2F4 /* Page.h */,
+				1767E0CE1619A0D100D4D2F4 /* Page.m */,
+				1767E0CA1619A0D100D4D2F4 /* Livestream.h */,
+				1767E0CB1619A0D100D4D2F4 /* Livestream.m */,
+				1767E0C71619A0D100D4D2F4 /* Group.h */,
+				1767E0C81619A0D100D4D2F4 /* Group.m */,
+				1767E0C41619A0D100D4D2F4 /* Item.h */,
+				1767E0C51619A0D100D4D2F4 /* Item.m */,
+				1767E0C11619A0D100D4D2F4 /* Enclosure.h */,
+				1767E0C21619A0D100D4D2F4 /* Enclosure.m */,
+				1767E0BE1619A0D100D4D2F4 /* Channel.h */,
+				1767E0BF1619A0D100D4D2F4 /* Channel.m */,
+				1767E0BB1619A0D100D4D2F4 /* Episode.h */,
+				1767E0BC1619A0D100D4D2F4 /* Episode.m */,
+				1767E0B81619A0D000D4D2F4 /* Show.h */,
+				1767E0B91619A0D000D4D2F4 /* Show.m */,
+				1767E0B41619A0D000D4D2F4 /* Feed.h */,
+				1767E0B51619A0D000D4D2F4 /* Feed.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -241,18 +241,18 @@
 				1759C60C1616D83900FE0869 /* main.m in Sources */,
 				1759C6131616D83900FE0869 /* NCAppDelegate.m in Sources */,
 				1759C6191616D83A00FE0869 /* Netcaster.xcdatamodeld in Sources */,
-				1725431B16185195009A0FD6 /* Channel.m in Sources */,
-				1725431E16185195009A0FD6 /* Livestream.m in Sources */,
-				1725432116185195009A0FD6 /* Item.m in Sources */,
-				1725432416185195009A0FD6 /* Page.m in Sources */,
-				1725432716185195009A0FD6 /* Episode.m in Sources */,
-				1725432A16185195009A0FD6 /* Group.m in Sources */,
-				1725432D16185195009A0FD6 /* Show.m in Sources */,
-				1725433016185195009A0FD6 /* Feed.m in Sources */,
-				1725433316185195009A0FD6 /* Enclosure.m in Sources */,
 				1725433716187A91009A0FD6 /* NCAddModal.m in Sources */,
 				1725433A16187C1F009A0FD6 /* NCWindow.m in Sources */,
 				1767E0AE1619895C00D4D2F4 /* NCSourceList.m in Sources */,
+				1767E0B61619A0D000D4D2F4 /* Feed.m in Sources */,
+				1767E0BA1619A0D000D4D2F4 /* Show.m in Sources */,
+				1767E0BD1619A0D100D4D2F4 /* Episode.m in Sources */,
+				1767E0C01619A0D100D4D2F4 /* Channel.m in Sources */,
+				1767E0C31619A0D100D4D2F4 /* Enclosure.m in Sources */,
+				1767E0C61619A0D100D4D2F4 /* Item.m in Sources */,
+				1767E0C91619A0D100D4D2F4 /* Group.m in Sources */,
+				1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */,
+				1767E0CF1619A0D100D4D2F4 /* Page.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

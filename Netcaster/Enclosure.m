@@ -2,7 +2,7 @@
 //  Enclosure.m
 //  Netcaster
 //
-//  Created by Stuart Moore on 9/30/12.
+//  Created by Stuart Moore on 10/1/12.
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
@@ -12,8 +12,8 @@
 
 @implementation Enclosure
 
-@dynamic url;
 @dynamic type;
+@dynamic url;
 @dynamic episode;
 
 @end

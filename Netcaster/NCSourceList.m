@@ -40,9 +40,9 @@
 	{
         Item *item = node.representedObject;
         
-        if(item.type.intValue == ItemTypeShow)
+        if([item isKindOfClass:Show.class])
         {
-            Show *show = item.show;
+            Show *show = (Show*)item;
             NSSet *feeds = show.feeds;
             Feed *feed = feeds.anyObject;
             

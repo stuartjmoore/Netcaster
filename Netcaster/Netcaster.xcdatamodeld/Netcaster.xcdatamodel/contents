@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12C54" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Channel" representedClassName="Channel" syncable="YES">
+    <entity name="Channel" representedClassName="Channel" parentEntity="Item" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="item" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="channel" inverseEntity="Item" syncable="YES"/>
         <relationship name="livestreams" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Livestream" inverseName="channel" inverseEntity="Livestream" syncable="YES"/>
         <relationship name="shows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Show" inverseName="channel" inverseEntity="Show" syncable="YES"/>
     </entity>
@@ -43,27 +41,21 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Item" inverseName="group" inverseEntity="Item" syncable="YES"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES">
+    <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
-        <relationship name="channel" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Channel" inverseName="item" inverseEntity="Channel" syncable="YES"/>
         <relationship name="group" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="items" inverseEntity="Group" syncable="YES"/>
-        <relationship name="page" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Page" inverseName="item" inverseEntity="Page" syncable="YES"/>
-        <relationship name="show" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Show" inverseName="item" inverseEntity="Show" syncable="YES"/>
     </entity>
     <entity name="Livestream" representedClassName="Livestream" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="channel" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Channel" inverseName="livestreams" inverseEntity="Channel" syncable="YES"/>
     </entity>
-    <entity name="Page" representedClassName="Page" syncable="YES">
+    <entity name="Page" representedClassName="Page" parentEntity="Item" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="item" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="page" inverseEntity="Item" syncable="YES"/>
     </entity>
-    <entity name="Show" representedClassName="Show" syncable="YES">
+    <entity name="Show" representedClassName="Show" parentEntity="Item" syncable="YES">
         <attribute name="cast" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="channelName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
@@ -71,23 +63,21 @@
         <attribute name="image" optional="YES" attributeType="Binary" valueTransformerName="NSImage" syncable="YES"/>
         <attribute name="isNewCount" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="schedule" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unwatchedCount" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="channel" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Channel" inverseName="shows" inverseEntity="Channel" syncable="YES"/>
-        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Episode" inverseName="show" inverseEntity="Episode" syncable="YES"/>
+        <relationship name="episodes" optional="YES" toMany="YES" maxCount="52" deletionRule="Cascade" destinationEntity="Episode" inverseName="show" inverseEntity="Episode" syncable="YES"/>
         <relationship name="feeds" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Feed" inverseName="show" inverseEntity="Feed" syncable="YES"/>
-        <relationship name="item" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="show" inverseEntity="Item" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Episode" positionX="-2000" positionY="-18" width="128" height="268"/>
-        <element name="Group" positionX="-2574" positionY="-189" width="126" height="88"/>
-        <element name="Show" positionX="-2189" positionY="-18" width="128" height="253"/>
+        <element name="Channel" positionX="-2385" positionY="-18" width="128" height="133"/>
         <element name="Enclosure" positionX="-1998" positionY="288" width="128" height="88"/>
+        <element name="Episode" positionX="-2000" positionY="-18" width="128" height="268"/>
         <element name="Feed" positionX="-2187" positionY="288" width="128" height="103"/>
-        <element name="Channel" positionX="-2385" positionY="-18" width="128" height="163"/>
+        <element name="Group" positionX="-2574" positionY="-189" width="126" height="88"/>
+        <element name="Item" positionX="-2387" positionY="-189" width="128" height="88"/>
         <element name="Livestream" positionX="-2387" positionY="290" width="128" height="88"/>
-        <element name="Item" positionX="-2387" positionY="-189" width="128" height="148"/>
-        <element name="Page" positionX="-2189" positionY="-189" width="128" height="103"/>
+        <element name="Page" positionX="-2574" positionY="-18" width="128" height="73"/>
+        <element name="Show" positionX="-2189" positionY="-18" width="128" height="223"/>
     </elements>
 </model>
