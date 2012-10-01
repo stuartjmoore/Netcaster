@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1721B3111619E1EE007C6BBD /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1721B3101619E1EE007C6BBD /* XMLReader.m */; };
 		1725433716187A91009A0FD6 /* NCAddModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433616187A91009A0FD6 /* NCAddModal.m */; };
 		1725433A16187C1F009A0FD6 /* NCWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433916187C1E009A0FD6 /* NCWindow.m */; };
 		1759C6001616D83900FE0869 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1759C5FF1616D83900FE0869 /* Cocoa.framework */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1721B30F1619E1EE007C6BBD /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = ../XMLReader.h; sourceTree = "<group>"; };
+		1721B3101619E1EE007C6BBD /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = ../XMLReader.m; sourceTree = "<group>"; };
 		1725433516187A91009A0FD6 /* NCAddModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCAddModal.h; sourceTree = "<group>"; };
 		1725433616187A91009A0FD6 /* NCAddModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCAddModal.m; sourceTree = "<group>"; };
 		1725433816187C1E009A0FD6 /* NCWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWindow.h; sourceTree = "<group>"; };
@@ -81,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1721B3131619E1FE007C6BBD /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				1721B30F1619E1EE007C6BBD /* XMLReader.h */,
+				1721B3101619E1EE007C6BBD /* XMLReader.m */,
+			);
+			name = XML;
+			sourceTree = "<group>";
+		};
 		1725433416185238009A0FD6 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +167,7 @@
 				1767E0AD1619895C00D4D2F4 /* NCSourceList.m */,
 				1725433516187A91009A0FD6 /* NCAddModal.h */,
 				1725433616187A91009A0FD6 /* NCAddModal.m */,
+				1721B3131619E1FE007C6BBD /* XML */,
 				1725433416185238009A0FD6 /* Entities */,
 				1759C6061616D83900FE0869 /* Supporting Files */,
 			);
@@ -253,6 +266,7 @@
 				1767E0C91619A0D100D4D2F4 /* Group.m in Sources */,
 				1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */,
 				1767E0CF1619A0D100D4D2F4 /* Page.m in Sources */,
+				1721B3111619E1EE007C6BBD /* XMLReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
