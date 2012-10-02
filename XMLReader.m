@@ -34,6 +34,27 @@ static NSString *const kXMLReaderTextNodeKey = @"text";
     return [XMLReader dictionaryForXMLData:data error:errorPointer];
 }
 
++ (NSString*)stringFromDictionary:(NSDictionary*)dictionary withKeys:(NSString*)firstKey, ...
+{
+    id temp = dictionary;
+    
+    va_list args;
+    va_start(args, firstKey);
+    for(NSString *arg = firstKey; arg != nil; arg = va_arg(args, NSString*))
+    {
+        if([temp isKindOfClass:NSDictionary.class])
+            temp = [temp objectForKey:arg];
+        else
+            return nil;
+    }
+    va_end(args);
+    
+    if([temp isKindOfClass:NSString.class])
+        return [temp stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+    else
+        return nil;
+}
+
 #pragma mark - Parsing
 
 - (NSDictionary*)objectWithData:(NSData *)data
