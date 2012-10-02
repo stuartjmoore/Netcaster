@@ -28,6 +28,7 @@
 @property (nonatomic, retain) NSSet *feeds;
 
 - (void)reload;
+- (void)updatePodcastFeed:(Feed*)feed;
 
 @end
 

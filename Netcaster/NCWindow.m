@@ -83,6 +83,7 @@
             Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
             {
                 [feed setUrl:self.addShowModal.urlField.stringValue];
+                [feed setType:[NSNumber numberWithInt:FeedTypePodcast]];
                 [feed setShow:show];
             }
             [show addFeedsObject:feed];

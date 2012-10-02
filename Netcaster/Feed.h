@@ -9,12 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+enum {
+    FeedTypePodcast = 0,
+    FeedTypeHulu = 1,
+    FeedTypeYouTube = 2
+} FeedType;
+
 @class Show;
 
 @interface Feed : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * type;
 @property (nonatomic, retain) NSDate * updated;
+// update freq
+// get average time interval between shows
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) Show *show;
 
