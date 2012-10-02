@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class NCEpisodesList;
+
 @interface NCSourceList : NSTreeController <NSOutlineViewDataSource, NSOutlineViewDelegate>
+
+@property (nonatomic, weak) IBOutlet NCEpisodesList *episodesController;
+@property (nonatomic, weak) IBOutlet NSTableView *episodesTable;
 
 @end

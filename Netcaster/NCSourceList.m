@@ -7,6 +7,7 @@
 //
 
 #import "NCSourceList.h"
+#import "NCEpisodesList.h"
 
 #import "Group.h"
 #import "Item.h"
@@ -56,6 +57,13 @@
         {
             Show *show = (Show*)item;
             [show reload];
+            
+            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:NO];
+            NSArray *descriptors = [NSArray arrayWithObject:descriptor];
+            NSArray *sortedEpisodes = [show.episodes sortedArrayUsingDescriptors:descriptors];
+            self.episodesController.episodes = sortedEpisodes;
+            
+            [self.episodesTable reloadData];
         }
 	}
 }

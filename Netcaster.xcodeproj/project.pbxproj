@@ -27,6 +27,7 @@
 		1767E0C91619A0D100D4D2F4 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0C81619A0D100D4D2F4 /* Group.m */; };
 		1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CB1619A0D100D4D2F4 /* Livestream.m */; };
 		1767E0CF1619A0D100D4D2F4 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CE1619A0D100D4D2F4 /* Page.m */; };
+		1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1786021B161B4A20009592DE /* NCEpisodesList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,8 @@
 		1767E0CB1619A0D100D4D2F4 /* Livestream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Livestream.m; sourceTree = "<group>"; };
 		1767E0CD1619A0D100D4D2F4 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
 		1767E0CE1619A0D100D4D2F4 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
+		1786021A161B4A20009592DE /* NCEpisodesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEpisodesList.h; sourceTree = "<group>"; };
+		1786021B161B4A20009592DE /* NCEpisodesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEpisodesList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 				1725433916187C1E009A0FD6 /* NCWindow.m */,
 				1767E0AC1619895C00D4D2F4 /* NCSourceList.h */,
 				1767E0AD1619895C00D4D2F4 /* NCSourceList.m */,
+				1786021A161B4A20009592DE /* NCEpisodesList.h */,
+				1786021B161B4A20009592DE /* NCEpisodesList.m */,
 				1725433516187A91009A0FD6 /* NCAddModal.h */,
 				1725433616187A91009A0FD6 /* NCAddModal.m */,
 				1721B3131619E1FE007C6BBD /* XML */,
@@ -267,6 +272,7 @@
 				1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */,
 				1767E0CF1619A0D100D4D2F4 /* Page.m in Sources */,
 				1721B3111619E1EE007C6BBD /* XMLReader.m in Sources */,
+				1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

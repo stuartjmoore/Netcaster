@@ -67,6 +67,8 @@
 
 - (void)updatePodcastFeed:(Feed*)feed
 {
+    // if feed.updated == nil, [NSDate date];
+    
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:feed.url]];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
     completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
