@@ -15,7 +15,7 @@
 @interface Show : Item
 
 @property (nonatomic, retain) NSString * cast;
-@property (nonatomic, retain) NSString * channelName;
+@property (nonatomic, retain) NSString * channelName; //delete
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSString * genre;
 @property (nonatomic, retain) NSData * image;

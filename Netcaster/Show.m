@@ -43,52 +43,84 @@
         NSManagedObjectContext *context = [delegate managedObjectContext];
          
         NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:nil];
-        NSArray *episodes = [[[RSS objectForKey:@"rss"] objectForKey:@"channel"] objectForKey:@"item"];
+        NSDictionary *showDic = [[RSS objectForKey:@"rss"] objectForKey:@"channel"];
         
+        NSString *title = [[showDic objectForKey:@"title"] objectForKey:@"text"];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        NSString *desc = [[showDic objectForKey:@"description"] objectForKey:@"text"];
+        if(!desc)
+            desc = [[showDic objectForKey:@"itunes:subtitle"] objectForKey:@"text"];
+        desc = [desc stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        NSString *image = [[showDic objectForKey:@"itunes:image"] objectForKey:@"href"];
+        image = [image stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        NSString *link = [[showDic objectForKey:@"link"] objectForKey:@"text"];
+        link = [link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        NSString *author = [[showDic objectForKey:@"itunes:author"] objectForKey:@"text"];
+        author = [author stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        NSString *genre = [[showDic objectForKey:@"itunes:category"] objectForKey:@"text"];
+        genre = [genre stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        
+        self.title = title;
+        self.desc = desc;
+        self.website = link;
+        self.genre = genre;
+        
+        Channel *channel = [NSEntityDescription insertNewObjectForEntityForName:@"Channel" inManagedObjectContext:context];
+        channel.title = author;
+        self.channel = channel;
+        
+        
+        NSArray *episodes = [showDic objectForKey:@"item"];
         for(NSDictionary *epiDic in episodes)
         {
             NSString *title = [[epiDic objectForKey:@"title"] objectForKey:@"text"];
             if(!title)
                 title = [[[epiDic objectForKey:@"media:content"] objectForKey:@"media:title"] objectForKey:@"text"];
-            [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *desc = [[epiDic objectForKey:@"description"] objectForKey:@"text"];
             if(!desc)
                 desc = [[epiDic objectForKey:@"content:encoded"] objectForKey:@"text"];
             if(!desc)
                 desc = [[epiDic objectForKey:@"itunes:subtitle"] objectForKey:@"text"];
-            [desc stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            desc = [desc stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *image = [[[epiDic objectForKey:@"media:content"] objectForKey:@"media:thumbnail"] objectForKey:@"url"];
             if(!image)
                 image = [[epiDic objectForKey:@"itunes:image"] objectForKey:@"href"];
-            [image stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            image = [image stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *pubDate = [[epiDic objectForKey:@"pubDate"] objectForKey:@"text"];
-            [pubDate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            pubDate = [pubDate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *duration = [[epiDic objectForKey:@"itunes:duration"] objectForKey:@"text"];
             if(!duration)
                 duration = [[epiDic objectForKey:@"media:content"] objectForKey:@"duration"];
-            [duration stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            duration = [duration stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *link = [[epiDic objectForKey:@"link"] objectForKey:@"text"];
-            [link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            link = [link stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *enclosureURL = [[epiDic objectForKey:@"enclosure"] objectForKey:@"url"];
             if(!enclosureURL)
                 enclosureURL = [[epiDic objectForKey:@"media:content"] objectForKey:@"url"];
-            [enclosureURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            enclosureURL = [enclosureURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *fileSize = [[epiDic objectForKey:@"enclosure"] objectForKey:@"length"];
             if(!fileSize)
                 fileSize = [[epiDic objectForKey:@"media:content"] objectForKey:@"fileSize"];
-            [fileSize stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            fileSize = [fileSize stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             NSString *fileType = [[epiDic objectForKey:@"enclosure"] objectForKey:@"type"];
             if(!fileType)
                 fileType = [[epiDic objectForKey:@"media:content"] objectForKey:@"type"];
-            [fileType stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            fileType = [fileType stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             
             Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
