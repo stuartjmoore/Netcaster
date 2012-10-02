@@ -7,6 +7,7 @@
 //
 
 #import "NCSourceList.h"
+
 #import "Group.h"
 #import "Item.h"
 #import "Show.h"
@@ -22,6 +23,14 @@
         return YES;
     else
         return NO;
+}
+
+- (BOOL)outlineView:(NSOutlineView*)outlineView shouldSelectItem:(id)item
+{
+    if([((NSTreeNode*)item).representedObject isKindOfClass:Group.class])
+        return NO;
+    else
+        return YES;
 }
 
 - (NSView *)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)column item:(id)item
@@ -46,10 +55,7 @@
         if([item isKindOfClass:Show.class])
         {
             Show *show = (Show*)item;
-            NSSet *feeds = show.feeds;
-            Feed *feed = feeds.anyObject;
-            
-            NSLog(@"%@", feed.url);
+            [show reload];
         }
 	}
 }

@@ -26,6 +26,9 @@
 @property (nonatomic, retain) Channel *channel;
 @property (nonatomic, retain) NSSet *episodes;
 @property (nonatomic, retain) NSSet *feeds;
+
+- (void)reload;
+
 @end
 
 @interface Show (CoreDataGeneratedAccessors)

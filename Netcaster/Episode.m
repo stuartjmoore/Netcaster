@@ -17,6 +17,7 @@
 @dynamic cast;
 @dynamic desc;
 @dynamic descShort;
+@dynamic duration;
 @dynamic expires;
 @dynamic image;
 @dynamic isNew;

@@ -9,7 +9,8 @@
         <relationship name="shows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Show" inverseName="channel" inverseEntity="Show" syncable="YES"/>
     </entity>
     <entity name="Enclosure" representedClassName="Enclosure" syncable="YES">
-        <attribute name="type" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" minValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="episode" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Episode" inverseName="enclosures" inverseEntity="Episode" syncable="YES"/>
     </entity>
@@ -18,6 +19,7 @@
         <attribute name="cast" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descShort" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Float" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="expires" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="isNew" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
@@ -71,8 +73,8 @@
     </entity>
     <elements>
         <element name="Channel" positionX="-2385" positionY="-18" width="128" height="133"/>
-        <element name="Enclosure" positionX="-1998" positionY="288" width="128" height="88"/>
-        <element name="Episode" positionX="-2000" positionY="-18" width="128" height="268"/>
+        <element name="Enclosure" positionX="-1998" positionY="288" width="128" height="103"/>
+        <element name="Episode" positionX="-2000" positionY="-18" width="128" height="283"/>
         <element name="Feed" positionX="-2187" positionY="288" width="128" height="103"/>
         <element name="Group" positionX="-2574" positionY="-189" width="126" height="88"/>
         <element name="Item" positionX="-2387" positionY="-189" width="128" height="88"/>

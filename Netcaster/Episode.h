@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * cast;
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSString * descShort;
+@property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSDate * expires;
 @property (nonatomic, retain) NSData * image;
 @property (nonatomic, retain) NSNumber * isNew;

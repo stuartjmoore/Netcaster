@@ -14,6 +14,7 @@
 
 @dynamic type;
 @dynamic url;
+@dynamic size;
 @dynamic episode;
 
 @end
