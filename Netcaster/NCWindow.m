@@ -27,6 +27,15 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    [self performSelector:@selector(expandAllItems) withObject:nil afterDelay:0.01f];
+}
+- (void)expandAllItems
+{
+    [self.showsList expandItem:nil expandChildren:YES];
+}
+
 #pragma mark - Menu bar Actions
 
 - (IBAction)addNewShow:(id)sender
