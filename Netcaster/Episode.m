@@ -28,6 +28,7 @@
 @dynamic unwatched;
 @dynamic website;
 @dynamic enclosures;
+@dynamic price, currency, rating;
 @dynamic show;
 
 @end

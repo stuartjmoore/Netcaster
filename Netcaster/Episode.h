@@ -28,6 +28,9 @@
 @property (nonatomic, retain) NSNumber * unwatched;
 @property (nonatomic, retain) NSString * website;
 @property (nonatomic, retain) NSSet *enclosures;
+@property (nonatomic, retain) NSNumber * price;
+@property (nonatomic, retain) NSString * currency;
+@property (nonatomic, retain) NSString * rating;
 @property (nonatomic, retain) Show *show;
 @end
 

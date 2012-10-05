@@ -11,6 +11,8 @@
 		1725433716187A91009A0FD6 /* NCAddModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433616187A91009A0FD6 /* NCAddModal.m */; };
 		1725433A16187C1F009A0FD6 /* NCWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725433916187C1E009A0FD6 /* NCWindow.m */; };
 		17401E3B161C1EF800610C97 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 17401E3A161C1EF800610C97 /* icon.icns */; };
+		174FBEB0161F18FC004B1CAE /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 174FBEAF161F18FC004B1CAE /* Directory.m */; };
+		174FBEB3161F1913004B1CAE /* WatchBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 174FBEB2161F1913004B1CAE /* WatchBox.m */; };
 		1759C6001616D83900FE0869 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1759C5FF1616D83900FE0869 /* Cocoa.framework */; };
 		1759C60A1616D83900FE0869 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1759C6081616D83900FE0869 /* InfoPlist.strings */; };
 		1759C60C1616D83900FE0869 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C60B1616D83900FE0869 /* main.m */; };
@@ -27,7 +29,6 @@
 		1767E0C61619A0D100D4D2F4 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0C51619A0D100D4D2F4 /* Item.m */; };
 		1767E0C91619A0D100D4D2F4 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0C81619A0D100D4D2F4 /* Group.m */; };
 		1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CB1619A0D100D4D2F4 /* Livestream.m */; };
-		1767E0CF1619A0D100D4D2F4 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CE1619A0D100D4D2F4 /* Page.m */; };
 		1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1786021B161B4A20009592DE /* NCEpisodesList.m */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,10 @@
 		1725433816187C1E009A0FD6 /* NCWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWindow.h; sourceTree = "<group>"; };
 		1725433916187C1E009A0FD6 /* NCWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWindow.m; sourceTree = "<group>"; };
 		17401E3A161C1EF800610C97 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		174FBEAE161F18FC004B1CAE /* Directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
+		174FBEAF161F18FC004B1CAE /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
+		174FBEB1161F1913004B1CAE /* WatchBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchBox.h; sourceTree = "<group>"; };
+		174FBEB2161F1913004B1CAE /* WatchBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchBox.m; sourceTree = "<group>"; };
 		1759C5FB1616D83900FE0869 /* Netcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1759C5FF1616D83900FE0869 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1759C6021616D83900FE0869 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -71,8 +76,6 @@
 		1767E0C81619A0D100D4D2F4 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		1767E0CA1619A0D100D4D2F4 /* Livestream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Livestream.h; sourceTree = "<group>"; };
 		1767E0CB1619A0D100D4D2F4 /* Livestream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Livestream.m; sourceTree = "<group>"; };
-		1767E0CD1619A0D100D4D2F4 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
-		1767E0CE1619A0D100D4D2F4 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
 		1786021A161B4A20009592DE /* NCEpisodesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEpisodesList.h; sourceTree = "<group>"; };
 		1786021B161B4A20009592DE /* NCEpisodesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEpisodesList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,8 +104,10 @@
 		1725433416185238009A0FD6 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				1767E0CD1619A0D100D4D2F4 /* Page.h */,
-				1767E0CE1619A0D100D4D2F4 /* Page.m */,
+				174FBEAE161F18FC004B1CAE /* Directory.h */,
+				174FBEAF161F18FC004B1CAE /* Directory.m */,
+				174FBEB1161F1913004B1CAE /* WatchBox.h */,
+				174FBEB2161F1913004B1CAE /* WatchBox.m */,
 				1767E0C71619A0D100D4D2F4 /* Group.h */,
 				1767E0C81619A0D100D4D2F4 /* Group.m */,
 				1767E0C41619A0D100D4D2F4 /* Item.h */,
@@ -274,9 +279,10 @@
 				1767E0C61619A0D100D4D2F4 /* Item.m in Sources */,
 				1767E0C91619A0D100D4D2F4 /* Group.m in Sources */,
 				1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */,
-				1767E0CF1619A0D100D4D2F4 /* Page.m in Sources */,
 				1721B3111619E1EE007C6BBD /* XMLReader.m in Sources */,
 				1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */,
+				174FBEB0161F18FC004B1CAE /* Directory.m in Sources */,
+				174FBEB3161F1913004B1CAE /* WatchBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -101,6 +101,8 @@
         
         if(![context save:&error])
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        
+        [self.showsList expandItem:nil expandChildren:YES];
     }
     else if(returnCode == NSCancelButton)
     {
@@ -120,8 +122,11 @@
     
     if([node.representedObject isKindOfClass:Group.class] || [node.representedObject isKindOfClass:Item.class])
     {
-        NSManagedObject *object = node.representedObject;
-        [context deleteObject:object];
+        [context deleteObject:node.representedObject];
+        /*
+        if([node.representedObject isKindOfClass:Item.class])
+            if(node.parentNode.childNodes.count <= 0)
+                [context deleteObject:node.parentNode.representedObject];*/
     }
 }
 
