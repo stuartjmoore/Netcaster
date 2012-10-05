@@ -12,7 +12,8 @@
 enum {
     FeedTypePodcast = 0,
     FeedTypeHulu = 1,
-    FeedTypeYouTube = 2
+    FeedTypeYouTubePlaylist = 2,
+    FeedTypeYouTubeUser = 3
 } FeedType;
 
 @class Show;

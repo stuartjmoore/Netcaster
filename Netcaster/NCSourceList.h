@@ -12,7 +12,12 @@
 
 @interface NCSourceList : NSTreeController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
+@property (nonatomic, weak) IBOutlet NSOutlineView *outlineView;
 @property (nonatomic, weak) IBOutlet NCEpisodesList *episodesController;
 @property (nonatomic, weak) IBOutlet NSTableView *episodesTable;
+
+@property (nonatomic, strong) NSDraggingSession *draggingSession;
+@property (nonatomic, strong) NSTreeNode *draggingItem;
+@property (nonatomic, strong) id draggingObject;
 
 @end

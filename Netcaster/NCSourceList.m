@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
+#import "NCAppDelegate.h"
 #import "NCSourceList.h"
 #import "NCEpisodesList.h"
 
@@ -15,6 +16,13 @@
 #import "Feed.h"
 
 @implementation NCSourceList
+
+- (void)awakeFromNib
+{
+	[super awakeFromNib];
+	
+	[self.outlineView registerForDraggedTypes:[NSArray arrayWithObject:@"outlineviewcontroller.Item"]];
+}
 
 #pragma mark - Layout
 
@@ -32,6 +40,16 @@
         return NO;
     else
         return YES;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldShowOutlineCellForItem:(id)item
+{
+    return NO;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
+{
+    return NO;
 }
 
 - (NSView *)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)column item:(id)item
@@ -68,89 +86,87 @@
 	}
 }
 
-/*
-#pragma mark - Autosave
+#pragma mark Dragging
 
-- (id)outlineView:(NSOutlineView *)outlineView itemForPersistentObject:(id)object
+- (id<NSPasteboardWriting>)outlineView:(NSOutlineView*)pOutlineView pasteboardWriterForItem:(NSTreeNode*)pItem
 {
-    // Iterate all the items. This is not straightforward because the outline
-    // view items are nested. So you cannot just iterate the rows. Rows
-    // correspond to root nodes only. The outline view interface does not
-    // provide any means to query the hidden children within each collapsed row
-    // either. However, the root nodes do respond to -childNodes. That makes it
-    // possible to walk the tree.
-    NSMutableArray *items = [NSMutableArray array];
-    NSInteger i, rows = [outlineView numberOfRows];
-    for (i = 0; i < rows; i++)
+    id propertyList = [NSNumber numberWithBool:YES];
+	return [[NSPasteboardItem alloc] initWithPasteboardPropertyList:propertyList ofType:@"outlineviewcontroller.Item"];
+}
+
+- (void)outlineView:(NSOutlineView*)outlineView draggingSession:(NSDraggingSession*)draggingSession willBeginAtPoint:(NSPoint)point forItems:(NSArray*)draggedItems
+{
+	self.draggingSession = draggingSession;
+	self.draggingItem = draggedItems.lastObject;
+	self.draggingObject = self.draggingItem.representedObject;
+}
+
+- (NSDragOperation)outlineView:(NSOutlineView *)outlineView validateDrop:(id<NSDraggingInfo>)draggingInfo proposedItem:(NSTreeNode*)item proposedChildIndex:(NSInteger)index
+{
+	id draggingDest = item.representedObject;
+    
+	if(draggingInfo.draggingSource == self.outlineView)
     {
-        [items addObject:[outlineView itemAtRow:i]];
-    }
-    for (i = 0; i < [items count] && ![object isEqualToString:[[[[[items objectAtIndex:i] representedObject] objectID] URIRepresentation] absoluteString]]; i++)
+        if([self.draggingObject isKindOfClass:Item.class] && [draggingDest isKindOfClass:Group.class])
+            return NSDragOperationMove;
+        else if([self.draggingObject isKindOfClass:Item.class] && !draggingDest)
+            return NSDragOperationMove;
+        else if([self.draggingObject isKindOfClass:Group.class] && !draggingDest)
+            return NSDragOperationMove;
+	}
+	
+	return NSDragOperationNone;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id<NSDraggingInfo>)draggingInfo item:(NSTreeNode*)item childIndex:(NSInteger)childIndex
+{
+    NCAppDelegate *delegate = [NSApp delegate];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    
+	NSInteger index = (childIndex == NSOutlineViewDropOnItemIndex) ? 0 : childIndex;
+	
+	if(draggingInfo.draggingSource == self.outlineView)
     {
-        [items addObjectsFromArray:[[items objectAtIndex:i] childNodes]];
-    }
-    return i < [items count] ? [items objectAtIndex:i] : nil;
+        if([self.draggingObject isKindOfClass:Item.class])
+        {
+            NSTreeNode *fromGroup = self.draggingItem.parentNode;
+            
+            if(item == nil)
+            {
+                Group *group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
+                [group setTitle:@"NEW GROUP"];
+                [context save:nil];
+                
+                item = [self.outlineView itemAtRow:self.outlineView.numberOfRows-1];
+            }
+            
+            [self moveNode:self.draggingItem toIndexPath:[item.indexPath indexPathByAddingIndex:index]];
+            [self.outlineView expandItem:item];
+            
+            if(fromGroup.childNodes.count <= 0)
+                [context deleteObject:fromGroup.representedObject];
+        }
+        else if([self.draggingObject isKindOfClass:Group.class])
+        {
+			[self moveNode:self.draggingItem toIndexPath:[NSIndexPath indexPathWithIndex:index]];
+        }
+        
+		return YES;
+	}
+	
+	return NO;
+}
+
+- (void)outlineView:(NSOutlineView*)outlineView draggingSession:(NSDraggingSession*)draggingSession endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation
+{
+	self.draggingItem = nil;
+	self.draggingSession = nil;
+	self.draggingObject = nil;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView persistentObjectForItem:(id)item
 {
-    // "Persistent object" means a unique representation of the item's object,
-    // representing the objects identity, not its state. Outline view writes
-    // this to user defaults as soon as the item expands. That's when it asks
-    // for the persistent object, sending -outlineView:persistentObjectForItem:
-    // and execution arrives here. A minor problem arises when adding new
-    // items. The new item represents a new unsaved managed object. The managed
-    // object only has a temporary object identifier. It will receive a
-    // permanent one when saved. So, if the objectID answers a temporary one,
-    // ask the context to save and re-request the objectID. The second request
-    // gives a permanent identifier, assuming saving succeeds. Don't worry about
-    // committing unsaved edits at this point.
-    NSManagedObject *object = [item representedObject];
-    NSManagedObjectID *objectID = [object objectID];
-    if ([objectID isTemporaryID])
-    {
-        if (![[object managedObjectContext] save:NULL])
-        {
-            return nil;
-        }
-        objectID = [object objectID];
-    }
-    return [[objectID URIRepresentation] absoluteString];
+    return nil;
 }
-*/
-/*
-#pragma mark - Drag and Drop
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray*)items toPasteboard:(NSPasteboard*)pasteboard
-{
-    //NSString *pasteBoardType = [self pasteboardTypeForTableView:outlineView];
-    //[pboard declareTypes:[NSArray arrayWithObject:pasteBoardType] owner:self];
-    
-    //NSData *rowData = [NSKeyedArchiver archivedDataWithRootObject:items];
-    //[pboard setData:rowData forType:pasteBoardType];
-    
-    NSLog(@"writeItems");
-    
-    //NSData *data = [NSKeyedArchiver archivedDataWithRootObject:items];
-	[pasteboard declareTypes:[NSArray arrayWithObject:@"ItemsDropType"] owner:self];
-	[pasteboard setData:[NSData data] forType:@"ItemsDropType"];
-    
-    //[outlineView setDropItem:nil dropChildIndex:0];
-    
-    return YES;
-}
-
-- (NSDragOperation)outlineView:(NSOutlineView *)outlineView validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
-{
-    NSLog(@"validateDrop");
-    return NSDragOperationMove;
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index
-{
-    NSLog(@"acceptDrop");
-    return YES;
-}
-*/
 
 @end

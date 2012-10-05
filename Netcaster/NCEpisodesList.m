@@ -23,4 +23,9 @@
     return episode;
 }
 
+- (CGFloat)tableView:(NSTableView*)tableView heightOfRow:(NSInteger)row
+{
+    return tableView.visibleRect.size.height;
+}
+
 @end

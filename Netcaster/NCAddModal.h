@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NCAddModal : NSWindow
+@interface NCAddModal : NSWindow <NSTextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTextField *urlField;
+@property (nonatomic, weak) IBOutlet NSView *detailField;
+
+@property (nonatomic, weak) IBOutlet NSView *showDetailView;
 
 - (IBAction)addURL:(id)sender;
 - (IBAction)cancel:(id)sender;
