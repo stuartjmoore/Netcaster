@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class NCWindow, NCAddModal;
+
 @interface NCAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NCWindow *window;
+@property (nonatomic, weak) IBOutlet NCAddModal *addShowModal;
 @property (nonatomic, weak) IBOutlet NSOutlineView *showsList;
 
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;

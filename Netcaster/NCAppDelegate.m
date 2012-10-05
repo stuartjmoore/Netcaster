@@ -7,6 +7,8 @@
 //
 
 #import "NCAppDelegate.h"
+#import "NCWindow.h"
+#import "NCAddModal.h"
 
 @implementation NCAppDelegate
 
@@ -16,7 +18,22 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
+    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
+    [appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
+    
+    CFStringRef bundleID = (__bridge CFStringRef)[[NSBundle mainBundle] bundleIdentifier];
+    LSSetDefaultHandlerForURLScheme(CFSTR("pcast"), bundleID);
+    
     [self.showsList setAutosaveExpandedItems:YES];
+}
+
+- (void)handleGetURLEvent:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent
+{
+    NSString *url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
+    url = [url stringByReplacingOccurrencesOfString:@"pcast://" withString:@"http://"];
+    
+    self.addShowModal.urlField.stringValue = url;
+    [self.window addNewShow:nil];
 }
 
 #pragma mark - Core Data
