@@ -76,6 +76,8 @@
             Show *show = (Show*)item;
             [show reload];
             
+            self.showView.stringValue = show.title;
+            
             NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:NO];
             NSArray *descriptors = [NSArray arrayWithObject:descriptor];
             NSArray *sortedEpisodes = [show.episodes sortedArrayUsingDescriptors:descriptors];

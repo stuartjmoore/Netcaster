@@ -15,6 +15,7 @@
 @property (nonatomic, weak) IBOutlet NSOutlineView *outlineView;
 @property (nonatomic, weak) IBOutlet NCEpisodesList *episodesController;
 @property (nonatomic, weak) IBOutlet NSTableView *episodesTable;
+@property (nonatomic, weak) IBOutlet NSTextField *showView;
 
 @property (nonatomic, strong) NSDraggingSession *draggingSession;
 @property (nonatomic, strong) NSTreeNode *draggingItem;
