@@ -9,6 +9,10 @@
 #import "NCAppDelegate.h"
 #import "NCWindow.h"
 #import "NCAddModal.h"
+#import "StaticGroup.h"
+#import "WatchBox.h"
+#import "Episode.h"
+#import "Enclosure.h"
 
 @implementation NCAppDelegate
 
@@ -18,6 +22,24 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"WatchBox" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSArray *watchBoxes = [context executeFetchRequest:request error:nil];
+    
+    if(watchBoxes == nil || watchBoxes.count == 0)
+    {
+        Group *staticGroup = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
+        staticGroup.title = @"NETCASTER";
+        WatchBox *watchBox = [NSEntityDescription insertNewObjectForEntityForName:@"WatchBox" inManagedObjectContext:context];
+        watchBox.title = @"Watch Box";
+        watchBox.group = staticGroup;
+        [staticGroup addItemsObject:watchBox];
+        [context save:nil];
+    }
+    
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
     [appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
     
@@ -30,12 +52,44 @@
 - (void)handleGetURLEvent:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent
 {
     NSString *url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-    url = [url stringByReplacingOccurrencesOfString:@"pcast://" withString:@"http://"];
     
-    self.addShowModal.urlField.stringValue = url;
-    [self.window addNewShow:nil];
-}
+    if([url hasPrefix:@"pcast://"])
+    {
+        url = [url stringByReplacingOccurrencesOfString:@"pcast://" withString:@"http://"];
+    
+        self.addShowModal.urlField.stringValue = url;
+        [self.window addNewShow:nil];
+    }
+    else
+    {
+        NSManagedObjectContext *context = [self managedObjectContext];
+        
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"WatchBox" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDescription];
+        NSArray *watchBoxes = [context executeFetchRequest:request error:nil];
 
+        Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
+        episode.title = url;
+        episode.website = url;
+        
+        Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
+        enclosure.episode = episode;
+        [episode addEnclosuresObject:enclosure];
+        
+        episode.show = watchBoxes.lastObject;
+        [watchBoxes.lastObject addEpisodesObject:episode];
+    }
+}
+/*
+- (BOOL)application:(NSApplication*)application openFile:(NSString*)filename
+{
+    NSURL *url = [NSURL fileURLWithPath:filename];
+    NSLog(@"%@", url);
+    
+    return NO;
+}
+*/
 #pragma mark - Core Data
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.stuartjmoore.Netcaster" in the user's Application Support directory.

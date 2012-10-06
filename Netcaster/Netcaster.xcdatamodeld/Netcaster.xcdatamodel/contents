@@ -71,17 +71,19 @@
         <relationship name="episodes" optional="YES" toMany="YES" maxCount="52" deletionRule="Cascade" destinationEntity="Episode" inverseName="show" inverseEntity="Episode" syncable="YES"/>
         <relationship name="feeds" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Feed" inverseName="show" inverseEntity="Feed" syncable="YES"/>
     </entity>
+    <entity name="StaticGroup" representedClassName="StaticGroup" parentEntity="Group" syncable="YES"/>
     <entity name="WatchBox" representedClassName="WatchBox" parentEntity="Show" syncable="YES"/>
     <elements>
         <element name="Channel" positionX="-2385" positionY="-18" width="128" height="133"/>
+        <element name="Directory" positionX="-2574" positionY="-16" width="128" height="43"/>
         <element name="Enclosure" positionX="-1998" positionY="329" width="128" height="103"/>
         <element name="Episode" positionX="-2000" positionY="-18" width="128" height="328"/>
         <element name="Feed" positionX="-2187" positionY="288" width="128" height="103"/>
-        <element name="Group" positionX="-2574" positionY="-216" width="126" height="88"/>
-        <element name="Item" positionX="-2387" positionY="-216" width="128" height="88"/>
+        <element name="Group" positionX="-2574" positionY="-180" width="126" height="88"/>
+        <element name="Item" positionX="-2387" positionY="-180" width="128" height="88"/>
         <element name="Livestream" positionX="-2387" positionY="288" width="128" height="88"/>
         <element name="Show" positionX="-2189" positionY="-18" width="128" height="223"/>
-        <element name="Directory" positionX="-2574" positionY="-16" width="128" height="43"/>
         <element name="WatchBox" positionX="-2187" positionY="-90" width="128" height="43"/>
+        <element name="StaticGroup" positionX="-2574" positionY="-250" width="128" height="43"/>
     </elements>
 </model>

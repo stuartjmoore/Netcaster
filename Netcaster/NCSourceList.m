@@ -10,6 +10,8 @@
 #import "NCSourceList.h"
 #import "NCEpisodesList.h"
 
+#import "StaticGroup.h"
+#import "WatchBox.h"
 #import "Group.h"
 #import "Item.h"
 #import "Show.h"
@@ -109,6 +111,11 @@
     
 	if(draggingInfo.draggingSource == self.outlineView)
     {
+        if([self.draggingObject isKindOfClass:WatchBox.class])
+            return NSDragOperationNone;
+        else if([self.draggingObject isKindOfClass:StaticGroup.class])
+            return NSDragOperationNone;
+        
         if([self.draggingObject isKindOfClass:Item.class] && [draggingDest isKindOfClass:Group.class])
             return NSDragOperationMove;
         else if([self.draggingObject isKindOfClass:Item.class] && !draggingDest)

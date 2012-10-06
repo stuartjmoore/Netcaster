@@ -89,8 +89,15 @@
         NSManagedObjectContext *context = [delegate managedObjectContext];
         NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:nil];
         
+        BOOL firstLoad = NO;
+        
+        if(self.episodes.count == 0)
+            firstLoad = YES;
+        
         if(!self.desc)
         {
+            firstLoad = YES;
+            
             NSDictionary *showDic = [[RSS objectForKey:@"rss"] objectForKey:@"channel"];
             
             NSString *title = [XMLReader stringFromDictionary:showDic withKeys:@"title", @"text", nil];
@@ -201,6 +208,21 @@
             episode.website = link;
             episode.published = pubDate;
             
+            if(firstLoad && [episodes indexOfObject:epiDic] == 0)
+            {
+                episode.isNew = [NSNumber numberWithBool:YES];
+                episode.unwatched = [NSNumber numberWithBool:YES];
+                self.unwatchedCount = [NSNumber numberWithInt:1];
+                self.subtitle = @"1";
+            }
+            else
+            {
+                episode.isNew = [NSNumber numberWithBool:YES];
+                episode.unwatched = [NSNumber numberWithBool:YES];
+                self.unwatchedCount = [NSNumber numberWithInt:(self.unwatchedCount.intValue+1)];
+                self.subtitle = [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
+            }
+                
             Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
             enclosure.url = enclosureURL;
             enclosure.size = [NSNumber numberWithInteger:fileSize.integerValue];

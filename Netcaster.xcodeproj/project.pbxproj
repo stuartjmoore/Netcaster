@@ -30,6 +30,7 @@
 		1767E0C91619A0D100D4D2F4 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0C81619A0D100D4D2F4 /* Group.m */; };
 		1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CB1619A0D100D4D2F4 /* Livestream.m */; };
 		1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1786021B161B4A20009592DE /* NCEpisodesList.m */; };
+		17A0E853161F62E10069D524 /* StaticGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A0E852161F62E10069D524 /* StaticGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		1767E0CB1619A0D100D4D2F4 /* Livestream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Livestream.m; sourceTree = "<group>"; };
 		1786021A161B4A20009592DE /* NCEpisodesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEpisodesList.h; sourceTree = "<group>"; };
 		1786021B161B4A20009592DE /* NCEpisodesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEpisodesList.m; sourceTree = "<group>"; };
+		17A0E851161F62E10069D524 /* StaticGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticGroup.h; sourceTree = "<group>"; };
+		17A0E852161F62E10069D524 /* StaticGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 		1725433416185238009A0FD6 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				17A0E851161F62E10069D524 /* StaticGroup.h */,
+				17A0E852161F62E10069D524 /* StaticGroup.m */,
 				174FBEAE161F18FC004B1CAE /* Directory.h */,
 				174FBEAF161F18FC004B1CAE /* Directory.m */,
 				174FBEB1161F1913004B1CAE /* WatchBox.h */,
@@ -283,6 +288,7 @@
 				1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */,
 				174FBEB0161F18FC004B1CAE /* Directory.m in Sources */,
 				174FBEB3161F1913004B1CAE /* WatchBox.m in Sources */,
+				17A0E853161F62E10069D524 /* StaticGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

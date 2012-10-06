@@ -6,9 +6,12 @@
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
-#import "NCWindow.h"
 #import "NCAppDelegate.h"
+#import "NCWindow.h"
 #import "NCAddModal.h"
+
+#import "StaticGroup.h"
+#import "WatchBox.h"
 #import "Group.h"
 #import "Item.h"
 #import "Show.h"
@@ -75,7 +78,7 @@
             if(groups == nil || groups.count == 0)
             {
                 group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
-                [group setTitle:@"SHOWS"];
+                group.title = @"SHOWS";
             }
             else
             {
@@ -119,12 +122,18 @@
     NSManagedObjectContext *context = [delegate managedObjectContext];
     
     NSTreeNode *node = [self.showsList itemAtRow:self.showsList.selectedRow];
+    NSManagedObject *object = node.representedObject;
     
-    if([node.representedObject isKindOfClass:Group.class] || [node.representedObject isKindOfClass:Item.class])
+    if([object isKindOfClass:WatchBox.class])
+        return;
+    else if([object isKindOfClass:StaticGroup.class])
+        return;
+    
+    if([object isKindOfClass:Group.class] || [object isKindOfClass:Item.class])
     {
-        [context deleteObject:node.representedObject];
+        [context deleteObject:object];
         /*
-        if([node.representedObject isKindOfClass:Item.class])
+        if([object isKindOfClass:Item.class])
             if(node.parentNode.childNodes.count <= 0)
                 [context deleteObject:node.parentNode.representedObject];*/
     }
