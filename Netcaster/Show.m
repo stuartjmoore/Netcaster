@@ -112,10 +112,10 @@
             NSString *desc = [XMLReader stringFromDictionary:showDic withKeys:@"description", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:subtitle", @"text", nil];
             if(!desc) desc = @"";
-            
+            /*
             NSString *image = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:image", @"href", nil];
             if(!image) image = @"";
-            
+            */
             NSString *link = [XMLReader stringFromDictionary:showDic withKeys:@"link", @"text", nil];
             if(!link) link = @"";
             
@@ -150,11 +150,11 @@
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"content:encoded", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:subtitle", @"text", nil];
             if(!desc) desc = @"";
-            
+            /*
             NSString *image = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"media:thumbnail", @"url", nil];
             if(!image) image = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:image", @"href", nil];
             if(!image) image = @"";
-            
+            */
             NSString *pubDateString = [XMLReader stringFromDictionary:epiDic withKeys:@"pubDate", @"text", nil];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];

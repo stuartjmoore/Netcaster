@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSSet *items;
 
 - (id)episodes;
+- (id)unwatchedEpisodes;
 
 @end
 

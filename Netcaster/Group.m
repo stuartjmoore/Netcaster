@@ -20,5 +20,9 @@
 {
     return nil;
 }
+- (id)unwatchedEpisodes
+{
+    return nil;
+}
 
 @end

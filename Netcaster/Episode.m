@@ -41,7 +41,7 @@
     self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
     self.show.subtitle = [NSString stringWithFormat:@"%d", self.show.unwatchedCount.intValue];
     
-    [self.tableController reloadTable];
+    //[self.tableController reloadTable];
 }
 
 @end

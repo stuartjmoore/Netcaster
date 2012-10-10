@@ -10,12 +10,7 @@
 
 @class Show;
 
-@interface NCEpisodesList : NSObject <NSTableViewDataSource, NSTableViewDelegate>
-
-@property (nonatomic, strong) Show *show;
-@property (nonatomic, strong) NSArray *episodes;
-
-@property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@interface NCEpisodesList : NSObject <NSTableViewDelegate>
 
 - (void)reloadTable;
 

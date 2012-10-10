@@ -63,7 +63,7 @@
 }
 
 #pragma mark - Selection
-
+/*
 - (void)outlineViewSelectionDidChange:(NSNotification*)notification
 {
     NSOutlineView *list = notification.object;
@@ -77,13 +77,10 @@
         {
             Show *show = (Show*)item;
             [show reload];
-            
-            self.episodesController.show = show;
-            [self.episodesController reloadTable];
         }
 	}
 }
-
+*/
 #pragma mark Dragging
 
 - (id<NSPasteboardWriting>)outlineView:(NSOutlineView*)pOutlineView pasteboardWriterForItem:(NSTreeNode*)pItem
