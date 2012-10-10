@@ -17,9 +17,7 @@
 - (CGFloat)tableView:(NSTableView*)tableView heightOfRow:(NSInteger)row
 {
     float height = (tableView.visibleRect.size.height/tableView.numberOfRows > 200)
-                    ? tableView.visibleRect.size.height/tableView.numberOfRows:200;
-    
-    height -= 2;
+                    ? tableView.visibleRect.size.height/tableView.numberOfRows-2:200;
     
     return height;
 }
