@@ -12,6 +12,4 @@
 
 @interface NCEpisodesList : NSObject <NSTableViewDelegate>
 
-- (void)reloadTable;
-
 @end

@@ -34,8 +34,10 @@
 
 - (NSArray*)unwatchedEpisodes
 {
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:YES];
+    NSArray *sortedEpisodes = [self.episodes sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"unwatched == %@", [NSNumber numberWithBool:YES]];
-    return [self.episodes.allObjects filteredArrayUsingPredicate:predicate];
+    return [sortedEpisodes filteredArrayUsingPredicate:predicate];
 }
 
 - (void)reload

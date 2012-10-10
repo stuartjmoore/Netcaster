@@ -33,8 +33,6 @@
 @property (nonatomic, retain) NSString *rating;
 @property (nonatomic, retain) Show *show;
 
-@property (nonatomic, weak) NCEpisodesList *tableController;
-
 - (void)markUnwatched;
 
 @end

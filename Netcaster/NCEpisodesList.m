@@ -12,18 +12,6 @@
 
 @implementation NCEpisodesList
 
-#pragma mark - Table
-
-- (void)reloadTable
-{
-    /*NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:YES];
-    NSArray *sortedEpisodes = [self.show.episodes sortedArrayUsingDescriptors:[NSArray arrayWithObject:descriptor]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"unwatched == %@", [NSNumber numberWithBool:YES]];
-    self.episodes = [sortedEpisodes filteredArrayUsingPredicate:predicate];
-    
-    [self.tableView reloadData];*/
-}
-
 #pragma mark Delegate
 
 - (CGFloat)tableView:(NSTableView*)tableView heightOfRow:(NSInteger)row

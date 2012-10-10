@@ -32,16 +32,16 @@
 @dynamic price, currency, rating;
 @dynamic show;
 
-@synthesize tableController = _tableController;
-
 - (void)markUnwatched
 {
+    [self.show willChangeValueForKey:@"unwatchedEpisodes"];
+    
     self.unwatched = [NSNumber numberWithBool:NO];
     
     self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
     self.show.subtitle = [NSString stringWithFormat:@"%d", self.show.unwatchedCount.intValue];
     
-    //[self.tableController reloadTable];
+    [self.show didChangeValueForKey:@"unwatchedEpisodes"];
 }
 
 @end
