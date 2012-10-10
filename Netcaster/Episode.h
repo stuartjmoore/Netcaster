@@ -33,6 +33,7 @@
 @property (nonatomic, retain) NSString *rating;
 @property (nonatomic, retain) Show *show;
 
+- (NSImage*)imageValue;
 - (void)markUnwatched;
 
 @end

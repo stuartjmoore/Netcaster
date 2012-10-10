@@ -32,6 +32,14 @@
 @dynamic price, currency, rating;
 @dynamic show;
 
+- (NSImage*)imageValue
+{
+    if(self.image)
+        return [[NSImage alloc] initWithData:self.image];
+    else
+        return [[NSImage alloc] initWithData:self.show.image];
+}
+
 - (void)markUnwatched
 {
     [self.show willChangeValueForKey:@"unwatchedEpisodes"];

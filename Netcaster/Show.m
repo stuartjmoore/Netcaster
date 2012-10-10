@@ -114,10 +114,10 @@
             NSString *desc = [XMLReader stringFromDictionary:showDic withKeys:@"description", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:subtitle", @"text", nil];
             if(!desc) desc = @"";
-            /*
+            
             NSString *image = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:image", @"href", nil];
             if(!image) image = @"";
-            */
+            
             NSString *link = [XMLReader stringFromDictionary:showDic withKeys:@"link", @"text", nil];
             if(!link) link = @"";
             
@@ -132,6 +132,13 @@
             self.desc = desc;
             self.website = link;
             self.genre = genre;
+            
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+            [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+             {
+                 self.image = data;
+             }];
             
             Channel *channel = [NSEntityDescription insertNewObjectForEntityForName:@"Channel" inManagedObjectContext:context];
             channel.title = author;
@@ -152,11 +159,11 @@
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"content:encoded", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:subtitle", @"text", nil];
             if(!desc) desc = @"";
-            /*
+            
             NSString *image = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"media:thumbnail", @"url", nil];
             if(!image) image = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:image", @"href", nil];
             if(!image) image = @"";
-            */
+            
             NSString *pubDateString = [XMLReader stringFromDictionary:epiDic withKeys:@"pubDate", @"text", nil];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
@@ -217,7 +224,7 @@
             episode.duration = [NSNumber numberWithInteger:duration.integerValue];
             episode.website = link;
             episode.published = pubDate;
-            
+            /*
             if(firstLoad)
             {
                 if([episodes indexOfObject:epiDic] == 0)
@@ -233,14 +240,22 @@
                     episode.unwatched = [NSNumber numberWithBool:NO];
                 }
             }
-            else
+            else*/
             {
                 episode.isNew = [NSNumber numberWithBool:YES];
                 episode.unwatched = [NSNumber numberWithBool:YES];
                 self.unwatchedCount = [NSNumber numberWithInt:(self.unwatchedCount.intValue+1)];
                 self.subtitle = [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
             }
-                
+            
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+            [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+             {
+                 episode.image = data;
+             }];
+            
+            
             Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
             enclosure.url = enclosureURL;
             enclosure.size = [NSNumber numberWithInteger:fileSize.integerValue];
