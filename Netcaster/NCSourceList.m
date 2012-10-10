@@ -147,7 +147,10 @@
             [self.outlineView expandItem:item];
             
             if(fromGroup.childNodes.count <= 0)
+            {
                 [context deleteObject:fromGroup.representedObject];
+                [context save:nil];
+            }
         }
         else if([self.draggingObject isKindOfClass:Group.class])
         {
