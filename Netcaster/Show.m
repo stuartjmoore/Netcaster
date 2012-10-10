@@ -32,6 +32,12 @@
 @dynamic episodes;
 @dynamic feeds;
 
+- (NSArray*)unwatchedEpisodes
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"unwatched == %@", [NSNumber numberWithBool:YES]];
+    return [self.episodes.allObjects filteredArrayUsingPredicate:predicate];
+}
+
 - (void)reload
 {
     // http://revision3.com/trs/feed/MP4-hd30

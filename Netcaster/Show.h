@@ -27,6 +27,8 @@
 @property (nonatomic, retain) NSSet *episodes;
 @property (nonatomic, retain) NSSet *feeds;
 
+- (NSArray*)unwatchedEpisodes;
+
 - (void)reload;
 - (void)updatePodcastFeed:(Feed*)feed;
 
