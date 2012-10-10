@@ -34,7 +34,9 @@
 @property (nonatomic, retain) Show *show;
 
 - (NSImage*)imageValue;
+
 - (void)markUnwatched;
+- (void)watchNow;
 
 @end
 

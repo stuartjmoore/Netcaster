@@ -52,4 +52,19 @@
     [self.show didChangeValueForKey:@"unwatchedEpisodes"];
 }
 
+- (void)watchNow
+{
+    Enclosure *enclosure = self.enclosures.anyObject; //Single feeds for now
+    NSURL *url = [NSURL URLWithString:enclosure.url];
+    
+    if([[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"com.apple.QuickTimePlayerX"])
+    {
+        [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
+                        withAppBundleIdentifier:@"com.apple.QuickTimePlayerX"
+                                        options:NSWorkspaceLaunchAsync
+                 additionalEventParamDescriptor:nil
+                              launchIdentifiers:nil];
+    }
+}
+
 @end
