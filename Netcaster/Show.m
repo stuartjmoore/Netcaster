@@ -259,7 +259,7 @@
             Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
             enclosure.url = enclosureURL;
             enclosure.size = [NSNumber numberWithInteger:fileSize.integerValue];
-            enclosure.type = fileType;
+            enclosure.type = fileType; // @"webpage/youtube" @"webpage/hulu"
             enclosure.episode = episode;
             [episode addEnclosuresObject:enclosure];
             

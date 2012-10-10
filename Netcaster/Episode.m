@@ -57,13 +57,27 @@
     Enclosure *enclosure = self.enclosures.anyObject; //Single feeds for now
     NSURL *url = [NSURL URLWithString:enclosure.url];
     
-    if([[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier:@"com.apple.QuickTimePlayerX"])
+    if([enclosure.type isEqualToString:@"webpage/hulu"] || [enclosure.type isEqualToString:@"webpage/youtube"])
     {
-        [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
-                        withAppBundleIdentifier:@"com.apple.QuickTimePlayerX"
-                                        options:NSWorkspaceLaunchAsync
-                 additionalEventParamDescriptor:nil
-                              launchIdentifiers:nil];
+        [NSWorkspace.sharedWorkspace openURL:url];
+    }
+    else
+    {
+        if([NSWorkspace.sharedWorkspace absolutePathForAppBundleWithIdentifier:@"com.apple.QuickTimePlayerX"])
+        {
+            [NSWorkspace.sharedWorkspace openURLs:[NSArray arrayWithObject:url]
+                          withAppBundleIdentifier:@"com.apple.QuickTimePlayerX"
+                                          options:NSWorkspaceLaunchAsync
+                        additionalEventParamDescriptor:nil
+                                    launchIdentifiers:nil];
+        }
+        /*
+         [NSWorkspace.sharedWorkspace openURLs:[NSArray arrayWithObject:url]
+                       withAppBundleIdentifier:@"org.videolan.vlc"
+                                       options:NSWorkspaceLaunchAsync
+                additionalEventParamDescriptor:nil 
+                             launchIdentifiers:nil];
+        */
     }
 }
 
