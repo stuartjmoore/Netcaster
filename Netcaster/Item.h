@@ -13,8 +13,7 @@
 
 @interface Item : NSManagedObject
 
-@property (nonatomic, retain) NSString * subtitle;
-@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString *title, *subtitle;
 @property (nonatomic, retain) Group *group;
 
 - (id)items;

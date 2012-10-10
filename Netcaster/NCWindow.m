@@ -33,18 +33,34 @@
 - (void)awakeFromNib
 {
     [self performSelector:@selector(expandAllItems) withObject:nil afterDelay:0.01f];
+    
+    self.recentEpisodesView.frame = self.detailView.bounds;
+    self.recentEpisodesView.autoresizingMask = 63;
+    [self.detailView addSubview:self.recentEpisodesView];
 }
 - (void)expandAllItems
 {
     [self.showsList expandItem:nil expandChildren:YES];
+    [self.showsList selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
 }
 
 #pragma mark - Menu bar Actions
 
 - (IBAction)addNewShow:(id)sender
 {
-    [NSApp beginSheet:self.addShowModal modalForWindow:self modalDelegate:self
-       didEndSelector:@selector(saveSheetDidEnd:returnCode:contextInfo:) contextInfo:NULL];
+    self.addShowModal.urlField.stringValue = @"";
+    self.addShowModal.showDetailTitle.stringValue = @"";
+    self.addShowModal.showDetailDesc.stringValue = @"";
+    self.addShowModal.showDetailImage.image = nil;
+    
+    [self.addShowModal setFrame:CGRectMake(self.addShowModal.frame.origin.x, self.addShowModal.frame.origin.y,
+                                           self.addShowModal.frame.size.width, 116+20) display:NO animate:YES];
+    
+    [NSApp beginSheet:self.addShowModal
+       modalForWindow:self
+        modalDelegate:self
+       didEndSelector:@selector(saveSheetDidEnd:returnCode:contextInfo:)
+          contextInfo:NULL];
 }
 
 - (void)saveSheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo
@@ -58,11 +74,12 @@
         Group *group = nil;
         NSError *error;
         
-        if([node.representedObject isKindOfClass:Group.class])
+        if([node.representedObject isKindOfClass:Group.class] && ![node.representedObject isKindOfClass:StaticGroup.class])
         {
             group = node.representedObject;
         }
-        else if([node.representedObject isKindOfClass:Item.class])
+        else if([node.representedObject isKindOfClass:Item.class]
+        && ![[node.representedObject group] isKindOfClass:StaticGroup.class])
         {
             Item *item = node.representedObject;
             group = item.group;
@@ -82,7 +99,20 @@
             }
             else
             {
-                group = groups.lastObject;
+                for(Group *tempGroup in groups)
+                {
+                    if(![tempGroup isKindOfClass:StaticGroup.class])
+                    {
+                        group = tempGroup;
+                        break;
+                    }
+                }
+                
+                if(!group)
+                {
+                    group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
+                    group.title = @"SHOWS";
+                }
             }
         }
         
@@ -105,6 +135,7 @@
         if(![context save:&error])
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         
+        [show reload];
         [self.showsList expandItem:nil expandChildren:YES];
     }
     else if(returnCode == NSCancelButton)
@@ -136,6 +167,29 @@
         if([object isKindOfClass:Item.class])
             if(node.parentNode.childNodes.count <= 0)
                 [context deleteObject:node.parentNode.representedObject];*/
+    }
+}
+
+#pragma mark -
+
+- (IBAction)showAllEpisodes:(id)sender
+{
+    if([self.detailView.subviews containsObject:self.recentEpisodesView])
+    {
+        [self.recentEpisodesView removeFromSuperview];
+        
+        self.allEpisodesView.frame = self.detailView.bounds;
+        self.allEpisodesView.autoresizingMask = 63;
+        [self.detailView addSubview:self.allEpisodesView];
+    }
+    else
+    {
+        [self.allEpisodesView removeFromSuperview];
+        
+        self.recentEpisodesView.frame = self.detailView.bounds;
+        self.recentEpisodesView.autoresizingMask = 63;
+        [self.detailView addSubview:self.recentEpisodesView];
+        
     }
 }
 

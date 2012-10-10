@@ -138,6 +138,8 @@
             if(!title) title = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"media:title", @"text", nil];
             if(!title) title = @"";
             
+            //NSCharacterSet *nonalphanumericSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+            
             NSString *desc = [XMLReader stringFromDictionary:epiDic withKeys:@"description", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"content:encoded", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:subtitle", @"text", nil];
@@ -208,12 +210,20 @@
             episode.website = link;
             episode.published = pubDate;
             
-            if(firstLoad && [episodes indexOfObject:epiDic] == 0)
+            if(firstLoad)
             {
-                episode.isNew = [NSNumber numberWithBool:YES];
-                episode.unwatched = [NSNumber numberWithBool:YES];
-                self.unwatchedCount = [NSNumber numberWithInt:1];
-                self.subtitle = @"1";
+                if([episodes indexOfObject:epiDic] == 0)
+                {
+                    episode.isNew = [NSNumber numberWithBool:YES];
+                    episode.unwatched = [NSNumber numberWithBool:YES];
+                    self.unwatchedCount = [NSNumber numberWithInt:1];
+                    self.subtitle = @"1";
+                }
+                else
+                {
+                    episode.isNew = [NSNumber numberWithBool:NO];
+                    episode.unwatched = [NSNumber numberWithBool:NO];
+                }
             }
             else
             {

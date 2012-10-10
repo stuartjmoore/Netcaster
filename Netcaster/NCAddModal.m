@@ -13,9 +13,6 @@
 
 - (void)awakeFromNib
 {
-    self.showDetailView.frame = self.detailField.bounds;
-    self.showDetailView.autoresizingMask = 63;
-    [self.detailField addSubview:self.showDetailView];
 }
 
 #pragma mark - Actions
@@ -23,6 +20,14 @@
 - (void)controlTextDidChange:(NSNotification*)notification
 {
     NSURL *url = [NSURL URLWithString:self.urlField.stringValue];
+    self.showDetailTitle.stringValue = @"";
+    self.showDetailDesc.stringValue = @"";
+    self.showDetailImage.image = nil;
+    [self.addButton setEnabled:NO];
+    
+    [self.showDetailView removeFromSuperview];
+    [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
+                              self.frame.size.width, 116+20) display:NO animate:YES];
     
     if(url && url.scheme && url.host)
     {
@@ -48,6 +53,7 @@
             if(!desc) desc = @"";
             
             NSString *image = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:image", @"href", nil];
+            if(!image) image = [XMLReader stringFromDictionary:showDic withKeys:@"image", @"url", @"text", nil];
             if(!image) image = @"";
             
             NSString *link = [XMLReader stringFromDictionary:showDic withKeys:@"link", @"text", nil];
@@ -59,7 +65,27 @@
             NSString *genre = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:category", @"text", nil];
             if(!genre) genre = @"";
             
-            NSLog(@"%@ %@ %@ %@ %@ %@", title, desc, link, image, author, genre);
+            if(title && desc && ![title isEqualToString:@""] && ![desc isEqualToString:@""])
+            {
+                [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
+                                          self.frame.size.width, 290) display:NO animate:YES];
+                
+                self.showDetailView.frame = self.detailField.bounds;
+                self.showDetailView.autoresizingMask = 63;
+                [self.detailField addSubview:self.showDetailView];
+                
+                NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+                [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                       completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+                 {
+                     NSImage *image = [[NSImage alloc] initWithData:data];
+                     self.showDetailImage.image = image;
+                 }];
+                
+                self.showDetailTitle.stringValue = title;
+                self.showDetailDesc.stringValue = desc;
+                [self.addButton setEnabled:YES];
+            }
          }];
     }
 }

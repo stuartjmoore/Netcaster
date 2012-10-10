@@ -2,7 +2,7 @@
 //  Group.h
 //  Netcaster
 //
-//  Created by Stuart Moore on 10/1/12.
+//  Created by Stuart Moore on 10/10/12.
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
@@ -13,16 +13,18 @@
 
 @interface Group : NSManagedObject
 
-@property (nonatomic, retain) NSString * subtitle;
-@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString *title, *subtitle;
 @property (nonatomic, retain) NSSet *items;
+
+- (id)episodes;
+
 @end
 
 @interface Group (CoreDataGeneratedAccessors)
 
-- (void)addItemsObject:(Item *)value;
-- (void)removeItemsObject:(Item *)value;
-- (void)addItems:(NSSet *)values;
-- (void)removeItems:(NSSet *)values;
+- (void)addItemsObject:(Item*)value;
+- (void)removeItemsObject:(Item*)value;
+- (void)addItems:(NSSet*)values;
+- (void)removeItems:(NSSet*)values;
 
 @end

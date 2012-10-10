@@ -13,9 +13,9 @@
 
 @interface Enclosure : NSManagedObject
 
-@property (nonatomic, retain) NSString * type;
-@property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSNumber * size;
+@property (nonatomic, retain) NSString *type;
+@property (nonatomic, retain) NSString *url;
+@property (nonatomic, retain) NSNumber *size;
 @property (nonatomic, retain) Episode *episode;
 
 @end

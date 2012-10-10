@@ -15,7 +15,12 @@
 @property (nonatomic, weak) IBOutlet NCAddModal *addShowModal;
 @property (nonatomic, weak) IBOutlet NSOutlineView *showsList;
 
+@property (nonatomic, weak) IBOutlet NSView *detailView;
+@property (nonatomic, weak) IBOutlet NSScrollView *recentEpisodesView, *allEpisodesView;
+
 - (IBAction)addNewShow:(id)sender;
 - (IBAction)removeShowOrGroup:(id)sender;
+
+- (IBAction)showAllEpisodes:(id)sender;
 
 @end

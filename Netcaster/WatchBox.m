@@ -8,8 +8,6 @@
 
 #import "WatchBox.h"
 
-
 @implementation WatchBox
-
 
 @end

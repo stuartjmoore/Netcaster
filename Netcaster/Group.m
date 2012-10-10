@@ -2,7 +2,7 @@
 //  Group.m
 //  Netcaster
 //
-//  Created by Stuart Moore on 10/1/12.
+//  Created by Stuart Moore on 10/10/12.
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
@@ -15,5 +15,10 @@
 @dynamic subtitle;
 @dynamic title;
 @dynamic items;
+
+- (id)episodes
+{
+    return nil;
+}
 
 @end

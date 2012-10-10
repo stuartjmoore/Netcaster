@@ -12,8 +12,11 @@
 
 @property (nonatomic, weak) IBOutlet NSTextField *urlField;
 @property (nonatomic, weak) IBOutlet NSView *detailField;
+@property (nonatomic, weak) IBOutlet NSButton *addButton;
 
 @property (nonatomic, weak) IBOutlet NSView *showDetailView;
+@property (nonatomic, weak) IBOutlet NSTextField *showDetailTitle, *showDetailDesc;
+@property (nonatomic, weak) IBOutlet NSImageView *showDetailImage;
 
 - (IBAction)addURL:(id)sender;
 - (IBAction)cancel:(id)sender;

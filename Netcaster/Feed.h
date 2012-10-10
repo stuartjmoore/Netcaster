@@ -20,11 +20,11 @@ enum {
 
 @interface Feed : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * type;
-@property (nonatomic, retain) NSDate * updated;
-// update freq
+@property (nonatomic, retain) NSNumber *type;
+@property (nonatomic, retain) NSDate *updated;
+// @property (nonatomic, retain) NSNumber *updateFreq
 // get average time interval between shows
-@property (nonatomic, retain) NSString * url;
+@property (nonatomic, retain) NSString *url;
 @property (nonatomic, retain) Show *show;
 
 @end

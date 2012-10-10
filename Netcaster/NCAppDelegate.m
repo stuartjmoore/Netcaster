@@ -7,8 +7,11 @@
 //
 
 #import "NCAppDelegate.h"
+#import "XMLReader.h"
+
 #import "NCWindow.h"
 #import "NCAddModal.h"
+
 #import "StaticGroup.h"
 #import "WatchBox.h"
 #import "Episode.h"
@@ -31,7 +34,7 @@
     
     if(watchBoxes == nil || watchBoxes.count == 0)
     {
-        Group *staticGroup = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
+        StaticGroup *staticGroup = [NSEntityDescription insertNewObjectForEntityForName:@"StaticGroup" inManagedObjectContext:context];
         staticGroup.title = @"NETCASTER";
         WatchBox *watchBox = [NSEntityDescription insertNewObjectForEntityForName:@"WatchBox" inManagedObjectContext:context];
         watchBox.title = @"Watch Box";
@@ -62,6 +65,37 @@
     }
     else
     {
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+        {
+            if(error)
+                return;
+            
+            NSString *html = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSScanner *scanner = [NSScanner scannerWithString:html];
+            
+            while(scanner.isAtEnd == NO)
+            {
+                NSString *text = nil;
+                
+                [scanner scanUpToString:@"<" intoString:NULL];
+                [scanner scanUpToString:@">" intoString:&text];
+                text = [text stringByAppendingString:@">"];
+                
+                NSLog(@"%@", text);
+                
+                // <link rel="image_src" href="%@" />
+                // <meta property="og:image" content="%@" />
+                
+                // <meta property="og:title" content="%@" />
+                
+                // <meta property="og:description" content="%@" />
+                // <meta name="description" content="%@" />
+            }
+        }];
+        
+        /*
         NSManagedObjectContext *context = [self managedObjectContext];
         
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"WatchBox" inManagedObjectContext:context];
@@ -78,7 +112,7 @@
         [episode addEnclosuresObject:enclosure];
         
         episode.show = watchBoxes.lastObject;
-        [watchBoxes.lastObject addEpisodesObject:episode];
+        [watchBoxes.lastObject addEpisodesObject:episode];*/
     }
 }
 /*

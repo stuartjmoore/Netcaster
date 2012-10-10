@@ -78,14 +78,8 @@
             Show *show = (Show*)item;
             [show reload];
             
-            self.showView.stringValue = show.title;
-            
-            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:NO];
-            NSArray *descriptors = [NSArray arrayWithObject:descriptor];
-            NSArray *sortedEpisodes = [show.episodes sortedArrayUsingDescriptors:descriptors];
-            self.episodesController.episodes = sortedEpisodes;
-            
-            [self.episodesTable reloadData];
+            self.episodesController.show = show;
+            [self.episodesController reloadTable];
         }
 	}
 }
@@ -114,6 +108,9 @@
         if([self.draggingObject isKindOfClass:WatchBox.class])
             return NSDragOperationNone;
         else if([self.draggingObject isKindOfClass:StaticGroup.class])
+            return NSDragOperationNone;
+        
+        if([draggingDest isKindOfClass:StaticGroup.class])
             return NSDragOperationNone;
         
         if([self.draggingObject isKindOfClass:Item.class] && [draggingDest isKindOfClass:Group.class])
