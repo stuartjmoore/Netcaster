@@ -76,6 +76,8 @@
             NSString *html = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             NSScanner *scanner = [NSScanner scannerWithString:html];
             
+            NSString *title = @"", *desc = @"", *image = @"";
+            
             while(scanner.isAtEnd == NO)
             {
                 NSString *text = nil;
@@ -84,9 +86,36 @@
                 [scanner scanUpToString:@">" intoString:&text];
                 text = [text stringByAppendingString:@">"];
                 
-                NSLog(@"%@", text);
+                if([text hasPrefix:@"<meta property=\"og:title\" content=\""])
+                {
+                    title = [text stringByReplacingOccurrencesOfString:@"<meta property=\"og:title\" content=\""
+                                                            withString:@""];
+                    NSUInteger location = [title rangeOfString:@"\""].location;
+                    
+                    title = [title substringWithRange:NSMakeRange(0, location)];
+                    NSLog(@"%@", title);
+                }
+                else if([text hasPrefix:@"<meta property=\"og:description\" content=\""])
+                {
+                    desc = [text stringByReplacingOccurrencesOfString:@"<meta property=\"og:description\" content=\""
+                                                           withString:@""];
+                    NSUInteger location = [desc rangeOfString:@"\""].location;
+                    
+                    desc = [desc substringWithRange:NSMakeRange(0, location)];
+                    NSLog(@"%@", desc);
+                }
+                else if([text hasPrefix:@"<meta property=\"og:image\" content=\""])
+                {
+                    image = [text stringByReplacingOccurrencesOfString:@"<meta property=\"og:image\" content=\""
+                                                            withString:@""];
+                    NSUInteger location = [image rangeOfString:@"\""].location;
+                    
+                    image = [image substringWithRange:NSMakeRange(0, location)];
+                    NSLog(@"%@", image);
+                }
                 
                 // <link rel="image_src" href="%@" />
+                // <link rel="media:thumbnail" href="%@" />
                 // <meta property="og:image" content="%@" />
                 
                 // <meta property="og:title" content="%@" />
@@ -94,26 +123,41 @@
                 // <meta property="og:description" content="%@" />
                 // <meta name="description" content="%@" />
             }
+            
+            NSManagedObjectContext *context = [self managedObjectContext];
+            NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"WatchBox"
+                                                                 inManagedObjectContext:context];
+            NSFetchRequest *request = [[NSFetchRequest alloc] init];
+            [request setEntity:entityDescription];
+            NSArray *watchBoxes = [context executeFetchRequest:request error:nil];
+            WatchBox *watchBox = watchBoxes.lastObject;
+            
+            Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
+            episode.title = title;
+            episode.desc = desc;
+            episode.descShort = desc;
+            episode.website = url;
+            
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+            [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+            {
+                episode.image = data;
+            }];
+            
+            Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
+            enclosure.episode = episode;
+            enclosure.url = url;
+            enclosure.type = @"text/html";
+            [episode addEnclosuresObject:enclosure];
+            
+            episode.show = watchBox;
+            [watchBox addEpisodesObject:episode];
+            watchBox.unwatchedCount = [NSNumber numberWithInt:(watchBox.unwatchedCount.intValue+1)];
+            watchBox.subtitle = [NSString stringWithFormat:@"%d", watchBox.unwatchedCount.intValue];
+            
+            [context save:nil];
         }];
-        
-        /*
-        NSManagedObjectContext *context = [self managedObjectContext];
-        
-        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"WatchBox" inManagedObjectContext:context];
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:entityDescription];
-        NSArray *watchBoxes = [context executeFetchRequest:request error:nil];
-
-        Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
-        episode.title = url;
-        episode.website = url;
-        
-        Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
-        enclosure.episode = episode;
-        [episode addEnclosuresObject:enclosure];
-        
-        episode.show = watchBoxes.lastObject;
-        [watchBoxes.lastObject addEpisodesObject:episode];*/
     }
 }
 /*

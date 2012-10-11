@@ -54,7 +54,9 @@
     Enclosure *enclosure = self.enclosures.anyObject; //Single feeds for now
     NSURL *url = [NSURL URLWithString:enclosure.url];
     
-    if([enclosure.type isEqualToString:@"webpage/hulu"] || [enclosure.type isEqualToString:@"webpage/youtube"])
+    if([enclosure.type isEqualToString:@"webpage/hulu"]
+    || [enclosure.type isEqualToString:@"webpage/youtube"]
+    || [enclosure.type isEqualToString:@"text/html"])
     {
         [NSWorkspace.sharedWorkspace openURL:url];
     }
@@ -111,6 +113,10 @@
     self.unwatched = [NSNumber numberWithBool:NO];
     
     self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
+    
+    if(self.show.unwatchedCount.intValue < 0)
+        self.show.unwatchedCount = [NSNumber numberWithInt:0];
+
     self.show.subtitle = [NSString stringWithFormat:@"%d", self.show.unwatchedCount.intValue];
     
     [sender setAlphaValue:1];
