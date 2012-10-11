@@ -11,10 +11,6 @@
 
 @implementation NCAddModal
 
-- (void)awakeFromNib
-{
-}
-
 #pragma mark - Actions
 
 - (void)controlTextDidChange:(NSNotification*)notification

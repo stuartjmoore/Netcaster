@@ -60,8 +60,9 @@
     {
         url = [url stringByReplacingOccurrencesOfString:@"pcast://" withString:@"http://"];
     
-        self.addShowModal.urlField.stringValue = url;
         [self.window addNewShow:nil];
+        self.addShowModal.urlField.stringValue = url;
+        [self.addShowModal controlTextDidChange:nil];
     }
     else
     {
