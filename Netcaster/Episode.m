@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
-#import "NCEpisodesList.h"
-
 #import "Episode.h"
 #import "Enclosure.h"
 #import "Show.h"

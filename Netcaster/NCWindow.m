@@ -24,6 +24,8 @@
     self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
     if(self)
     {
+        self.delegate = self;
+        
         self.showsList.floatsGroupRows = NO;
         [self.showsList registerForDraggedTypes:[NSArray arrayWithObjects:@"ItemsDropType", nil]];
     }
@@ -191,6 +193,25 @@
         [self.detailView addSubview:self.recentEpisodesView];
         
     }
+}
+
+#pragma mark WindowDelegate
+
+- (void)windowDidResize:(NSNotification*)notification
+{
+    for(NSView *view in self.recentEpisodesView.subviews)
+        if([view.subviews.lastObject isKindOfClass:NSTableView.class])
+            [(NSTableView*)view.subviews.lastObject reloadData];
+}
+
+#pragma mark TableViewDelegate
+
+- (CGFloat)tableView:(NSTableView*)tableView heightOfRow:(NSInteger)row
+{
+    float height = (tableView.visibleRect.size.height/tableView.numberOfRows > 200)
+    ? tableView.visibleRect.size.height/tableView.numberOfRows-2:200;
+    
+    return height;
 }
 
 @end

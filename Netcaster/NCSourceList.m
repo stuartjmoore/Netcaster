@@ -8,7 +8,6 @@
 
 #import "NCAppDelegate.h"
 #import "NCSourceList.h"
-#import "NCEpisodesList.h"
 
 #import "StaticGroup.h"
 #import "WatchBox.h"

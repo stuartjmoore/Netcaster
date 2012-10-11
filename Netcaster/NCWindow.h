@@ -10,7 +10,7 @@
 
 @class NCShowsList, NCAddModal;
 
-@interface NCWindow : NSWindow
+@interface NCWindow : NSWindow <NSWindowDelegate, NSTableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet NCAddModal *addShowModal;
 @property (nonatomic, weak) IBOutlet NSOutlineView *showsList;

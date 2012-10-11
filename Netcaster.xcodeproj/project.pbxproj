@@ -31,7 +31,6 @@
 		1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1767E0CB1619A0D100D4D2F4 /* Livestream.m */; };
 		17741FF116241EFE00D6B766 /* shows-list-button-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 17741FF016241EFE00D6B766 /* shows-list-button-add.png */; };
 		17741FF416241F5300D6B766 /* shows-list-button-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17741FF316241F5300D6B766 /* shows-list-button-add@2x.png */; };
-		1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1786021B161B4A20009592DE /* NCEpisodesList.m */; };
 		179EF7101625F506005E46AE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179EF70F1625F506005E46AE /* WebKit.framework */; };
 		17A0E853161F62E10069D524 /* StaticGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A0E852161F62E10069D524 /* StaticGroup.m */; };
 /* End PBXBuildFile section */
@@ -82,8 +81,6 @@
 		1767E0CB1619A0D100D4D2F4 /* Livestream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Livestream.m; sourceTree = "<group>"; };
 		17741FF016241EFE00D6B766 /* shows-list-button-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shows-list-button-add.png"; path = "Resources/Images/shows-list-button-add.png"; sourceTree = SOURCE_ROOT; };
 		17741FF316241F5300D6B766 /* shows-list-button-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shows-list-button-add@2x.png"; path = "Resources/Images/shows-list-button-add@2x.png"; sourceTree = SOURCE_ROOT; };
-		1786021A161B4A20009592DE /* NCEpisodesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEpisodesList.h; sourceTree = "<group>"; };
-		1786021B161B4A20009592DE /* NCEpisodesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEpisodesList.m; sourceTree = "<group>"; };
 		179EF70F1625F506005E46AE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		17A0E851161F62E10069D524 /* StaticGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticGroup.h; sourceTree = "<group>"; };
 		17A0E852161F62E10069D524 /* StaticGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticGroup.m; sourceTree = "<group>"; };
@@ -189,8 +186,6 @@
 				1725433916187C1E009A0FD6 /* NCWindow.m */,
 				1767E0AC1619895C00D4D2F4 /* NCSourceList.h */,
 				1767E0AD1619895C00D4D2F4 /* NCSourceList.m */,
-				1786021A161B4A20009592DE /* NCEpisodesList.h */,
-				1786021B161B4A20009592DE /* NCEpisodesList.m */,
 				1725433516187A91009A0FD6 /* NCAddModal.h */,
 				1725433616187A91009A0FD6 /* NCAddModal.m */,
 				1725433416185238009A0FD6 /* Entities */,
@@ -305,7 +300,6 @@
 				1767E0C91619A0D100D4D2F4 /* Group.m in Sources */,
 				1767E0CC1619A0D100D4D2F4 /* Livestream.m in Sources */,
 				1721B3111619E1EE007C6BBD /* XMLReader.m in Sources */,
-				1786021C161B4A20009592DE /* NCEpisodesList.m in Sources */,
 				174FBEB0161F18FC004B1CAE /* Directory.m in Sources */,
 				174FBEB3161F1913004B1CAE /* WatchBox.m in Sources */,
 				17A0E853161F62E10069D524 /* StaticGroup.m in Sources */,
