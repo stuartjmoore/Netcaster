@@ -168,10 +168,12 @@
     if([object isKindOfClass:Group.class] || [object isKindOfClass:Item.class])
     {
         [context deleteObject:object];
-        /*
+        
         if([object isKindOfClass:Item.class])
-            if(node.parentNode.childNodes.count <= 0)
-                [context deleteObject:node.parentNode.representedObject];*/
+            if(node.parentNode.childNodes.count <= 1)
+                [context deleteObject:node.parentNode.representedObject];
+        
+        [context save:nil];
     }
 }
 
