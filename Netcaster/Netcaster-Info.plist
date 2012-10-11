@@ -14,14 +14,14 @@
 			<key>LSHandlerRank</key>
 			<string>None</string>
 			<key>CFBundleTypeRole</key>
-			<string>None</string>
+			<string>Viewer</string>
 		</dict>
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>None</string>
+			<string>Viewer</string>
 			<key>CFBundleURLName</key>
 			<string>com.stuartjmoore.netcaster</string>
 			<key>CFBundleURLSchemes</key>
