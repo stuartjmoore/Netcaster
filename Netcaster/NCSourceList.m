@@ -133,14 +133,19 @@
         {
             NSTreeNode *fromGroup = self.draggingItem.parentNode;
             
+            NSLog(@"%@ %@", self.draggingItem, item);
+            
             if(item == nil)
             {
                 Group *group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
                 [group setTitle:@"NEW GROUP"];
                 [context save:nil];
                 
-                item = [self.outlineView itemAtRow:self.outlineView.numberOfRows-1];
+                item = [self.outlineView itemAtRow:(self.outlineView.numberOfRows-1)];
+                index = 0;
             }
+            
+            NSLog(@"%@", [item.indexPath indexPathByAddingIndex:index]);
             
             [self moveNode:self.draggingItem toIndexPath:[item.indexPath indexPathByAddingIndex:index]];
             [self.outlineView expandItem:item];
