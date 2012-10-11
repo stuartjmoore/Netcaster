@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet NSTextField *urlField;
 @property (nonatomic, weak) IBOutlet NSView *detailField;
+@property (nonatomic, weak) IBOutlet NSProgressIndicator *detailLoadingIndicator;
 @property (nonatomic, weak) IBOutlet NSButton *addButton;
 
 @property (nonatomic, weak) IBOutlet NSView *showDetailView;

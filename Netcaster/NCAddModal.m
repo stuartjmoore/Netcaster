@@ -27,10 +27,14 @@
     
     if(url && url.scheme && url.host)
     {
+        [self.detailLoadingIndicator startAnimation:nil];
+        
         NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
         [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
         {
+            [self.detailLoadingIndicator stopAnimation:nil];
+         
             if(error)
                 return;
             
