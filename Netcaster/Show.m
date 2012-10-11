@@ -155,10 +155,15 @@
             
             //NSCharacterSet *nonalphanumericSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
             
-            NSString *desc = [XMLReader stringFromDictionary:epiDic withKeys:@"description", @"text", nil];
-            if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"content:encoded", @"text", nil];
+            NSString *desc = [XMLReader stringFromDictionary:epiDic withKeys:@"content:encoded", @"text", nil];
+            if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"description", @"text", nil];
+            if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:summary", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:subtitle", @"text", nil];
             if(!desc) desc = @"";
+            
+            NSString *descShort = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:summary", @"text", nil];
+            if(!descShort) descShort = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:subtitle", @"text", nil];
+            if(!descShort) descShort = @"";
             
             NSString *image = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"media:thumbnail", @"url", nil];
             if(!image) image = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:image", @"href", nil];
@@ -221,6 +226,7 @@
             Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
             episode.title = title;
             episode.desc = desc;
+            episode.descShort = descShort;
             episode.duration = [NSNumber numberWithInteger:duration.integerValue];
             episode.website = link;
             episode.published = pubDate;

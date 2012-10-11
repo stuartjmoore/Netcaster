@@ -55,16 +55,7 @@
             NSString *image = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:image", @"href", nil];
             if(!image) image = [XMLReader stringFromDictionary:showDic withKeys:@"image", @"url", @"text", nil];
             if(!image) image = @"";
-            /*
-            NSString *link = [XMLReader stringFromDictionary:showDic withKeys:@"link", @"text", nil];
-            if(!link) link = @"";
-            
-            NSString *author = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:author", @"text", nil];
-            if(!author) author = @"";
-            
-            NSString *genre = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:category", @"text", nil];
-            if(!genre) genre = @"";
-            */
+
             if(title && desc && ![title isEqualToString:@""] && ![desc isEqualToString:@""])
             {
                 [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
