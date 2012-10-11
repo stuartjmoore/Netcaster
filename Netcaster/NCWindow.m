@@ -34,6 +34,9 @@
 
 - (void)awakeFromNib
 {
+    if([self isVisible])
+        return;
+        
     [self performSelector:@selector(expandAllItems) withObject:nil afterDelay:0.01f];
     
     self.recentEpisodesView.frame = self.detailView.bounds;
