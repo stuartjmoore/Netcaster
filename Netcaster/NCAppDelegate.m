@@ -93,7 +93,6 @@
                     NSUInteger location = [title rangeOfString:@"\""].location;
                     
                     title = [title substringWithRange:NSMakeRange(0, location)];
-                    NSLog(@"%@", title);
                 }
                 else if([text hasPrefix:@"<meta property=\"og:description\" content=\""])
                 {
@@ -102,7 +101,6 @@
                     NSUInteger location = [desc rangeOfString:@"\""].location;
                     
                     desc = [desc substringWithRange:NSMakeRange(0, location)];
-                    NSLog(@"%@", desc);
                 }
                 else if([text hasPrefix:@"<meta property=\"og:image\" content=\""])
                 {
@@ -111,17 +109,7 @@
                     NSUInteger location = [image rangeOfString:@"\""].location;
                     
                     image = [image substringWithRange:NSMakeRange(0, location)];
-                    NSLog(@"%@", image);
                 }
-                
-                // <link rel="image_src" href="%@" />
-                // <link rel="media:thumbnail" href="%@" />
-                // <meta property="og:image" content="%@" />
-                
-                // <meta property="og:title" content="%@" />
-                
-                // <meta property="og:description" content="%@" />
-                // <meta name="description" content="%@" />
             }
             
             NSManagedObjectContext *context = [self managedObjectContext];
@@ -132,7 +120,8 @@
             NSArray *watchBoxes = [context executeFetchRequest:request error:nil];
             WatchBox *watchBox = watchBoxes.lastObject;
             
-            Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
+            Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode"
+                                                             inManagedObjectContext:context];
             episode.title = title;
             episode.desc = desc;
             episode.descShort = desc;
@@ -145,7 +134,8 @@
                 episode.image = data;
             }];
             
-            Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
+            Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure"
+                                                                 inManagedObjectContext:context];
             enclosure.episode = episode;
             enclosure.url = url;
             enclosure.type = @"text/html";
