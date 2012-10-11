@@ -116,6 +116,7 @@
             if(!desc) desc = @"";
             
             NSString *image = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:image", @"href", nil];
+            if(!image) image = [XMLReader stringFromDictionary:showDic withKeys:@"image", @"url", @"text", nil];
             if(!image) image = @"";
             
             NSString *link = [XMLReader stringFromDictionary:showDic withKeys:@"link", @"text", nil];
@@ -168,6 +169,8 @@
             NSString *image = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"media:thumbnail", @"url", nil];
             if(!image) image = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:image", @"href", nil];
             if(!image) image = @"";
+            
+            NSLog(@"%@", image);
             
             NSString *pubDateString = [XMLReader stringFromDictionary:epiDic withKeys:@"pubDate", @"text", nil];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

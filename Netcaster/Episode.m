@@ -34,10 +34,12 @@
 
 - (NSImage*)imageValue
 {
-    if(self.image)
+    if(self.image && self.image.length > 0)
         return [[NSImage alloc] initWithData:self.image];
     else
         return [[NSImage alloc] initWithData:self.show.image];
+    
+    // else default image
 }
 
 - (NSAttributedString*)descAttr
