@@ -34,9 +34,12 @@
 @property (nonatomic, retain) Show *show;
 
 - (NSImage*)imageValue;
+- (NSAttributedString*)descAttr;
 
-- (void)markUnwatched;
-- (void)watchNow;
+- (void)watchNow:(NSTableCellView*)sender;
+
+- (void)markUnwatched:(NSTableCellView*)sender;
+- (void)finishMarkUnwatched:(NSTableCellView*)sender;
 
 @end
 

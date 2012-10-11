@@ -32,6 +32,8 @@
 @dynamic price, currency, rating;
 @dynamic show;
 
+#pragma mark - Transformers
+
 - (NSImage*)imageValue
 {
     if(self.image)
@@ -40,19 +42,16 @@
         return [[NSImage alloc] initWithData:self.show.image];
 }
 
-- (void)markUnwatched
+- (NSAttributedString*)descAttr
 {
-    [self.show willChangeValueForKey:@"unwatchedEpisodes"];
-    
-    self.unwatched = [NSNumber numberWithBool:NO];
-    
-    self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
-    self.show.subtitle = [NSString stringWithFormat:@"%d", self.show.unwatchedCount.intValue];
-    
-    [self.show didChangeValueForKey:@"unwatchedEpisodes"];
+    NSData *data = [self.desc dataUsingEncoding:NSUTF8StringEncoding];
+    return [[NSAttributedString alloc] initWithHTML:data documentAttributes:nil];
 }
 
-- (void)watchNow
+#pragma mark - Selectors
+
+
+- (void)watchNow:(NSTableCellView*)sender
 {
     Enclosure *enclosure = self.enclosures.anyObject; //Single feeds for now
     NSURL *url = [NSURL URLWithString:enclosure.url];
@@ -68,17 +67,57 @@
             [NSWorkspace.sharedWorkspace openURLs:[NSArray arrayWithObject:url]
                           withAppBundleIdentifier:@"com.apple.QuickTimePlayerX"
                                           options:NSWorkspaceLaunchAsync
-                        additionalEventParamDescriptor:nil
-                                    launchIdentifiers:nil];
+                   additionalEventParamDescriptor:nil
+                                launchIdentifiers:nil];
         }
         /*
          [NSWorkspace.sharedWorkspace openURLs:[NSArray arrayWithObject:url]
-                       withAppBundleIdentifier:@"org.videolan.vlc"
-                                       options:NSWorkspaceLaunchAsync
-                additionalEventParamDescriptor:nil 
-                             launchIdentifiers:nil];
-        */
+         withAppBundleIdentifier:@"org.videolan.vlc"
+         options:NSWorkspaceLaunchAsync
+         additionalEventParamDescriptor:nil
+         launchIdentifiers:nil];
+         */
     }
+}
+
+- (void)markUnwatched:(NSTableCellView*)sender
+{
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0.5f];
+    [sender.animator setAlphaValue:0];
+    [self performSelector:@selector(finishMarkUnwatched:) withObject:sender afterDelay:0.5f];
+    [NSAnimationContext endGrouping];
+    
+    /*
+    for(NSView *subview in sender.subviews)
+    {
+        if([subview isKindOfClass:NSButton.class])
+        {
+            NSButton *button = (NSButton*)subview;
+            if([button.title isEqualToString:@"Mark Watched"])
+            {
+                button.title = @"Undo";
+                [self performSelector:@selector(fadeOutView:) withObject:button afterDelay:0.5f];
+                continue;
+            }
+        }
+        
+        [subview.animator setAlphaValue:0];
+    }
+    */
+}
+- (void)finishMarkUnwatched:(NSTableCellView*)sender
+{    
+    [self.show willChangeValueForKey:@"unwatchedEpisodes"];
+    
+    self.unwatched = [NSNumber numberWithBool:NO];
+    
+    self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
+    self.show.subtitle = [NSString stringWithFormat:@"%d", self.show.unwatchedCount.intValue];
+    
+    [sender setAlphaValue:1];
+    
+    [self.show didChangeValueForKey:@"unwatchedEpisodes"];
 }
 
 @end
