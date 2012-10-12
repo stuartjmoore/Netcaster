@@ -40,6 +40,22 @@
     return [sortedEpisodes filteredArrayUsingPredicate:predicate];
 }
 
+#pragma mark - Setters
+
+- (void)setUnwatchedCount:(NSNumber*)_unwatchedCount
+{
+    [self willChangeValueForKey:@"unwatchedCount"];
+    [self setPrimitiveValue:_unwatchedCount forKey:@"unwatchedCount"];
+    [self didChangeValueForKey:@"unwatchedCount"];
+
+    if(self.unwatchedCount.intValue > 0)
+        self.subtitle = [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
+    else
+        self.subtitle = @"";
+}
+
+#pragma mark - Network
+
 - (void)reload
 {
     // http://revision3.com/trs/feed/MP4-hd30

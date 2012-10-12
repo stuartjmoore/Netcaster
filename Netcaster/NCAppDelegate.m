@@ -146,7 +146,6 @@
             episode.show = watchBox;
             [watchBox addEpisodesObject:episode];
             watchBox.unwatchedCount = [NSNumber numberWithInt:(watchBox.unwatchedCount.intValue+1)];
-            watchBox.subtitle = [NSString stringWithFormat:@"%d", watchBox.unwatchedCount.intValue];
             
             [context save:nil];
             [watchBox didChangeValueForKey:@"unwatchedEpisodes"];

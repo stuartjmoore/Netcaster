@@ -133,12 +133,10 @@
     
     self.unwatched = [NSNumber numberWithBool:NO];
     
-    self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
-    
-    if(self.show.unwatchedCount.intValue < 0)
+    if(self.show.unwatchedCount.intValue-1 > 0)
+        self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
+    else
         self.show.unwatchedCount = [NSNumber numberWithInt:0];
-
-    self.show.subtitle = [NSString stringWithFormat:@"%d", self.show.unwatchedCount.intValue];
     
     [sender setAlphaValue:1];
     

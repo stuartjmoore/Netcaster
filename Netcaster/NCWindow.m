@@ -124,7 +124,7 @@
         Show *show = [NSEntityDescription insertNewObjectForEntityForName:@"Show" inManagedObjectContext:context];
         {
             [show setTitle:self.addShowModal.urlField.stringValue];
-            [show setSubtitle:@"0"];
+            [show setSubtitle:@""];
             [show setGroup:group];
             
             Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
