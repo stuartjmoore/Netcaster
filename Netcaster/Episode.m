@@ -61,7 +61,26 @@
     || [enclosure.type isEqualToString:@"text/html"])
     {
         [NSWorkspace.sharedWorkspace openURL:url];
-    }
+    }/*
+    else if([enclosure.type isEqualToString:@"audio/mpeg"])
+    {
+        if([NSWorkspace.sharedWorkspace absolutePathForAppBundleWithIdentifier:@"com.stuartjmoore.PlayBar"])
+        {
+            [NSWorkspace.sharedWorkspace openURLs:[NSArray arrayWithObject:url]
+                          withAppBundleIdentifier:@"com.stuartjmoore.PlayBar"
+                                          options:NSWorkspaceLaunchAsync
+                   additionalEventParamDescriptor:nil
+                                launchIdentifiers:nil];
+        }
+        else if([NSWorkspace.sharedWorkspace absolutePathForAppBundleWithIdentifier:@"com.apple.QuickTimePlayerX"])
+        {
+            [NSWorkspace.sharedWorkspace openURLs:[NSArray arrayWithObject:url]
+                          withAppBundleIdentifier:@"com.apple.QuickTimePlayerX"
+                                          options:NSWorkspaceLaunchAsync
+                   additionalEventParamDescriptor:nil
+                                launchIdentifiers:nil];
+        }
+    }*/
     else
     {
         if([NSWorkspace.sharedWorkspace absolutePathForAppBundleWithIdentifier:@"com.apple.QuickTimePlayerX"])

@@ -120,12 +120,14 @@
             NSArray *watchBoxes = [context executeFetchRequest:request error:nil];
             WatchBox *watchBox = watchBoxes.lastObject;
             
+            [watchBox willChangeValueForKey:@"unwatchedEpisodes"];
             Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode"
                                                              inManagedObjectContext:context];
             episode.title = title;
             episode.desc = desc;
             episode.descShort = desc;
             episode.website = url;
+            episode.published = [NSDate date];
             
             NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
@@ -147,6 +149,7 @@
             watchBox.subtitle = [NSString stringWithFormat:@"%d", watchBox.unwatchedCount.intValue];
             
             [context save:nil];
+            [watchBox didChangeValueForKey:@"unwatchedEpisodes"];
         }];
     }
 }
