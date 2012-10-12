@@ -133,7 +133,9 @@
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
                                    completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
             {
+                [episode willChangeValueForKey:@"image"];
                 episode.image = data;
+                [episode didChangeValueForKey:@"image"];
             }];
             
             Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure"

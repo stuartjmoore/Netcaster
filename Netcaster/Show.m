@@ -154,7 +154,9 @@
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
                                    completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
              {
+                 [self willChangeValueForKey:@"image"];
                  self.image = data;
+                 [self didChangeValueForKey:@"image"];
              }];
             
             Channel *channel = [NSEntityDescription insertNewObjectForEntityForName:@"Channel" inManagedObjectContext:context];
@@ -276,9 +278,11 @@
             NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
                                    completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-             {
-                 episode.image = data;
-             }];
+            {
+                [episode willChangeValueForKey:@"image"];
+                episode.image = data;
+                [episode didChangeValueForKey:@"image"];
+            }];
             
             
             Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
