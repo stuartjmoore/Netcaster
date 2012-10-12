@@ -48,6 +48,15 @@
     return [[NSAttributedString alloc] initWithHTML:data documentAttributes:nil];
 }
 
+- (NSString*)publishedString
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setTimeStyle:NSDateFormatterNoStyle];
+    [format setDateStyle:NSDateFormatterMediumStyle];
+    
+    return [format stringFromDate:self.published];
+}
+
 #pragma mark - Selectors
 
 
