@@ -40,6 +40,32 @@
     return [sortedEpisodes filteredArrayUsingPredicate:predicate];
 }
 
+- (NSString*)unwatchedString
+{
+    if(self.unwatchedCount.intValue > 0)
+        return [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
+    else
+        return @"";
+}
+- (NSString*)recentEpisodesString
+{
+    if(self.unwatchedCount.intValue > 1)
+        return [NSString stringWithFormat:@"%d New Episodes", self.unwatchedCount.intValue];
+    else if(self.unwatchedCount.intValue == 1)
+        return [NSString stringWithFormat:@"%d New Episode", self.unwatchedCount.intValue];
+    else
+        return @"No New Episodes";
+}
+- (NSString*)allEpisodesString
+{
+    if(self.episodes.count > 1)
+        return [NSString stringWithFormat:@"%ld Episodes", self.episodes.count];
+    else if(self.episodes.count == 1)
+        return [NSString stringWithFormat:@"%ld Episode", self.episodes.count];
+    else
+        return @"No Episodes";
+}
+
 #pragma mark - Setters
 
 - (void)setUnwatchedCount:(NSNumber*)_unwatchedCount

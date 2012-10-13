@@ -21,4 +21,17 @@
     return nil;
 }
 
+- (NSString*)unwatchedString
+{
+    return @"";
+}
+- (NSString*)recentEpisodesString
+{
+    return @"";
+}
+- (NSString*)allEpisodesString
+{
+    return @"";
+}
+
 @end

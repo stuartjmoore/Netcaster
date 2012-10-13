@@ -8,8 +8,6 @@
 
 #import "StaticGroup.h"
 
-
 @implementation StaticGroup
-
 
 @end
