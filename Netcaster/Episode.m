@@ -70,7 +70,7 @@
     || [enclosure.type isEqualToString:@"text/html"])
     {
         [NSWorkspace.sharedWorkspace openURL:url];
-    }/*
+    }
     else if([enclosure.type isEqualToString:@"audio/mpeg"])
     {
         if([NSWorkspace.sharedWorkspace absolutePathForAppBundleWithIdentifier:@"com.stuartjmoore.PlayBar"])
@@ -89,7 +89,7 @@
                    additionalEventParamDescriptor:nil
                                 launchIdentifiers:nil];
         }
-    }*/
+    }
     else
     {
         if([NSWorkspace.sharedWorkspace absolutePathForAppBundleWithIdentifier:@"com.apple.QuickTimePlayerX"])
