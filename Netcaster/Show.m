@@ -63,11 +63,27 @@
 
 - (void)setUnwatchedCount:(NSNumber*)_unwatchedCount
 {
+    [self willChangeValueForKey:@"unwatchedEpisodes"];
+    [self willChangeValueForKey:@"allEpisodesString"];
     [self willChangeValueForKey:@"unwatchedString"];
     [self willChangeValueForKey:@"unwatchedCount"];
+    
     [self setPrimitiveValue:_unwatchedCount forKey:@"unwatchedCount"];
+    
     [self didChangeValueForKey:@"unwatchedCount"];
     [self didChangeValueForKey:@"unwatchedString"];
+    [self didChangeValueForKey:@"allEpisodesString"];
+    [self didChangeValueForKey:@"unwatchedEpisodes"];
+}
+
+#pragma mark - Actions
+
+- (void)markAllWatched
+{
+    for(Episode *episode in self.episodes)
+        episode.unwatched = NO;
+    
+    self.unwatchedCount = [NSNumber numberWithInt:0];
 }
 
 #pragma mark - Network
@@ -262,19 +278,16 @@
             {
                 if([episodes indexOfObject:epiDic] == 0)
                 {
-                    episode.isNew = [NSNumber numberWithBool:YES];
                     episode.unwatched = [NSNumber numberWithBool:YES];
                     self.unwatchedCount = [NSNumber numberWithInt:1];
                 }
                 else
                 {
-                    episode.isNew = [NSNumber numberWithBool:NO];
                     episode.unwatched = [NSNumber numberWithBool:NO];
                 }
             }
             else
             {
-                episode.isNew = [NSNumber numberWithBool:YES];
                 episode.unwatched = [NSNumber numberWithBool:YES];
                 self.unwatchedCount = [NSNumber numberWithInt:(self.unwatchedCount.intValue+1)];
             }

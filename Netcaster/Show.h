@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSString *desc;
 @property (nonatomic, retain) NSString *genre;
 @property (nonatomic, retain) NSData *image;
-@property (nonatomic, retain) NSNumber *isNewCount;
+@property (nonatomic, retain) NSNumber *isNewCount; // isNew BOOL
 @property (nonatomic, retain) NSString *schedule;
 @property (nonatomic, retain) NSNumber *unwatchedCount;
 @property (nonatomic, retain) NSString *website;
@@ -31,6 +31,8 @@
 
 - (NSString*)unwatchedString;
 - (NSString*)allEpisodesString;
+
+- (void)markAllWatched;
 
 - (void)reload;
 - (void)updatePodcastFeed:(Feed*)feed;

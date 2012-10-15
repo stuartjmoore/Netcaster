@@ -241,12 +241,19 @@
 
 - (IBAction)renameShowOrGroup:(id)sender
 {
-    
 }
 
 - (IBAction)markWatchedShowOrGroup:(id)sender
 {
+    NSInteger row = (self.showsList.clickedRow != -1) ? self.showsList.clickedRow : self.showsList.selectedRow;
+    NSTreeNode *node = [self.showsList itemAtRow:row];
+    NSManagedObject *object = node.representedObject;
     
+    if([object isKindOfClass:Show.class])
+    {
+        Show *show = (Show*)object;
+        [show markAllWatched];
+    }
 }
 
 - (IBAction)refreshAll:(id)sender
