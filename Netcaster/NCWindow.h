@@ -20,9 +20,13 @@
 
 - (IBAction)addNewShow:(id)sender;
 - (IBAction)importOPML:(id)sender;
-- (IBAction)removeShowOrGroup:(id)sender;
 
-- (IBAction)refreashAll:(id)sender;
+- (IBAction)removeShowOrGroup:(id)sender;
+- (IBAction)refreshShowOrGroup:(id)sender;
+- (IBAction)renameShowOrGroup:(id)sender;
+- (IBAction)markWatchedShowOrGroup:(id)sender;
+
+- (IBAction)refreshAll:(id)sender;
 
 - (IBAction)showAllEpisodes:(NSSegmentedControl*)sender;
 

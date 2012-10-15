@@ -240,25 +240,6 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
-								<object class="NSMenuItem" id="346128981">
-									<reference key="NSMenu" ref="720053764"/>
-									<string key="NSTitle">Delete</string>
-									<string type="base64-UTF8" key="NSKeyEquiv">CA</string>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="35465992"/>
-									<reference key="NSMixedImage" ref="502551668"/>
-								</object>
-								<object class="NSMenuItem" id="425164168">
-									<reference key="NSMenu" ref="720053764"/>
-									<bool key="NSIsDisabled">YES</bool>
-									<bool key="NSIsSeparator">YES</bool>
-									<string key="NSTitle"/>
-									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="35465992"/>
-									<reference key="NSMixedImage" ref="502551668"/>
-								</object>
 								<object class="NSMenuItem" id="776162233">
 									<reference key="NSMenu" ref="720053764"/>
 									<string key="NSTitle">Close</string>
@@ -1998,14 +1979,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">removeShowOrGroup:</string>
-						<reference key="source" ref="972006081"/>
-						<reference key="destination" ref="346128981"/>
-					</object>
-					<int key="connectionID">976</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">addNewShow:</string>
 						<reference key="source" ref="972006081"/>
 						<reference key="destination" ref="161121308"/>
@@ -2046,14 +2019,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">refreashAll:</string>
-						<reference key="source" ref="972006081"/>
-						<reference key="destination" ref="126699894"/>
-					</object>
-					<int key="connectionID">2684</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">showAllEpisodes:</string>
 						<reference key="source" ref="972006081"/>
 						<reference key="destination" ref="324733415"/>
@@ -2067,6 +2032,38 @@
 						<reference key="destination" ref="515913790"/>
 					</object>
 					<int key="connectionID">2721</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">refreshAll:</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="126699894"/>
+					</object>
+					<int key="connectionID">2722</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">refreshShowOrGroup:</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="431326241"/>
+					</object>
+					<int key="connectionID">2723</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">renameShowOrGroup:</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="60909629"/>
+					</object>
+					<int key="connectionID">2724</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">markWatchedShowOrGroup:</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="976872624"/>
+					</object>
+					<int key="connectionID">2725</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2955,9 +2952,7 @@
 							<reference ref="722745758"/>
 							<reference ref="705341025"/>
 							<reference ref="776162233"/>
-							<reference ref="425164168"/>
 							<reference ref="546203743"/>
-							<reference ref="346128981"/>
 						</array>
 						<reference key="parent" ref="379814623"/>
 					</object>
@@ -2974,11 +2969,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">73</int>
 						<reference key="object" ref="776162233"/>
-						<reference key="parent" ref="720053764"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">79</int>
-						<reference key="object" ref="425164168"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -3947,11 +3937,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">974</int>
 						<reference key="object" ref="546203743"/>
-						<reference key="parent" ref="720053764"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">975</int>
-						<reference key="object" ref="346128981"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -7334,7 +7319,6 @@
 				<string key="72.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="738.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="798.CustomClassName">NCSourceList</string>
 				<string key="798.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -7397,7 +7381,6 @@
 				<string key="926.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="933.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="974.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="975.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="978.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="978.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="979.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -7406,7 +7389,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2721</int>
+			<int key="maxID">2725</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -7542,8 +7525,11 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addNewShow:">id</string>
 						<string key="importOPML:">id</string>
-						<string key="refreashAll:">id</string>
+						<string key="markWatchedShowOrGroup:">id</string>
+						<string key="refreshAll:">id</string>
+						<string key="refreshShowOrGroup:">id</string>
 						<string key="removeShowOrGroup:">id</string>
+						<string key="renameShowOrGroup:">id</string>
 						<string key="showAllEpisodes:">NSSegmentedControl</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -7555,12 +7541,24 @@
 							<string key="name">importOPML:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="refreashAll:">
-							<string key="name">refreashAll:</string>
+						<object class="IBActionInfo" key="markWatchedShowOrGroup:">
+							<string key="name">markWatchedShowOrGroup:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="refreshAll:">
+							<string key="name">refreshAll:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="refreshShowOrGroup:">
+							<string key="name">refreshShowOrGroup:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="removeShowOrGroup:">
 							<string key="name">removeShowOrGroup:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="renameShowOrGroup:">
+							<string key="name">renameShowOrGroup:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="showAllEpisodes:">

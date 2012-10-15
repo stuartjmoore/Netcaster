@@ -202,11 +202,10 @@
 {
     // And Are You Sure? would be nice.
     
-    NSInteger row = (self.showsList.clickedRow != -1) ? self.showsList.clickedRow : self.showsList.selectedRow;
-    
     NCAppDelegate *delegate = [NSApp delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
     
+    NSInteger row = (self.showsList.clickedRow != -1) ? self.showsList.clickedRow : self.showsList.selectedRow;
     NSTreeNode *node = [self.showsList itemAtRow:row];
     NSManagedObject *object = node.representedObject;
     
@@ -227,7 +226,30 @@
     }
 }
 
-- (IBAction)refreashAll:(id)sender
+- (IBAction)refreshShowOrGroup:(id)sender
+{
+    NSInteger row = (self.showsList.clickedRow != -1) ? self.showsList.clickedRow : self.showsList.selectedRow;
+    NSTreeNode *node = [self.showsList itemAtRow:row];
+    NSManagedObject *object = node.representedObject;
+    
+    if([object isKindOfClass:Show.class])
+    {
+        Show *show = (Show*)object;
+        [show reload];
+    }
+}
+
+- (IBAction)renameShowOrGroup:(id)sender
+{
+    
+}
+
+- (IBAction)markWatchedShowOrGroup:(id)sender
+{
+    
+}
+
+- (IBAction)refreshAll:(id)sender
 {
     NCAppDelegate *delegate = [NSApp delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
