@@ -151,7 +151,7 @@
             NSDictionary *showDic = [[RSS objectForKey:@"rss"] objectForKey:@"channel"];
             
             NSString *title = [XMLReader stringFromDictionary:showDic withKeys:@"title", @"text", nil];
-            if(!title) title = @"";
+            if(!title) title = feed.url;
             
             NSString *desc = [XMLReader stringFromDictionary:showDic withKeys:@"description", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:subtitle", @"text", nil];
@@ -275,6 +275,7 @@
             episode.website = link;
             episode.published = pubDate;
             
+            [self willChangeValueForKey:@"unwatchedString"];
             if(firstLoad)
             {
                 if([episodes indexOfObject:epiDic] == 0)
@@ -297,6 +298,7 @@
                 self.unwatchedCount = [NSNumber numberWithInt:(self.unwatchedCount.intValue+1)];
                 self.subtitle = [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
             }
+            [self didChangeValueForKey:@"unwatchedString"];
             
             NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
