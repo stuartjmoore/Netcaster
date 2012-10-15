@@ -24,5 +24,9 @@
 {
     return nil;
 }
+- (NSString*)allEpisodesString
+{
+    return @"";
+}
 
 @end

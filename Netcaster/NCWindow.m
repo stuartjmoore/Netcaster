@@ -225,11 +225,25 @@
     }
 }
 
+- (IBAction)refreashAll:(id)sender
+{
+    NCAppDelegate *delegate = [NSApp delegate];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Show" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSArray *shows = [context executeFetchRequest:request error:nil];
+    
+    for(Show *show in shows)
+        [show reload];
+}
+
 #pragma mark -
 
-- (IBAction)showAllEpisodes:(id)sender
+- (IBAction)showAllEpisodes:(NSSegmentedControl*)sender
 {
-    if([self.detailView.subviews containsObject:self.recentEpisodesView])
+    if(sender.selectedSegment == 1)
     {
         [self.recentEpisodesView removeFromSuperview];
         

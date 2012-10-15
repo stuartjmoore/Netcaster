@@ -22,6 +22,8 @@
 - (IBAction)importOPML:(id)sender;
 - (IBAction)removeShowOrGroup:(id)sender;
 
-- (IBAction)showAllEpisodes:(id)sender;
+- (IBAction)refreashAll:(id)sender;
+
+- (IBAction)showAllEpisodes:(NSSegmentedControl*)sender;
 
 @end

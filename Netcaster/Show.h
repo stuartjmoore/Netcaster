@@ -29,6 +29,9 @@
 
 - (NSArray*)unwatchedEpisodes;
 
+- (NSString*)unwatchedString;
+- (NSString*)allEpisodesString;
+
 - (void)reload;
 - (void)updatePodcastFeed:(Feed*)feed;
 

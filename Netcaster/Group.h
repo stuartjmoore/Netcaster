@@ -18,6 +18,7 @@
 
 - (id)episodes;
 - (id)unwatchedEpisodes;
+- (NSString*)allEpisodesString;
 
 @end
 

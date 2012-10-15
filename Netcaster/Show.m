@@ -47,21 +47,14 @@
     else
         return @"";
 }
-- (NSString*)recentEpisodesString
-{
-    if(self.unwatchedCount.intValue > 1)
-        return [NSString stringWithFormat:@"%d New Episodes", self.unwatchedCount.intValue];
-    else if(self.unwatchedCount.intValue == 1)
-        return [NSString stringWithFormat:@"%d New Episode", self.unwatchedCount.intValue];
-    else
-        return @"No New Episodes";
-}
+
 - (NSString*)allEpisodesString
 {
-    if(self.episodes.count > 1)
-        return [NSString stringWithFormat:@"%ld Episodes", self.episodes.count];
-    else if(self.episodes.count == 1)
-        return [NSString stringWithFormat:@"%ld Episode", self.episodes.count];
+    if(self.episodes.count > 0)
+        if(self.unwatchedCount.intValue == 0)
+            return [NSString stringWithFormat:@"No Unwatched Episodes • %ld Total", self.episodes.count];
+        else
+            return [NSString stringWithFormat:@"%d Unwatched • %ld Total", self.unwatchedCount.intValue, self.episodes.count];
     else
         return @"No Episodes";
 }
@@ -70,24 +63,17 @@
 
 - (void)setUnwatchedCount:(NSNumber*)_unwatchedCount
 {
+    [self willChangeValueForKey:@"unwatchedString"];
     [self willChangeValueForKey:@"unwatchedCount"];
     [self setPrimitiveValue:_unwatchedCount forKey:@"unwatchedCount"];
     [self didChangeValueForKey:@"unwatchedCount"];
-
-    if(self.unwatchedCount.intValue > 0)
-        self.subtitle = [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
-    else
-        self.subtitle = @"";
+    [self didChangeValueForKey:@"unwatchedString"];
 }
 
 #pragma mark - Network
 
 - (void)reload
 {
-    // http://revision3.com/trs/feed/MP4-hd30
-    // http://tfvpodcast.wordpress.com/feed/rss/
-    // http://feeds.twit.tv/fr_video_large
-    
     // Only one feed is supported right now
     Feed *feed = self.feeds.anyObject;
     
@@ -97,28 +83,26 @@
     [headerRequest setHTTPMethod:@"HEAD"];
     [NSURLConnection sendAsynchronousRequest:headerRequest queue:[NSOperationQueue mainQueue]
     completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-         if([response respondsToSelector:@selector(allHeaderFields)])
-         {
-             NSDictionary *metaData = [httpResponse allHeaderFields];
-             NSString *lastModifiedString = [metaData objectForKey:@"Last-Modified"];
+    {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        if([response respondsToSelector:@selector(allHeaderFields)])
+        {
+            NSDictionary *metaData = [httpResponse allHeaderFields];
+            NSString *lastModifiedString = [metaData objectForKey:@"Last-Modified"];
              
-             NSDateFormatter *df = [[NSDateFormatter alloc] init];
-             df.dateFormat = @"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'";
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            df.dateFormat = @"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'";
              
-             NSDate *lastModified = [df dateFromString:lastModifiedString];
+            NSDate *lastModified = [df dateFromString:lastModifiedString];
              
-             if(lastModified == nil || ![lastModified isEqualToDate:feed.updated])
-                 [self updatePodcastFeed:feed];
-         }
+            if(lastModified == nil || ![lastModified isEqualToDate:feed.updated])
+                [self updatePodcastFeed:feed];
+        }
     }];
 }
 
 - (void)updatePodcastFeed:(Feed*)feed
 {
-    // if feed.updated == nil, [NSDate date];
-    
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:feed.url]];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
     completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
@@ -243,7 +227,6 @@
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title == %@ && published == %@", title, pubDate];
             if([[self.episodes filteredSetUsingPredicate:predicate] count] > 0)
             {
-                NSLog(@"%@ exists", title);
                 continue;
             }
             
@@ -275,7 +258,6 @@
             episode.website = link;
             episode.published = pubDate;
             
-            [self willChangeValueForKey:@"unwatchedString"];
             if(firstLoad)
             {
                 if([episodes indexOfObject:epiDic] == 0)
@@ -283,7 +265,6 @@
                     episode.isNew = [NSNumber numberWithBool:YES];
                     episode.unwatched = [NSNumber numberWithBool:YES];
                     self.unwatchedCount = [NSNumber numberWithInt:1];
-                    self.subtitle = @"1";
                 }
                 else
                 {
@@ -296,9 +277,7 @@
                 episode.isNew = [NSNumber numberWithBool:YES];
                 episode.unwatched = [NSNumber numberWithBool:YES];
                 self.unwatchedCount = [NSNumber numberWithInt:(self.unwatchedCount.intValue+1)];
-                self.subtitle = [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
             }
-            [self didChangeValueForKey:@"unwatchedString"];
             
             NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
