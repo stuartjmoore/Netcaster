@@ -202,10 +202,12 @@
 {
     // And Are You Sure? would be nice.
     
+    NSInteger row = (self.showsList.clickedRow != -1) ? self.showsList.clickedRow : self.showsList.selectedRow;
+    
     NCAppDelegate *delegate = [NSApp delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
     
-    NSTreeNode *node = [self.showsList itemAtRow:self.showsList.selectedRow];
+    NSTreeNode *node = [self.showsList itemAtRow:row];
     NSManagedObject *object = node.representedObject;
     
     if([object isKindOfClass:WatchBox.class])
