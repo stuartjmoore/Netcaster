@@ -23,6 +23,23 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 
+- (void)applicationWillFinishLaunching:(NSNotification*)notification
+{
+    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
+    [appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
+    
+    CFStringRef bundleID = (__bridge CFStringRef)[[NSBundle mainBundle] bundleIdentifier];
+    LSSetDefaultHandlerForURLScheme(CFSTR("pcast"), bundleID);
+}
+/*
+ - (BOOL)application:(NSApplication*)application openFile:(NSString*)filename
+ {
+ NSURL *url = [NSURL fileURLWithPath:filename];
+ NSLog(@"%@", url);
+ 
+ return NO;
+ }
+ */
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -42,12 +59,6 @@
         [staticGroup addItemsObject:watchBox];
         [context save:nil];
     }
-    
-    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
-    [appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
-    
-    CFStringRef bundleID = (__bridge CFStringRef)[[NSBundle mainBundle] bundleIdentifier];
-    LSSetDefaultHandlerForURLScheme(CFSTR("pcast"), bundleID);
     
     [self.showsList setAutosaveExpandedItems:YES];
 }
@@ -154,15 +165,7 @@
         }];
     }
 }
-/*
-- (BOOL)application:(NSApplication*)application openFile:(NSString*)filename
-{
-    NSURL *url = [NSURL fileURLWithPath:filename];
-    NSLog(@"%@", url);
-    
-    return NO;
-}
-*/
+
 #pragma mark - Core Data
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.stuartjmoore.Netcaster" in the user's Application Support directory.
