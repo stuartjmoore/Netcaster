@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
+#import "XMLReader.h"
+
 #import "NCAppDelegate.h"
 #import "NCWindow.h"
 #import "NCAddModal.h"
@@ -72,82 +74,128 @@
 {
     if(returnCode == NSOKButton)
     {
-        NCAppDelegate *delegate = [NSApp delegate];
-        NSManagedObjectContext *context = [delegate managedObjectContext];
-        
-        NSTreeNode *node = [self.showsList itemAtRow:self.showsList.selectedRow];
-        Group *group = nil;
-        NSError *error;
-        
-        if([node.representedObject isKindOfClass:Group.class] && ![node.representedObject isKindOfClass:StaticGroup.class])
-        {
-            group = node.representedObject;
-        }
-        else if([node.representedObject isKindOfClass:Item.class]
-        && ![[node.representedObject group] isKindOfClass:StaticGroup.class])
-        {
-            Item *item = node.representedObject;
-            group = item.group;
-        }
-        else
-        {
-            NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:context];
-            NSFetchRequest *request = [[NSFetchRequest alloc] init];
-            [request setEntity:entityDescription];
-            
-            NSArray *groups = [context executeFetchRequest:request error:&error];
-            
-            if(groups == nil || groups.count == 0)
-            {
-                group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
-                group.title = @"SHOWS";
-            }
-            else
-            {
-                for(Group *tempGroup in groups)
-                {
-                    if(![tempGroup isKindOfClass:StaticGroup.class])
-                    {
-                        group = tempGroup;
-                        break;
-                    }
-                }
-                
-                if(!group)
-                {
-                    group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
-                    group.title = @"SHOWS";
-                }
-            }
-        }
-        
-        Show *show = [NSEntityDescription insertNewObjectForEntityForName:@"Show" inManagedObjectContext:context];
-        {
-            [show setTitle:self.addShowModal.urlField.stringValue];
-            [show setSubtitle:@""];
-            [show setGroup:group];
-            
-            Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
-            {
-                [feed setUrl:self.addShowModal.urlField.stringValue];
-                [feed setType:[NSNumber numberWithInt:FeedTypePodcast]];
-                [feed setShow:show];
-            }
-            [show addFeedsObject:feed];
-        }
-        [group addItemsObject:show];
-        
-        if(![context save:&error])
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        
-        [show reload];
-        [self.showsList expandItem:nil expandChildren:YES];
+        NSURL *url = [NSURL URLWithString:self.addShowModal.urlField.stringValue];
+        [self addShowURL:url];
     }
     else if(returnCode == NSCancelButton)
     {
     }
     
     [sheet close];
+}
+
+- (IBAction)importOPML:(id)sender
+{
+    NSOpenPanel *openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:YES];
+    [openDlg setAllowedFileTypes:[NSArray arrayWithObjects:@"opml", @"xml", nil]];
+    [openDlg setAllowsMultipleSelection:NO];
+    
+    [openDlg beginSheetModalForWindow:self completionHandler:^(NSInteger result)
+    {
+        if(result == NSFileHandlingPanelCancelButton)
+            return;
+        
+        NSURL *url = [[openDlg URLs] lastObject];
+        NSString *opmlString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        NSDictionary *opml = [XMLReader dictionaryForXMLString:opmlString error:nil];
+        NSArray *opmlBody = [[[opml objectForKey:@"opml"] objectForKey:@"body"] objectForKey:@"outline"];
+        
+        for(NSDictionary *item in opmlBody)
+            [self recurseOPMLItem:item];
+    }];
+}
+- (void)recurseOPMLItem:(NSDictionary*)item
+{
+    if([item objectForKey:@"outline"])
+    {
+        if([[item objectForKey:@"outline"] isKindOfClass:NSDictionary.class])
+            [self recurseOPMLItem:[item objectForKey:@"outline"]];
+        else if([[item objectForKey:@"outline"] isKindOfClass:NSArray.class])
+            for(NSDictionary *subitem in [item objectForKey:@"outline"])
+                [self recurseOPMLItem:subitem];
+    }
+    else if([item objectForKey:@"xmlUrl"])
+    {
+        NSURL *url = [NSURL URLWithString:[item objectForKey:@"xmlUrl"]];
+        [self addShowURL:url];
+    }
+}
+
+#pragma mark - Edit List
+
+- (void)addShowURL:(NSURL*)url
+{
+    NCAppDelegate *delegate = [NSApp delegate];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    
+    NSTreeNode *node = [self.showsList itemAtRow:self.showsList.selectedRow];
+    Group *group = nil;
+    NSError *error;
+    
+    if([node.representedObject isKindOfClass:Group.class] && ![node.representedObject isKindOfClass:StaticGroup.class])
+    {
+        group = node.representedObject;
+    }
+    else if([node.representedObject isKindOfClass:Item.class]
+            && ![[node.representedObject group] isKindOfClass:StaticGroup.class])
+    {
+        Item *item = node.representedObject;
+        group = item.group;
+    }
+    else
+    {
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDescription];
+        
+        NSArray *groups = [context executeFetchRequest:request error:&error];
+        
+        if(groups == nil || groups.count == 0)
+        {
+            group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
+            group.title = @"SHOWS";
+        }
+        else
+        {
+            for(Group *tempGroup in groups)
+            {
+                if(![tempGroup isKindOfClass:StaticGroup.class])
+                {
+                    group = tempGroup;
+                    break;
+                }
+            }
+            
+            if(!group)
+            {
+                group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
+                group.title = @"SHOWS";
+            }
+        }
+    }
+    
+    Show *show = [NSEntityDescription insertNewObjectForEntityForName:@"Show" inManagedObjectContext:context];
+    {
+        [show setTitle:url.absoluteString];
+        [show setSubtitle:@""];
+        [show setGroup:group];
+        
+        Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
+        {
+            [feed setUrl:url.absoluteString];
+            [feed setType:[NSNumber numberWithInt:FeedTypePodcast]];
+            [feed setShow:show];
+        }
+        [show addFeedsObject:feed];
+    }
+    [group addItemsObject:show];
+    
+    if(![context save:&error])
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    
+    [show reload];
+    [self.showsList expandItem:nil expandChildren:YES];
 }
 
 - (IBAction)removeShowOrGroup:(id)sender

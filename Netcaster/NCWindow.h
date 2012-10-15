@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet NSScrollView *recentEpisodesView, *allEpisodesView;
 
 - (IBAction)addNewShow:(id)sender;
+- (IBAction)importOPML:(id)sender;
 - (IBAction)removeShowOrGroup:(id)sender;
 
 - (IBAction)showAllEpisodes:(id)sender;

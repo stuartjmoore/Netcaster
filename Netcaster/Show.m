@@ -214,8 +214,6 @@
             if(!image) image = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:image", @"href", nil];
             if(!image) image = @"";
             
-            NSLog(@"%@", image);
-            
             NSString *pubDateString = [XMLReader stringFromDictionary:epiDic withKeys:@"pubDate", @"text", nil];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
@@ -245,7 +243,7 @@
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title == %@ && published == %@", title, pubDate];
             if([[self.episodes filteredSetUsingPredicate:predicate] count] > 0)
             {
-                //NSLog(@"%@ exists", title);
+                NSLog(@"%@ exists", title);
                 continue;
             }
             
@@ -259,25 +257,24 @@
                 
                 if([pubDate laterDate:oldestEpisode.published] == oldestEpisode.published)
                 {
-                    //NSLog(@"%@ is too old", title);
                     continue;
                 }
                 else
                 {
-                    //NSLog(@"%@ is too old", oldestEpisode.title);
-                    [context deleteObject:oldestEpisode];
+                    [self removeEpisodesObject:oldestEpisode];
                 }
             }
             
             
-            Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
+            Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode"
+                                                             inManagedObjectContext:context];
             episode.title = title;
             episode.desc = desc;
             episode.descShort = descShort;
             episode.duration = [NSNumber numberWithInteger:duration.integerValue];
             episode.website = link;
             episode.published = pubDate;
-            /*
+            
             if(firstLoad)
             {
                 if([episodes indexOfObject:epiDic] == 0)
@@ -293,7 +290,7 @@
                     episode.unwatched = [NSNumber numberWithBool:NO];
                 }
             }
-            else*/
+            else
             {
                 episode.isNew = [NSNumber numberWithBool:YES];
                 episode.unwatched = [NSNumber numberWithBool:YES];
@@ -321,8 +318,6 @@
             episode.show = self;
             [self addEpisodesObject:episode];
         }
-        
-        //NSLog(@"%@", self);
     }];
 }
 
