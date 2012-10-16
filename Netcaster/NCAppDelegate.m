@@ -97,29 +97,26 @@
                 [scanner scanUpToString:@">" intoString:&text];
                 text = [text stringByAppendingString:@">"];
                 
-                if([text hasPrefix:@"<meta property=\"og:title\" content=\""])
+                if([text hasPrefix:@"<meta property=\"og:title\""])
                 {
-                    title = [text stringByReplacingOccurrencesOfString:@"<meta property=\"og:title\" content=\""
-                                                            withString:@""];
-                    NSUInteger location = [title rangeOfString:@"\""].location;
+                    NSUInteger location = [text rangeOfString:@"content=\""].location + 9;
+                    NSUInteger length = [text rangeOfString:@"\"" options:NSBackwardsSearch].location;
                     
-                    title = [title substringWithRange:NSMakeRange(0, location)];
+                    title = [text substringWithRange:NSMakeRange(location, length-location)];
                 }
-                else if([text hasPrefix:@"<meta property=\"og:description\" content=\""])
+                else if([text hasPrefix:@"<meta property=\"og:description\""])
                 {
-                    desc = [text stringByReplacingOccurrencesOfString:@"<meta property=\"og:description\" content=\""
-                                                           withString:@""];
-                    NSUInteger location = [desc rangeOfString:@"\""].location;
+                    NSUInteger location = [text rangeOfString:@"content=\""].location + 9;
+                    NSUInteger length = [text rangeOfString:@"\"" options:NSBackwardsSearch].location;
                     
-                    desc = [desc substringWithRange:NSMakeRange(0, location)];
+                    desc = [text substringWithRange:NSMakeRange(location, length-location)];
                 }
-                else if([text hasPrefix:@"<meta property=\"og:image\" content=\""])
+                else if([text hasPrefix:@"<meta property=\"og:image\""])
                 {
-                    image = [text stringByReplacingOccurrencesOfString:@"<meta property=\"og:image\" content=\""
-                                                            withString:@""];
-                    NSUInteger location = [image rangeOfString:@"\""].location;
+                    NSUInteger location = [text rangeOfString:@"content=\""].location + 9;
+                    NSUInteger length = [text rangeOfString:@"\"" options:NSBackwardsSearch].location;
                     
-                    image = [image substringWithRange:NSMakeRange(0, location)];
+                    image = [text substringWithRange:NSMakeRange(location, length-location)];
                 }
             }
             
