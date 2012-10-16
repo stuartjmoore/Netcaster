@@ -37,6 +37,7 @@
 		17741FF416241F5300D6B766 /* shows-list-button-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17741FF316241F5300D6B766 /* shows-list-button-add@2x.png */; };
 		179EF7101625F506005E46AE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179EF70F1625F506005E46AE /* WebKit.framework */; };
 		17A0E853161F62E10069D524 /* StaticGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A0E852161F62E10069D524 /* StaticGroup.m */; };
+		17E8E14D162DDFD800F86491 /* NCSourceItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E8E14C162DDFD800F86491 /* NCSourceItemCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,8 @@
 		179EF70F1625F506005E46AE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		17A0E851161F62E10069D524 /* StaticGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticGroup.h; sourceTree = "<group>"; };
 		17A0E852161F62E10069D524 /* StaticGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticGroup.m; sourceTree = "<group>"; };
+		17E8E14B162DDFD800F86491 /* NCSourceItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSourceItemCell.h; sourceTree = "<group>"; };
+		17E8E14C162DDFD800F86491 /* NCSourceItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSourceItemCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +216,8 @@
 				1725433916187C1E009A0FD6 /* NCWindow.m */,
 				1767E0AC1619895C00D4D2F4 /* NCSourceList.h */,
 				1767E0AD1619895C00D4D2F4 /* NCSourceList.m */,
+				17E8E14B162DDFD800F86491 /* NCSourceItemCell.h */,
+				17E8E14C162DDFD800F86491 /* NCSourceItemCell.m */,
 				1725433516187A91009A0FD6 /* NCAddModal.h */,
 				1725433616187A91009A0FD6 /* NCAddModal.m */,
 				1725433416185238009A0FD6 /* Entities */,
@@ -335,6 +340,7 @@
 				1756B6ED162D910E0003DF27 /* NSIndexPath_Extensions.m in Sources */,
 				1756B6EF162D910E0003DF27 /* NSTreeController_Extensions.m in Sources */,
 				1756B6F1162D910E0003DF27 /* NSTreeNode_Extensions.m in Sources */,
+				17E8E14D162DDFD800F86491 /* NCSourceItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

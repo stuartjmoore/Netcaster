@@ -49,14 +49,6 @@
         return @"";
 }
 
-- (NSColor*)subtitleColor
-{
-    if(self.hasNew.boolValue)
-        return [NSColor colorWithCalibratedRed:0.82 green:0.15 blue:0.08 alpha:1.0];
-    else
-        return [NSColor colorWithCalibratedRed:0.44 green:0.49 blue:0.55 alpha:1.0];
-}
-
 - (NSString*)allEpisodesString
 {
     if(self.episodes.count > 0)
@@ -83,15 +75,6 @@
     [self didChangeValueForKey:@"subtitle"];
     [self didChangeValueForKey:@"allEpisodesString"];
     [self didChangeValueForKey:@"unwatchedEpisodes"];
-}
-
-- (void)setHasNew:(NSNumber*)_hasNew
-{
-    [self willChangeValueForKey:@"subtitleColor"];
-    
-    [self setPrimitiveValue:_hasNew forKey:@"hasNew"];
-    
-    [self didChangeValueForKey:@"subtitleColor"];
 }
 
 #pragma mark - Actions
