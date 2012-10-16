@@ -37,8 +37,8 @@
         return [[NSImage alloc] initWithData:self.image];
     else
         return [[NSImage alloc] initWithData:self.show.image];
-    
-    // else default image
+    //else
+        //return default image
 }
 
 - (NSAttributedString*)descAttr
@@ -54,6 +54,20 @@
     [format setDateStyle:NSDateFormatterMediumStyle];
     
     return [format stringFromDate:self.published];
+}
+
+- (NSString*)watchButtonTitle
+{
+    Enclosure *enclosure = self.enclosures.anyObject; //Single feeds for now
+    
+    if([enclosure.type isEqualToString:@"audio/mpeg"])
+        return @"Listen";
+    else if([enclosure.type isEqualToString:@"webpage/hulu"]
+    || [enclosure.type isEqualToString:@"webpage/youtube"]
+    || [enclosure.type isEqualToString:@"text/html"])
+        return @"Open";
+    else
+        return @"Watch";
 }
 
 #pragma mark - Selectors
