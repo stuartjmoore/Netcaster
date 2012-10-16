@@ -55,7 +55,13 @@
 
 - (IBAction)addNewShow:(id)sender
 {
-    self.addShowModal.urlField.stringValue = @"";
+    if([NSPasteboard.generalPasteboard stringForType:NSStringPboardType])
+        self.addShowModal.urlField.stringValue = [NSPasteboard.generalPasteboard stringForType:NSStringPboardType];
+    else
+        self.addShowModal.urlField.stringValue = @"";
+    
+    [self.addShowModal controlTextDidChange:nil];
+    
     self.addShowModal.showDetailTitle.stringValue = @"";
     self.addShowModal.showDetailDesc.stringValue = @"";
     self.addShowModal.showDetailImage.image = nil;

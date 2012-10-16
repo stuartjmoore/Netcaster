@@ -21,6 +21,9 @@
     {
         Show *show = self.objectValue;
         
+        if(![show isKindOfClass:Show.class])
+            return;
+            
         if(show.hasNew.boolValue)
         {
             self.subtitleField.textColor = [NSColor colorWithCalibratedRed:0.82 green:0.15 blue:0.08 alpha:1.0];
