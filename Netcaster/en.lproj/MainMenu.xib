@@ -498,13 +498,13 @@
 														<string key="NSCellIdentifier">_NS:22</string>
 														<reference key="NSControlView" ref="126699894"/>
 														<int key="NSButtonFlags">-2041823232</int>
-														<int key="NSButtonFlags2">34</int>
+														<int key="NSButtonFlags2">268435490</int>
 														<object class="NSCustomResource" key="NSNormalImage">
 															<string key="NSClassName">NSImage</string>
 															<string key="NSResourceName">NSRefreshTemplate</string>
 														</object>
 														<string key="NSAlternateContents"/>
-														<string key="NSKeyEquivalent"/>
+														<string key="NSKeyEquivalent">r</string>
 														<int key="NSPeriodicDelay">400</int>
 														<int key="NSPeriodicInterval">75</int>
 													</object>
@@ -903,6 +903,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{6, 8}, {442, 14}}</string>
 													<reference key="NSSuperview" ref="655946288"/>
+													<reference key="NSNextKeyView"/>
 													<string key="NSReuseIdentifierKey">_NS:1535</string>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSTextFieldCell" key="NSCell" id="312225974">
@@ -1143,7 +1144,6 @@
 								<array class="NSMutableArray" key="NSSubviews"/>
 								<string key="NSFrameSize">{458, 252}</string>
 								<reference key="NSSuperview" ref="519904197"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="318421153"/>
 								<string key="NSReuseIdentifierKey">_NS:13</string>
 								<bool key="NSEnabled">YES</bool>
@@ -1210,7 +1210,6 @@
 						</array>
 						<string key="NSFrameSize">{458, 252}</string>
 						<reference key="NSSuperview" ref="15563597"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="20401967"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="NSDocView" ref="20401967"/>
@@ -1222,7 +1221,6 @@
 						<int key="NSvFlags">-2147483392</int>
 						<string key="NSFrame">{{224, 17}, {15, 102}}</string>
 						<reference key="NSSuperview" ref="15563597"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="393578162"/>
 						<string key="NSReuseIdentifierKey">_NS:58</string>
 						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -1235,7 +1233,6 @@
 						<int key="NSvFlags">-2147483392</int>
 						<string key="NSFrame">{{1, 235}, {456, 16}}</string>
 						<reference key="NSSuperview" ref="15563597"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:60</string>
 						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -1247,7 +1244,6 @@
 				</array>
 				<string key="NSFrameSize">{458, 252}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="519904197"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<int key="NSsFlags">133680</int>
@@ -1260,7 +1256,7 @@
 				<double key="NSMagnification">1</double>
 			</object>
 			<object class="NSScrollView" id="354106482">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">4364</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSClipView" id="72127711">
@@ -1273,7 +1269,7 @@
 								<array class="NSMutableArray" key="NSSubviews"/>
 								<string key="NSFrameSize">{455, 205}</string>
 								<reference key="NSSuperview" ref="72127711"/>
-								<reference key="NSNextKeyView" ref="16081459"/>
+								<reference key="NSNextKeyView" ref="379110698"/>
 								<string key="NSReuseIdentifierKey">_NS:13</string>
 								<bool key="NSEnabled">YES</bool>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -1411,6 +1407,7 @@
 						<int key="NSvFlags">-2147483392</int>
 						<string key="NSFrame">{{1, 119}, {223, 15}}</string>
 						<reference key="NSSuperview" ref="354106482"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:60</string>
 						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						<int key="NSsFlags">1</int>
@@ -1434,7 +1431,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{455, 222}</string>
-				<reference key="NSNextKeyView" ref="72127711"/>
+				<reference key="NSSuperview"/>
+				<reference key="NSNextKeyView" ref="16081459"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<int key="NSsFlags">133680</int>
 				<reference key="NSVScroller" ref="379110698"/>
@@ -1772,8 +1770,7 @@
 					<object class="NSMenuItem" id="431326241">
 						<reference key="NSMenu" ref="213289181"/>
 						<string key="NSTitle">Refresh</string>
-						<string key="NSKeyEquiv">r</string>
-						<int key="NSKeyEquivModMask">1048576</int>
+						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
@@ -1825,11 +1822,19 @@
 				</array>
 			</object>
 			<object class="NSMenu" id="353895477">
-				<string key="NSTitle"/>
+				<string key="NSTitle">AllEpisodesMenu</string>
 				<array class="NSMutableArray" key="NSMenuItems">
 					<object class="NSMenuItem" id="456992943">
 						<reference key="NSMenu" ref="353895477"/>
 						<string key="NSTitle">Toggle Watched</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="64494362">
+						<reference key="NSMenu" ref="353895477"/>
+						<string key="NSTitle">Display Info…</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="35465992"/>
@@ -2569,6 +2574,14 @@
 					<int key="connectionID">2709</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menu</string>
+						<reference key="source" ref="40175055"/>
+						<reference key="destination" ref="353895477"/>
+					</object>
+					<int key="connectionID">2801</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">displayPatternValue1: arrangedObjects.publishedString</string>
 						<reference key="source" ref="569557562"/>
@@ -3005,6 +3018,46 @@
 						</object>
 					</object>
 					<int key="connectionID">2642</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">target: selection</string>
+						<reference key="source" ref="456992943"/>
+						<reference key="destination" ref="517055888"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="456992943"/>
+							<reference key="NSDestination" ref="517055888"/>
+							<string key="NSLabel">target: selection</string>
+							<string key="NSBinding">target</string>
+							<string key="NSKeyPath">selection</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSSelectorName</string>
+								<string key="NS.object.0">toggleWatched:</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">2818</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">target: selection</string>
+						<reference key="source" ref="812239377"/>
+						<reference key="destination" ref="517055888"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="812239377"/>
+							<reference key="NSDestination" ref="517055888"/>
+							<string key="NSLabel">target: selection</string>
+							<string key="NSBinding">target</string>
+							<string key="NSKeyPath">selection</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSSelectorName</string>
+								<string key="NS.object.0">watchNow:</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">2815</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -7118,6 +7171,7 @@
 							<reference ref="456992943"/>
 							<reference ref="812239377"/>
 							<reference ref="849126550"/>
+							<reference ref="64494362"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -7134,6 +7188,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">2781</int>
 						<reference key="object" ref="849126550"/>
+						<reference key="parent" ref="353895477"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2802</int>
+						<reference key="object" ref="64494362"/>
 						<reference key="parent" ref="353895477"/>
 					</object>
 				</array>
@@ -7524,6 +7583,7 @@
 				<string key="2777.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2780.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2781.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="2802.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="295.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="296.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -7693,7 +7753,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2800</int>
+			<int key="maxID">2818</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -56,6 +56,11 @@
     return [format stringFromDate:self.published];
 }
 
+- (NSString*)durationString
+{
+    return @"0:00:00";
+}
+
 - (NSString*)watchButtonTitle
 {
     Enclosure *enclosure = self.enclosures.anyObject; //Single feeds for now
@@ -73,7 +78,7 @@
 #pragma mark - Selectors
 
 
-- (void)watchNow:(NSTableCellView*)sender
+- (void)watchNow:(id)sender
 {
     Enclosure *enclosure = self.enclosures.anyObject; //Single feeds for now
     NSURL *url = [NSURL URLWithString:enclosure.url];
@@ -121,6 +126,27 @@
          launchIdentifiers:nil];
          */
     }
+}
+
+- (void)toggleWatched:(id)sender
+{
+    [self.show willChangeValueForKey:@"unwatchedEpisodes"];
+    
+    self.unwatched = [NSNumber numberWithBool:!self.unwatched.boolValue];
+    
+    if(self.unwatched.boolValue)
+    {
+        self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue+1)];
+    }
+    else
+    {
+        if(self.show.unwatchedCount.intValue-1 > 0)
+            self.show.unwatchedCount = [NSNumber numberWithInt:(self.show.unwatchedCount.intValue-1)];
+        else
+            self.show.unwatchedCount = [NSNumber numberWithInt:0];
+    }
+        
+    [self.show didChangeValueForKey:@"unwatchedEpisodes"];
 }
 
 - (void)markUnwatched:(NSTableCellView*)sender

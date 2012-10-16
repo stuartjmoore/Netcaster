@@ -35,8 +35,9 @@
 - (NSImage*)imageValue;
 - (NSAttributedString*)descAttr;
 
-- (void)watchNow:(NSTableCellView*)sender;
+- (void)watchNow:(id)sender;
 
+- (void)toggleWatched:(id)sender;
 - (void)markUnwatched:(NSTableCellView*)sender;
 - (void)finishMarkUnwatched:(NSTableCellView*)sender;
 
