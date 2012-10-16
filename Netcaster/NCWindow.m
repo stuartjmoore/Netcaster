@@ -241,6 +241,10 @@
 
 - (IBAction)renameShowOrGroup:(id)sender
 {
+    NSInteger row = (self.showsList.clickedRow != -1) ? self.showsList.clickedRow : self.showsList.selectedRow;
+    NSTableRowView *view = [self.showsList rowViewAtRow:row makeIfNecessary:NO];
+    NSTableCellView *cell = [view viewAtColumn:0];
+    [cell.textField becomeFirstResponder];
 }
 
 - (IBAction)markWatchedShowOrGroup:(id)sender
