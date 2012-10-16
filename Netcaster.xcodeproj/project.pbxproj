@@ -13,6 +13,10 @@
 		17401E3B161C1EF800610C97 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 17401E3A161C1EF800610C97 /* icon.icns */; };
 		174FBEB0161F18FC004B1CAE /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = 174FBEAF161F18FC004B1CAE /* Directory.m */; };
 		174FBEB3161F1913004B1CAE /* WatchBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 174FBEB2161F1913004B1CAE /* WatchBox.m */; };
+		1756B6EB162D910E0003DF27 /* NSArray_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B6E1162D8EBD0003DF27 /* NSArray_Extensions.m */; };
+		1756B6ED162D910E0003DF27 /* NSIndexPath_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B6E3162D8EBD0003DF27 /* NSIndexPath_Extensions.m */; };
+		1756B6EF162D910E0003DF27 /* NSTreeController_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B6E5162D8EBD0003DF27 /* NSTreeController_Extensions.m */; };
+		1756B6F1162D910E0003DF27 /* NSTreeNode_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1756B6E7162D8EBD0003DF27 /* NSTreeNode_Extensions.m */; };
 		1759C6001616D83900FE0869 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1759C5FF1616D83900FE0869 /* Cocoa.framework */; };
 		1759C60A1616D83900FE0869 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1759C6081616D83900FE0869 /* InfoPlist.strings */; };
 		1759C60C1616D83900FE0869 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1759C60B1616D83900FE0869 /* main.m */; };
@@ -47,6 +51,14 @@
 		174FBEAF161F18FC004B1CAE /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
 		174FBEB1161F1913004B1CAE /* WatchBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchBox.h; sourceTree = "<group>"; };
 		174FBEB2161F1913004B1CAE /* WatchBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchBox.m; sourceTree = "<group>"; };
+		1756B6E0162D8EBD0003DF27 /* NSArray_Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSArray_Extensions.h; sourceTree = "<group>"; };
+		1756B6E1162D8EBD0003DF27 /* NSArray_Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSArray_Extensions.m; sourceTree = "<group>"; };
+		1756B6E2162D8EBD0003DF27 /* NSIndexPath_Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSIndexPath_Extensions.h; sourceTree = "<group>"; };
+		1756B6E3162D8EBD0003DF27 /* NSIndexPath_Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSIndexPath_Extensions.m; sourceTree = "<group>"; };
+		1756B6E4162D8EBD0003DF27 /* NSTreeController_Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTreeController_Extensions.h; sourceTree = "<group>"; };
+		1756B6E5162D8EBD0003DF27 /* NSTreeController_Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTreeController_Extensions.m; sourceTree = "<group>"; };
+		1756B6E6162D8EBD0003DF27 /* NSTreeNode_Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTreeNode_Extensions.h; sourceTree = "<group>"; };
+		1756B6E7162D8EBD0003DF27 /* NSTreeNode_Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTreeNode_Extensions.m; sourceTree = "<group>"; };
 		1759C5FB1616D83900FE0869 /* Netcaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netcaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1759C5FF1616D83900FE0869 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1759C6021616D83900FE0869 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +149,21 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		1756B6E9162D8EC20003DF27 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1756B6E0162D8EBD0003DF27 /* NSArray_Extensions.h */,
+				1756B6E1162D8EBD0003DF27 /* NSArray_Extensions.m */,
+				1756B6E2162D8EBD0003DF27 /* NSIndexPath_Extensions.h */,
+				1756B6E3162D8EBD0003DF27 /* NSIndexPath_Extensions.m */,
+				1756B6E4162D8EBD0003DF27 /* NSTreeController_Extensions.h */,
+				1756B6E5162D8EBD0003DF27 /* NSTreeController_Extensions.m */,
+				1756B6E6162D8EBD0003DF27 /* NSTreeNode_Extensions.h */,
+				1756B6E7162D8EBD0003DF27 /* NSTreeNode_Extensions.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		1759C5F01616D83900FE0869 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +216,7 @@
 				1725433516187A91009A0FD6 /* NCAddModal.h */,
 				1725433616187A91009A0FD6 /* NCAddModal.m */,
 				1725433416185238009A0FD6 /* Entities */,
+				1756B6E9162D8EC20003DF27 /* Extensions */,
 				17741FF216241F0400D6B766 /* Images */,
 				1721B3131619E1FE007C6BBD /* XML */,
 				1759C6061616D83900FE0869 /* Supporting Files */,
@@ -303,6 +331,10 @@
 				174FBEB0161F18FC004B1CAE /* Directory.m in Sources */,
 				174FBEB3161F1913004B1CAE /* WatchBox.m in Sources */,
 				17A0E853161F62E10069D524 /* StaticGroup.m in Sources */,
+				1756B6EB162D910E0003DF27 /* NSArray_Extensions.m in Sources */,
+				1756B6ED162D910E0003DF27 /* NSIndexPath_Extensions.m in Sources */,
+				1756B6EF162D910E0003DF27 /* NSTreeController_Extensions.m in Sources */,
+				1756B6F1162D910E0003DF27 /* NSTreeNode_Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

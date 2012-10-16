@@ -168,6 +168,13 @@
 
 #pragma mark - Core Data
 
+- (NSArray*)treeNodeSortDescriptors;
+{
+	return [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"sortIndex" ascending:YES]];
+}
+
+#pragma mark Generated
+
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.stuartjmoore.Netcaster" in the user's Application Support directory.
 - (NSURL *)applicationFilesDirectory
 {

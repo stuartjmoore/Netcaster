@@ -43,11 +43,13 @@
         <relationship name="show" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Show" inverseName="feeds" inverseEntity="Show" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES">
+        <attribute name="sortIndex" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String" minValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Item" inverseName="group" inverseEntity="Item" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
+        <attribute name="sortIndex" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="items" inverseEntity="Group" syncable="YES"/>
@@ -74,16 +76,16 @@
     <entity name="StaticGroup" representedClassName="StaticGroup" parentEntity="Group" syncable="YES"/>
     <entity name="WatchBox" representedClassName="WatchBox" parentEntity="Show" syncable="YES"/>
     <elements>
-        <element name="Channel" positionX="-2385" positionY="-18" width="128" height="133"/>
-        <element name="Directory" positionX="-2574" positionY="-16" width="128" height="43"/>
-        <element name="Enclosure" positionX="-1998" positionY="329" width="128" height="103"/>
-        <element name="Episode" positionX="-2000" positionY="-18" width="128" height="328"/>
-        <element name="Feed" positionX="-2187" positionY="288" width="128" height="103"/>
-        <element name="Group" positionX="-2574" positionY="-180" width="126" height="88"/>
-        <element name="Item" positionX="-2387" positionY="-180" width="128" height="88"/>
-        <element name="Livestream" positionX="-2387" positionY="288" width="128" height="88"/>
-        <element name="Show" positionX="-2189" positionY="-18" width="128" height="223"/>
-        <element name="StaticGroup" positionX="-2574" positionY="-250" width="128" height="43"/>
-        <element name="WatchBox" positionX="-2187" positionY="-90" width="128" height="43"/>
+        <element name="Channel" positionX="-2196" positionY="-9" width="128" height="133"/>
+        <element name="Directory" positionX="-2385" positionY="-7" width="128" height="43"/>
+        <element name="Enclosure" positionX="-1809" positionY="338" width="128" height="103"/>
+        <element name="Episode" positionX="-1811" positionY="-9" width="128" height="328"/>
+        <element name="Feed" positionX="-1998" positionY="297" width="128" height="103"/>
+        <element name="Group" positionX="-2574" positionY="-180" width="126" height="103"/>
+        <element name="Item" positionX="-2387" positionY="-180" width="128" height="103"/>
+        <element name="Livestream" positionX="-2198" positionY="297" width="128" height="88"/>
+        <element name="Show" positionX="-2000" positionY="-9" width="128" height="223"/>
+        <element name="StaticGroup" positionX="-2574" positionY="-7" width="128" height="43"/>
+        <element name="WatchBox" positionX="-1998" positionY="-81" width="128" height="43"/>
     </elements>
 </model>

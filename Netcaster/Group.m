@@ -12,8 +12,8 @@
 
 @implementation Group
 
-@dynamic subtitle;
-@dynamic title;
+@dynamic subtitle, title;
+@dynamic sortIndex;
 @dynamic items;
 
 - (id)episodes

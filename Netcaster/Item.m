@@ -12,8 +12,8 @@
 
 @implementation Item
 
-@dynamic subtitle;
-@dynamic title;
+@dynamic subtitle, title;
+@dynamic sortIndex;
 @dynamic group;
 
 - (id)items

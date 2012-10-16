@@ -14,6 +14,7 @@
 @interface Group : NSManagedObject
 
 @property (nonatomic, retain) NSString *title, *subtitle;
+@property (nonatomic, retain) NSNumber *sortIndex;
 @property (nonatomic, retain) NSSet *items;
 
 - (id)episodes;

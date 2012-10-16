@@ -6,6 +6,11 @@
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
+#import "NSArray_Extensions.h"
+#import "NSTreeController_Extensions.h"
+#import "NSTreeNode_Extensions.h"
+#import "NSIndexPath_Extensions.h"
+
 #import "NCAppDelegate.h"
 #import "NCSourceList.h"
 
@@ -80,7 +85,7 @@
 	}
 }
 */
-#pragma mark Dragging
+#pragma mark - Dragging
 
 - (id<NSPasteboardWriting>)outlineView:(NSOutlineView*)pOutlineView pasteboardWriterForItem:(NSTreeNode*)pItem
 {
@@ -173,6 +178,50 @@
 - (id)outlineView:(NSOutlineView *)outlineView persistentObjectForItem:(id)item
 {
     return nil;
+}
+
+#pragma mark - Sorting
+
+- (void)updateSortOrderOfModelObjects;
+{
+	for (NSTreeNode *node in [self flattenedNodes])
+		[[node representedObject] setValue:[NSNumber numberWithInt:(int)[[node indexPath] lastIndex]] forKey:@"sortIndex"];
+}
+
+- (void)insertObject:(id)object atArrangedObjectIndexPath:(NSIndexPath *)indexPath;
+{
+	[super insertObject:object atArrangedObjectIndexPath:indexPath];
+	[self updateSortOrderOfModelObjects];
+}
+
+- (void)insertObjects:(NSArray *)objects atArrangedObjectIndexPaths:(NSArray *)indexPaths;
+{
+	[super insertObjects:objects atArrangedObjectIndexPaths:indexPaths];
+	[self updateSortOrderOfModelObjects];
+}
+
+- (void)removeObjectAtArrangedObjectIndexPath:(NSIndexPath *)indexPath;
+{
+	[super removeObjectAtArrangedObjectIndexPath:indexPath];
+	[self updateSortOrderOfModelObjects];
+}
+
+- (void)removeObjectsAtArrangedObjectIndexPaths:(NSArray *)indexPaths;
+{
+	[super removeObjectsAtArrangedObjectIndexPaths:indexPaths];
+	[self updateSortOrderOfModelObjects];
+}
+
+- (void)moveNode:(NSTreeNode *)node toIndexPath:(NSIndexPath *)indexPath;
+{
+	[super moveNode:node toIndexPath:indexPath];
+	[self updateSortOrderOfModelObjects];
+}
+
+- (void)moveNodes:(NSArray *)nodes toIndexPath:(NSIndexPath *)indexPath;
+{
+	[super moveNodes:nodes toIndexPath:indexPath];
+	[self updateSortOrderOfModelObjects];
 }
 
 @end

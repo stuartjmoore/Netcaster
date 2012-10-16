@@ -17,4 +17,6 @@
 @property (nonatomic, strong) NSTreeNode *draggingItem;
 @property (nonatomic, strong) id draggingObject;
 
+- (void)updateSortOrderOfModelObjects;
+
 @end
