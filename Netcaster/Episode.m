@@ -19,7 +19,6 @@
 @dynamic duration;
 @dynamic expires;
 @dynamic image;
-@dynamic isNew;
 @dynamic number;
 @dynamic published;
 @dynamic timecode;

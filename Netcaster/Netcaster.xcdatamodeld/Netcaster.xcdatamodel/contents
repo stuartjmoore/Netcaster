@@ -24,7 +24,6 @@
         <attribute name="duration" optional="YES" attributeType="Float" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="expires" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="isNew" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Float" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Float" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="published" optional="YES" attributeType="Date" syncable="YES"/>
@@ -39,6 +38,7 @@
     <entity name="Feed" representedClassName="Feed" syncable="YES">
         <attribute name="type" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updateFreq" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="show" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Show" inverseName="feeds" inverseEntity="Show" syncable="YES"/>
     </entity>
@@ -61,11 +61,10 @@
     </entity>
     <entity name="Show" representedClassName="Show" parentEntity="Item" syncable="YES">
         <attribute name="cast" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="channelName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasNew" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" valueTransformerName="NSImage" syncable="YES"/>
-        <attribute name="isNewCount" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="schedule" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unwatchedCount" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
@@ -79,12 +78,12 @@
         <element name="Channel" positionX="-2196" positionY="-9" width="128" height="133"/>
         <element name="Directory" positionX="-2385" positionY="-7" width="128" height="43"/>
         <element name="Enclosure" positionX="-1809" positionY="338" width="128" height="103"/>
-        <element name="Episode" positionX="-1811" positionY="-9" width="128" height="328"/>
-        <element name="Feed" positionX="-1998" positionY="297" width="128" height="103"/>
+        <element name="Episode" positionX="-1811" positionY="-9" width="128" height="313"/>
+        <element name="Feed" positionX="-1998" positionY="297" width="128" height="118"/>
         <element name="Group" positionX="-2574" positionY="-180" width="126" height="103"/>
         <element name="Item" positionX="-2387" positionY="-180" width="128" height="103"/>
         <element name="Livestream" positionX="-2198" positionY="297" width="128" height="88"/>
-        <element name="Show" positionX="-2000" positionY="-9" width="128" height="223"/>
+        <element name="Show" positionX="-2000" positionY="-9" width="128" height="208"/>
         <element name="StaticGroup" positionX="-2574" positionY="-7" width="128" height="43"/>
         <element name="WatchBox" positionX="-1998" positionY="-81" width="128" height="43"/>
     </elements>

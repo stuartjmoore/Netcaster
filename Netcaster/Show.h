@@ -15,11 +15,10 @@
 @interface Show : Item
 
 @property (nonatomic, retain) NSString *cast;
-@property (nonatomic, retain) NSString *channelName; //delete
 @property (nonatomic, retain) NSString *desc;
 @property (nonatomic, retain) NSString *genre;
 @property (nonatomic, retain) NSData *image;
-@property (nonatomic, retain) NSNumber *isNewCount; // isNew BOOL
+@property (nonatomic, retain) NSNumber *hasNew;
 @property (nonatomic, retain) NSString *schedule;
 @property (nonatomic, retain) NSNumber *unwatchedCount;
 @property (nonatomic, retain) NSString *website;
@@ -29,7 +28,6 @@
 
 - (NSArray*)unwatchedEpisodes;
 
-- (NSString*)unwatchedString;
 - (NSString*)allEpisodesString;
 
 - (void)markAllWatched;

@@ -20,7 +20,6 @@
 @property (nonatomic, retain) NSNumber *duration;
 @property (nonatomic, retain) NSDate *expires;
 @property (nonatomic, retain) NSData *image;
-@property (nonatomic, retain) NSNumber *isNew; //delete?
 @property (nonatomic, retain) NSNumber *number;
 @property (nonatomic, retain) NSDate *published;
 @property (nonatomic, retain) NSNumber *timecode;

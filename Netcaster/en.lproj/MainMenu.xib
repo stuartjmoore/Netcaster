@@ -1154,7 +1154,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="443187755"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">MainWindow</string>
 				<int key="NSWindowCollectionBehavior">128</int>
@@ -1701,7 +1701,7 @@
 					<reference key="NSNextKeyView" ref="321444152"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMinSize">{219, 138}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">NO</bool>
@@ -2522,19 +2522,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: objectValue.unwatchedString</string>
+						<string key="label">value: objectValue.subtitle</string>
 						<reference key="source" ref="518303457"/>
 						<reference key="destination" ref="532562602"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="518303457"/>
 							<reference key="NSDestination" ref="532562602"/>
-							<string key="NSLabel">value: objectValue.unwatchedString</string>
+							<string key="NSLabel">value: objectValue.subtitle</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">objectValue.unwatchedString</string>
+							<string key="NSKeyPath">objectValue.subtitle</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">2795</int>
+					<int key="connectionID">2796</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -7685,7 +7685,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2795</int>
+			<int key="maxID">2796</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

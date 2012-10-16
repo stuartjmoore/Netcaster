@@ -20,11 +20,10 @@
 @implementation Show
 
 @dynamic cast;
-@dynamic channelName; //delete
 @dynamic desc;
 @dynamic genre;
 @dynamic image;
-@dynamic isNewCount;
+@dynamic hasNew;
 @dynamic schedule;
 @dynamic unwatchedCount;
 @dynamic website;
@@ -40,7 +39,7 @@
     return [sortedEpisodes filteredArrayUsingPredicate:predicate];
 }
 
-- (NSString*)unwatchedString
+- (NSString*)subtitle
 {
     if(self.unwatchedCount.intValue > 0)
         return [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
@@ -65,13 +64,13 @@
 {
     [self willChangeValueForKey:@"unwatchedEpisodes"];
     [self willChangeValueForKey:@"allEpisodesString"];
-    [self willChangeValueForKey:@"unwatchedString"];
+    [self willChangeValueForKey:@"subtitle"];
     [self willChangeValueForKey:@"unwatchedCount"];
     
     [self setPrimitiveValue:_unwatchedCount forKey:@"unwatchedCount"];
     
     [self didChangeValueForKey:@"unwatchedCount"];
-    [self didChangeValueForKey:@"unwatchedString"];
+    [self didChangeValueForKey:@"subtitle"];
     [self didChangeValueForKey:@"allEpisodesString"];
     [self didChangeValueForKey:@"unwatchedEpisodes"];
 }

@@ -13,7 +13,7 @@
 @implementation Feed
 
 @dynamic type;
-@dynamic updated;
+@dynamic updated, updateFreq;
 @dynamic url;
 @dynamic show;
 
