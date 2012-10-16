@@ -141,16 +141,22 @@
             if(item == nil)
             {
                 Group *group = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
-                [group setTitle:@"NEW GROUP"];
+                group.title = @"NEW GROUP";
+                group.sortIndex = [NSNumber numberWithInt:self.rootNodes.count];
                 [context save:nil];
                 
-                item = [self.outlineView itemAtRow:(self.outlineView.numberOfRows-1)];
+                item = self.rootNodes.lastObject;
                 index = 0;
+                
+                [self moveNode:self.draggingItem toIndexPath:[item.indexPath indexPathByAddingIndex:index]];
+                [self.outlineView expandItem:item];
             }
-            
-            [self moveNode:self.draggingItem toIndexPath:[item.indexPath indexPathByAddingIndex:index]];
-            [self.outlineView expandItem:item];
-            
+            else
+            {
+                [self moveNode:self.draggingItem toIndexPath:[item.indexPath indexPathByAddingIndex:index]];
+                [self.outlineView expandItem:item];
+            }
+                
             if(fromGroup.childNodes.count <= 0)
             {
                 [context deleteObject:fromGroup.representedObject];
