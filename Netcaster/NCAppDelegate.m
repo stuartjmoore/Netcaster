@@ -97,21 +97,25 @@
                 [scanner scanUpToString:@">" intoString:&text];
                 text = [text stringByAppendingString:@">"];
                 
-                if([text hasPrefix:@"<meta property=\"og:title\""])
+                if([text hasPrefix:@"<meta property=\"og:title\""]
+                || [text hasPrefix:@"<meta name=\"og:title\""])
                 {
                     NSUInteger location = [text rangeOfString:@"content=\""].location + 9;
                     NSUInteger length = [text rangeOfString:@"\"" options:NSBackwardsSearch].location;
                     
                     title = [text substringWithRange:NSMakeRange(location, length-location)];
                 }
-                else if([text hasPrefix:@"<meta property=\"og:description\""])
+                else if([text hasPrefix:@"<meta property=\"og:description\""]
+                     || [text hasPrefix:@"<meta name=\"og:description\""])
                 {
                     NSUInteger location = [text rangeOfString:@"content=\""].location + 9;
                     NSUInteger length = [text rangeOfString:@"\"" options:NSBackwardsSearch].location;
                     
                     desc = [text substringWithRange:NSMakeRange(location, length-location)];
+                    
                 }
-                else if([text hasPrefix:@"<meta property=\"og:image\""])
+                else if([text hasPrefix:@"<meta property=\"og:image\""]
+                     || [text hasPrefix:@"<meta name=\"og:image\""])
                 {
                     NSUInteger location = [text rangeOfString:@"content=\""].location + 9;
                     NSUInteger length = [text rangeOfString:@"\"" options:NSBackwardsSearch].location;

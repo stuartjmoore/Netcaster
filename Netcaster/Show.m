@@ -198,9 +198,9 @@
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
                                    completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
              {
-                 [self willChangeValueForKey:@"image"];
+                 [self willChangeValueForKey:@"imageValue"];
                  self.image = data;
-                 [self didChangeValueForKey:@"image"];
+                 [self didChangeValueForKey:@"imageValue"];
              }];
             
             Channel *channel = [NSEntityDescription insertNewObjectForEntityForName:@"Channel" inManagedObjectContext:context];
@@ -315,9 +315,9 @@
             [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
                                    completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
             {
-                [episode willChangeValueForKey:@"image"];
+                [episode willChangeValueForKey:@"imageValue"];
                 episode.image = data;
-                [episode didChangeValueForKey:@"image"];
+                [episode didChangeValueForKey:@"imageValue"];
             }];
             
             
