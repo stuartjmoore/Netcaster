@@ -31,6 +31,8 @@
 @dynamic episodes;
 @dynamic feeds;
 
+#pragma mark - Faux Entities
+
 - (NSArray*)unwatchedEpisodes
 {
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:YES];
@@ -45,6 +47,14 @@
         return [NSString stringWithFormat:@"%d", self.unwatchedCount.intValue];
     else
         return @"";
+}
+
+- (NSColor*)subtitleColor
+{
+    if(self.hasNew.boolValue)
+        return [NSColor colorWithCalibratedRed:0.82 green:0.15 blue:0.08 alpha:1.0];
+    else
+        return [NSColor colorWithCalibratedRed:0.51 green:0.57 blue:0.62 alpha:1.0];
 }
 
 - (NSString*)allEpisodesString
@@ -73,6 +83,15 @@
     [self didChangeValueForKey:@"subtitle"];
     [self didChangeValueForKey:@"allEpisodesString"];
     [self didChangeValueForKey:@"unwatchedEpisodes"];
+}
+
+- (void)setHasNew:(NSNumber*)_hasNew
+{
+    [self willChangeValueForKey:@"subtitleColor"];
+    
+    [self setPrimitiveValue:_hasNew forKey:@"hasNew"];
+    
+    [self didChangeValueForKey:@"subtitleColor"];
 }
 
 #pragma mark - Actions
@@ -263,6 +282,7 @@
                 }
             }
             
+            self.hasNew = [NSNumber numberWithBool:YES];
             
             Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode"
                                                              inManagedObjectContext:context];

@@ -67,7 +67,7 @@
 }
 
 #pragma mark - Selection
-/*
+
 - (void)outlineViewSelectionDidChange:(NSNotification*)notification
 {
     NSOutlineView *list = notification.object;
@@ -80,11 +80,12 @@
         if([item isKindOfClass:Show.class])
         {
             Show *show = (Show*)item;
-            [show reload];
+            show.hasNew = [NSNumber numberWithBool:NO];
+            //[show reload];
         }
 	}
 }
-*/
+
 #pragma mark - Dragging
 
 - (id<NSPasteboardWriting>)outlineView:(NSOutlineView*)pOutlineView pasteboardWriterForItem:(NSTreeNode*)pItem
