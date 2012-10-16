@@ -163,6 +163,14 @@
     }
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication*)application hasVisibleWindows:(BOOL)flag
+{
+    if(!flag)
+        [self.window makeKeyAndOrderFront:self];
+    
+    return YES;
+}
+
 #pragma mark - Core Data
 
 - (NSArray*)treeNodeSortDescriptors;
