@@ -54,7 +54,7 @@
     if(self.hasNew.boolValue)
         return [NSColor colorWithCalibratedRed:0.82 green:0.15 blue:0.08 alpha:1.0];
     else
-        return [NSColor colorWithCalibratedRed:0.51 green:0.57 blue:0.62 alpha:1.0];
+        return [NSColor colorWithCalibratedRed:0.44 green:0.49 blue:0.55 alpha:1.0];
 }
 
 - (NSString*)allEpisodesString
