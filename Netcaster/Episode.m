@@ -41,6 +41,40 @@
         //return default image
 }
 
+- (NSString*)displayTitle
+{
+    NSString *title = self.title;
+    
+    title = [title stringByReplacingOccurrencesOfString:self.show.title withString:@""];
+    
+    while([title rangeOfCharacterFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].location == 0
+          || [title rangeOfCharacterFromSet:[NSCharacterSet symbolCharacterSet]].location == 0
+          || [title rangeOfString:@"#"].location == 0
+          || [title rangeOfString:@","].location == 0
+          || [title rangeOfString:@":"].location == 0
+          || [title rangeOfString:@"-"].location == 0
+          || [title rangeOfString:@"."].location == 0
+          || [title rangeOfString:@"/"].location == 0
+          || [title rangeOfString:@"Episode"].location == 0
+          || [title rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]].location == 0)
+    {
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@":"]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-"]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"Episode"]];
+        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    }
+    
+    if([title isEqualToString:@""])
+        return self.title;
+    
+    return title;
+}
+
 - (NSAttributedString*)descAttr
 {
     NSData *data = [self.desc dataUsingEncoding:NSUTF8StringEncoding];
@@ -58,7 +92,16 @@
 
 - (NSString*)durationString
 {
-    return @"0:00:00";
+    int hrUntil = 0;
+    int minUntil = self.duration.intValue/60;
+    
+    while(minUntil >= 60)
+    {
+        hrUntil++;
+        minUntil -= 60;
+    }
+    
+    return [NSString stringWithFormat:@"%d:%0.2d:%0.2d", hrUntil, minUntil, self.duration.intValue%60];
 }
 
 - (NSString*)watchButtonTitle
@@ -76,7 +119,6 @@
 }
 
 #pragma mark - Selectors
-
 
 - (void)watchNow:(id)sender
 {

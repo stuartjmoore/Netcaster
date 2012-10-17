@@ -279,7 +279,7 @@
             episode.title = title;
             episode.desc = desc;
             episode.descShort = descShort;
-            episode.duration = [NSNumber numberWithInteger:duration.integerValue];
+            episode.duration = [NSNumber numberWithInt:duration.intValue];
             episode.website = link;
             episode.published = pubDate;
             
