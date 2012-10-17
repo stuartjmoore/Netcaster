@@ -27,8 +27,8 @@
 @property (nonatomic, retain) NSSet *feeds;
 
 - (NSArray*)unwatchedEpisodes;
-
 - (NSString*)allEpisodesString;
+- (NSImage*)imageValue;
 
 - (void)markAllWatched;
 

@@ -280,7 +280,15 @@
         [show reload];
 }
 
-#pragma mark -
+#pragma mark - Titlebar Actions
+
+- (IBAction)showShowInfo:(id)sender
+{
+    if(!self.showInfoPopover.shown)
+        [self.showInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxXEdge];
+    else
+        [self.showInfoPopover close];
+}
 
 - (IBAction)showAllEpisodes:(NSSegmentedControl*)sender
 {

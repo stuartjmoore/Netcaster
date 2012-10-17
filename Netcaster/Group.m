@@ -28,5 +28,13 @@
 {
     return @"";
 }
+- (NSString*)desc
+{
+    return @"";
+}
+- (NSImage*)imageValue
+{
+    return nil;
+}
 
 @end

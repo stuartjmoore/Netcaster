@@ -18,6 +18,8 @@
 @property (nonatomic, weak) IBOutlet NSView *detailView;
 @property (nonatomic, weak) IBOutlet NSScrollView *recentEpisodesView, *allEpisodesView;
 
+@property (nonatomic, weak) IBOutlet NSPopover *showInfoPopover;
+
 - (IBAction)addNewShow:(id)sender;
 - (IBAction)importOPML:(id)sender;
 
@@ -28,6 +30,7 @@
 
 - (IBAction)refreshAll:(id)sender;
 
+- (IBAction)showShowInfo:(id)sender;
 - (IBAction)showAllEpisodes:(NSSegmentedControl*)sender;
 
 @end

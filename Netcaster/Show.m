@@ -60,6 +60,13 @@
         return @"No Episodes";
 }
 
+- (NSImage*)imageValue
+{
+    return [[NSImage alloc] initWithData:self.image];
+    //else
+    //return default image
+}
+
 #pragma mark - Setters
 
 - (void)setUnwatchedCount:(NSNumber*)_unwatchedCount

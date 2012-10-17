@@ -20,6 +20,8 @@
 - (id)episodes;
 - (id)unwatchedEpisodes;
 - (NSString*)allEpisodesString;
+- (NSString*)desc;
+- (NSImage*)imageValue;
 
 @end
 
