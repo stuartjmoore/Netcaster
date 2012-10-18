@@ -228,8 +228,15 @@
             NSDate *pubDate = [dateFormat dateFromString:pubDateString];
             if(!pubDate) pubDate = [NSDate dateWithTimeIntervalSince1970:0];
             
-            NSString *duration = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:duration", @"text", nil];
-            if(!duration) duration = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"duration", nil];
+            NSString *duration = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"duration", nil];
+            if(!duration) duration = [XMLReader stringFromDictionary:epiDic withKeys:@"itunes:duration", @"text", nil];
+            int i = 0, seconds = 0;
+            for(NSString *element in [[duration componentsSeparatedByString:@":"] reverseObjectEnumerator])
+            {
+                seconds += element.intValue*pow(60,i);
+                i++;
+            }
+            duration = [NSString stringWithFormat:@"%d", seconds];
             if(!duration) duration = @"";
             
             NSString *link = [XMLReader stringFromDictionary:epiDic withKeys:@"link", @"text", nil];

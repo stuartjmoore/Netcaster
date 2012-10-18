@@ -37,6 +37,8 @@
 		17741FF416241F5300D6B766 /* shows-list-button-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17741FF316241F5300D6B766 /* shows-list-button-add@2x.png */; };
 		179EF7101625F506005E46AE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179EF70F1625F506005E46AE /* WebKit.framework */; };
 		17A0E853161F62E10069D524 /* StaticGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A0E852161F62E10069D524 /* StaticGroup.m */; };
+		17C136E7162FF735008CBE71 /* shows-list-button-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C136E5162FF735008CBE71 /* shows-list-button-refresh.png */; };
+		17C136E8162FF735008CBE71 /* shows-list-button-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C136E6162FF735008CBE71 /* shows-list-button-refresh@2x.png */; };
 		17E8E14D162DDFD800F86491 /* NCSourceItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E8E14C162DDFD800F86491 /* NCSourceItemCell.m */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		179EF70F1625F506005E46AE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		17A0E851161F62E10069D524 /* StaticGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticGroup.h; sourceTree = "<group>"; };
 		17A0E852161F62E10069D524 /* StaticGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticGroup.m; sourceTree = "<group>"; };
+		17C136E5162FF735008CBE71 /* shows-list-button-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shows-list-button-refresh.png"; path = "Resources/Images/shows-list-button-refresh.png"; sourceTree = SOURCE_ROOT; };
+		17C136E6162FF735008CBE71 /* shows-list-button-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shows-list-button-refresh@2x.png"; path = "Resources/Images/shows-list-button-refresh@2x.png"; sourceTree = SOURCE_ROOT; };
 		17E8E14B162DDFD800F86491 /* NCSourceItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSourceItemCell.h; sourceTree = "<group>"; };
 		17E8E14C162DDFD800F86491 /* NCSourceItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSourceItemCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +250,8 @@
 			children = (
 				17741FF016241EFE00D6B766 /* shows-list-button-add.png */,
 				17741FF316241F5300D6B766 /* shows-list-button-add@2x.png */,
+				17C136E5162FF735008CBE71 /* shows-list-button-refresh.png */,
+				17C136E6162FF735008CBE71 /* shows-list-button-refresh@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -308,6 +314,8 @@
 				17401E3B161C1EF800610C97 /* icon.icns in Resources */,
 				17741FF116241EFE00D6B766 /* shows-list-button-add.png in Resources */,
 				17741FF416241F5300D6B766 /* shows-list-button-add@2x.png in Resources */,
+				17C136E7162FF735008CBE71 /* shows-list-button-refresh.png in Resources */,
+				17C136E8162FF735008CBE71 /* shows-list-button-refresh@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

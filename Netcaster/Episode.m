@@ -59,13 +59,16 @@
           || [title rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]].location == 0)
     {
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        if(title.length > 7)
+            title = [title stringByReplacingOccurrencesOfString:@"Episode" withString:@"" options:0 range:NSMakeRange(0, 7)];
+        
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@":"]];
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-"]];
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
-        title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"Episode"]];
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
     }
     
