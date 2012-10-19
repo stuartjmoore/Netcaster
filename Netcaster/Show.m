@@ -226,6 +226,11 @@
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
             NSDate *pubDate = [dateFormat dateFromString:pubDateString];
+            if(!pubDate)
+            {
+                [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss zzz"];
+                pubDate = [dateFormat dateFromString:pubDateString];
+            }
             if(!pubDate) pubDate = [NSDate dateWithTimeIntervalSince1970:0];
             
             NSString *duration = [XMLReader stringFromDictionary:epiDic withKeys:@"media:content", @"duration", nil];
