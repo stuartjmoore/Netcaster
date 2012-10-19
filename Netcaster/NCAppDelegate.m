@@ -55,6 +55,8 @@
         staticGroup.title = @"NETCASTER";
         WatchBox *watchBox = [NSEntityDescription insertNewObjectForEntityForName:@"WatchBox" inManagedObjectContext:context];
         watchBox.title = @"Watch Box";
+        watchBox.desc = @"";
+        watchBox.image = nil;
         watchBox.group = staticGroup;
         [staticGroup addItemsObject:watchBox];
         [context save:nil];
@@ -163,6 +165,8 @@
             
             [context save:nil];
             [watchBox didChangeValueForKey:@"unwatchedEpisodes"];
+            
+            [self.showsList selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
         }];
     }
 }

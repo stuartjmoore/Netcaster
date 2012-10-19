@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Stuart Moore. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "XMLReader.h"
 
 #import "NCAppDelegate.h"
@@ -266,7 +268,7 @@
     }
 }
 
-- (IBAction)refreshAll:(id)sender
+- (IBAction)refreshAll:(NSButton*)sender
 {
     NCAppDelegate *delegate = [NSApp delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
@@ -278,6 +280,16 @@
     
     for(Show *show in shows)
         [show reload];
+    
+    /*
+    [NSAnimationContext beginGrouping];
+    CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    spinAnimation.toValue = [NSNumber numberWithFloat:5*2*M_PI];
+    spinAnimation.duration = 2;
+    sender.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    [sender.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
+    [NSAnimationContext endGrouping];
+     */
 }
 
 #pragma mark - Titlebar Actions
@@ -285,7 +297,7 @@
 - (IBAction)showShowInfo:(id)sender
 {
     if(!self.showInfoPopover.shown)
-        [self.showInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxXEdge];
+        [self.showInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
     else
         [self.showInfoPopover close];
 }
