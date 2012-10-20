@@ -16,6 +16,7 @@
 - (void)controlTextDidChange:(NSNotification*)notification
 {
     NSURL *url = [NSURL URLWithString:self.urlField.stringValue];
+    
     self.showDetailTitle.stringValue = @"";
     self.showDetailDesc.stringValue = @"";
     self.showDetailImage.image = nil;
@@ -38,46 +39,82 @@
             if(error)
                 return;
             
-            NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:&error];
-            
-            if(error)
-                return;
-            
-            NSDictionary *showDic = [[RSS objectForKey:@"rss"] objectForKey:@"channel"];
-            
-            NSString *title = [XMLReader stringFromDictionary:showDic withKeys:@"title", @"text", nil];
-            if(!title) title = @"";
-            
-            NSString *desc = [XMLReader stringFromDictionary:showDic withKeys:@"description", @"text", nil];
-            if(!desc) desc = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:subtitle", @"text", nil];
-            if(!desc) desc = @"";
-            
-            NSString *image = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:image", @"href", nil];
-            if(!image) image = [XMLReader stringFromDictionary:showDic withKeys:@"image", @"url", @"text", nil];
-            if(!image) image = @"";
-
-            if(title && desc && ![title isEqualToString:@""] && ![desc isEqualToString:@""])
+            if([url.host hasSuffix:@"hulu.com"])
             {
-                [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
-                                          self.frame.size.width, 290) display:NO animate:YES];
+                //http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&order=asc&items_per_page=50&show_id=6345
+             
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                NSDictionary *show = [[[[json objectForKey:@"data"] lastObject] objectForKey:@"video"] objectForKey:@"show"];
                 
-                self.showDetailView.frame = self.detailField.bounds;
-                self.showDetailView.autoresizingMask = 63;
-                [self.detailField addSubview:self.showDetailView];
+                NSString *title = [show objectForKey:@"name"];
+                NSString *desc = [show objectForKey:@"description"];
+                NSString *image = [NSString stringWithFormat:@"http://ib2.huluim.com/show/%@?size=220x124", [show objectForKey:@"id"]];
                 
-                NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
-                [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
-                                       completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-                 {
-                     NSImage *image = [[NSImage alloc] initWithData:data];
-                     self.showDetailImage.image = image;
-                 }];
-                
-                self.showDetailTitle.stringValue = title;
-                self.showDetailDesc.stringValue = desc;
-                [self.addButton setEnabled:YES];
+                if(title && desc && ![title isEqualToString:@""] && ![desc isEqualToString:@""])
+                {
+                    [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
+                                              self.frame.size.width, 290) display:NO animate:YES];
+                    
+                    self.showDetailView.frame = self.detailField.bounds;
+                    self.showDetailView.autoresizingMask = 63;
+                    [self.detailField addSubview:self.showDetailView];
+                    
+                    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+                    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+                     {
+                         NSImage *image = [[NSImage alloc] initWithData:data];
+                         self.showDetailImage.image = image;
+                     }];
+                    
+                    self.showDetailTitle.stringValue = title;
+                    self.showDetailDesc.stringValue = desc;
+                    [self.addButton setEnabled:YES];
+                }
             }
-         }];
+            else
+            {
+                NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:&error];
+                
+                if(error)
+                    return;
+                
+                NSDictionary *showDic = [[RSS objectForKey:@"rss"] objectForKey:@"channel"];
+                
+                NSString *title = [XMLReader stringFromDictionary:showDic withKeys:@"title", @"text", nil];
+                if(!title) title = @"";
+                
+                NSString *desc = [XMLReader stringFromDictionary:showDic withKeys:@"description", @"text", nil];
+                if(!desc) desc = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:subtitle", @"text", nil];
+                if(!desc) desc = @"";
+                
+                NSString *image = [XMLReader stringFromDictionary:showDic withKeys:@"itunes:image", @"href", nil];
+                if(!image) image = [XMLReader stringFromDictionary:showDic withKeys:@"image", @"url", @"text", nil];
+                if(!image) image = @"";
+                
+                if(title && desc && ![title isEqualToString:@""] && ![desc isEqualToString:@""])
+                {
+                    [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
+                                              self.frame.size.width, 290) display:NO animate:YES];
+                    
+                    self.showDetailView.frame = self.detailField.bounds;
+                    self.showDetailView.autoresizingMask = 63;
+                    [self.detailField addSubview:self.showDetailView];
+                    
+                    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+                    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+                    {
+                         NSImage *image = [[NSImage alloc] initWithData:data];
+                         self.showDetailImage.image = image;
+                    }];
+                    
+                    self.showDetailTitle.stringValue = title;
+                    self.showDetailDesc.stringValue = desc;
+                    [self.addButton setEnabled:YES];
+                }
+            }
+        }];
     }
 }
 

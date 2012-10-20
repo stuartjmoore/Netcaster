@@ -133,7 +133,7 @@
 #pragma mark - Edit List
 
 - (void)addShowWithURL:(NSURL*)url
-{
+{   
     NCAppDelegate *delegate = [NSApp delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
     
@@ -192,7 +192,12 @@
         Feed *feed = [NSEntityDescription insertNewObjectForEntityForName:@"Feed" inManagedObjectContext:context];
         {
             [feed setUrl:url.absoluteString];
-            [feed setType:[NSNumber numberWithInt:FeedTypePodcast]];
+            
+            if([url.host hasSuffix:@"hulu.com"])
+                [feed setType:[NSNumber numberWithInt:FeedTypeHulu]];
+            else
+                [feed setType:[NSNumber numberWithInt:FeedTypePodcast]];
+            
             [feed setShow:show];
         }
         [show addFeedsObject:feed];

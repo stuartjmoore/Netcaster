@@ -34,6 +34,7 @@
 
 - (void)reload;
 - (void)updatePodcastFeed:(Feed*)feed;
+- (void)updateHuluFeed:(Feed*)feed;
 
 @end
 
