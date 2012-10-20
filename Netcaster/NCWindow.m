@@ -55,7 +55,7 @@
 
 #pragma mark - Menu bar Actions
 
-- (IBAction)addNewShow:(id)sender
+- (IBAction)dispalyAddNewShowModal:(id)sender
 {
     if([NSPasteboard.generalPasteboard stringForType:NSStringPboardType])
         self.addShowModal.urlField.stringValue = [NSPasteboard.generalPasteboard stringForType:NSStringPboardType];
@@ -83,7 +83,7 @@
     if(returnCode == NSOKButton)
     {
         NSURL *url = [NSURL URLWithString:self.addShowModal.urlField.stringValue];
-        [self addShowURL:url];
+        [self addShowWithURL:url];
     }
     else if(returnCode == NSCancelButton)
     {
@@ -126,13 +126,13 @@
     else if([item objectForKey:@"xmlUrl"])
     {
         NSURL *url = [NSURL URLWithString:[item objectForKey:@"xmlUrl"]];
-        [self addShowURL:url];
+        [self addShowWithURL:url];
     }
 }
 
 #pragma mark - Edit List
 
-- (void)addShowURL:(NSURL*)url
+- (void)addShowWithURL:(NSURL*)url
 {
     NCAppDelegate *delegate = [NSApp delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
@@ -294,7 +294,7 @@
 
 #pragma mark - Titlebar Actions
 
-- (IBAction)showShowInfo:(id)sender
+- (IBAction)displayShowInfo:(id)sender
 {
     if(!self.showInfoPopover.shown)
         [self.showInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
@@ -302,7 +302,7 @@
         [self.showInfoPopover close];
 }
 
-- (IBAction)showAllEpisodes:(NSSegmentedControl*)sender
+- (IBAction)toggleEpisodeList:(NSSegmentedControl*)sender
 {
     if(sender.selectedSegment == 1)
     {

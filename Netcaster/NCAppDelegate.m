@@ -26,7 +26,10 @@
 - (void)applicationWillFinishLaunching:(NSNotification*)notification
 {
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
-    [appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
+    [appleEventManager setEventHandler:self
+                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                         forEventClass:kInternetEventClass
+                            andEventID:kAEGetURL];
     
     CFStringRef bundleID = (__bridge CFStringRef)[[NSBundle mainBundle] bundleIdentifier];
     LSSetDefaultHandlerForURLScheme(CFSTR("pcast"), bundleID);
@@ -73,7 +76,7 @@
     {
         url = [url stringByReplacingOccurrencesOfString:@"pcast://" withString:@"http://"];
     
-        [self.window addNewShow:nil];
+        [self.window dispalyAddNewShowModal:nil];
         self.addShowModal.urlField.stringValue = url;
         [self.addShowModal controlTextDidChange:nil];
     }

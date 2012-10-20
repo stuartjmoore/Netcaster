@@ -20,7 +20,7 @@
 
 @property (nonatomic, weak) IBOutlet NSPopover *showInfoPopover;
 
-- (IBAction)addNewShow:(id)sender;
+- (IBAction)dispalyAddNewShowModal:(id)sender;
 - (IBAction)importOPML:(id)sender;
 
 - (IBAction)removeShowOrGroup:(id)sender;
@@ -30,7 +30,7 @@
 
 - (IBAction)refreshAll:(id)sender;
 
-- (IBAction)showShowInfo:(id)sender;
-- (IBAction)showAllEpisodes:(NSSegmentedControl*)sender;
+- (IBAction)displayShowInfo:(id)sender;
+- (IBAction)toggleEpisodeList:(NSSegmentedControl*)sender;
 
 @end
