@@ -92,7 +92,7 @@
                 NSString *image = [[[[showDic objectForKey:@"media:group"] objectForKey:@"media:thumbnail"] lastObject] objectForKey:@"url"];
                 if(!image) image = @"";
                 
-                if(title && desc && ![title isEqualToString:@""] && ![desc isEqualToString:@""])
+                if(title && desc && ![title isEqualToString:@""])
                 {
                     [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
                                               self.frame.size.width, 290) display:NO animate:YES];
