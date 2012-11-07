@@ -303,31 +303,14 @@
 
 - (IBAction)displayShowInfo:(id)sender
 {
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"published" ascending:NO];
+    [self.allEpisodesTable setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [self.allEpisodesTable selectRowIndexes:nil byExtendingSelection:NO];
+    
     if(!self.showInfoPopover.shown)
         [self.showInfoPopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
     else
         [self.showInfoPopover close];
-}
-
-- (IBAction)toggleEpisodeList:(NSSegmentedControl*)sender
-{
-    if(sender.selectedSegment == 1)
-    {
-        [self.recentEpisodesView removeFromSuperview];
-        
-        self.allEpisodesView.frame = self.detailView.bounds;
-        self.allEpisodesView.autoresizingMask = 63;
-        [self.detailView addSubview:self.allEpisodesView];
-    }
-    else
-    {
-        [self.allEpisodesView removeFromSuperview];
-        
-        self.recentEpisodesView.frame = self.detailView.bounds;
-        self.recentEpisodesView.autoresizingMask = 63;
-        [self.detailView addSubview:self.recentEpisodesView];
-        
-    }
 }
 
 #pragma mark WindowDelegate

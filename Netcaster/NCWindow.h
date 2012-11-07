@@ -16,7 +16,8 @@
 @property (nonatomic, weak) IBOutlet NSOutlineView *showsList;
 
 @property (nonatomic, weak) IBOutlet NSView *detailView;
-@property (nonatomic, weak) IBOutlet NSScrollView *recentEpisodesView, *allEpisodesView;
+@property (nonatomic, weak) IBOutlet NSScrollView *recentEpisodesView;
+@property (nonatomic, weak) IBOutlet NSTableView *allEpisodesTable;
 
 @property (nonatomic, weak) IBOutlet NSPopover *showInfoPopover;
 
@@ -31,6 +32,5 @@
 - (IBAction)refreshAll:(id)sender;
 
 - (IBAction)displayShowInfo:(id)sender;
-- (IBAction)toggleEpisodeList:(NSSegmentedControl*)sender;
 
 @end
