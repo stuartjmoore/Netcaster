@@ -195,6 +195,8 @@
             
             if([url.host hasSuffix:@"hulu.com"])
                 [feed setType:[NSNumber numberWithInt:FeedTypeHulu]];
+            else if([url.absoluteString hasPrefix:@"http://gdata.youtube.com/feeds/api/playlists/"])
+                [feed setType:[NSNumber numberWithInt:FeedTypeYouTubePlaylist]];
             else
                 [feed setType:[NSNumber numberWithInt:FeedTypePodcast]];
             

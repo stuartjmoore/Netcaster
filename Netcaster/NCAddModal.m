@@ -72,6 +72,48 @@
                     [self.addButton setEnabled:YES];
                 }
             }
+            else if([url.absoluteString hasPrefix:@"http://gdata.youtube.com/feeds/api/playlists/"])
+            {
+                // http://gdata.youtube.com/feeds/api/playlists/4F80C7D2DC8D9B6C
+                
+                NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:&error];
+                
+                if(error)
+                    return;
+                
+                NSDictionary *showDic = [RSS objectForKey:@"feed"];
+                
+                NSString *title = [XMLReader stringFromDictionary:showDic withKeys:@"title", @"text", nil];
+                if(!title) title = @"";
+                
+                NSString *desc = [XMLReader stringFromDictionary:showDic withKeys:@"subtitle", @"text", nil];
+                if(!desc) desc = @"";
+                
+                NSString *image = [[[[showDic objectForKey:@"media:group"] objectForKey:@"media:thumbnail"] lastObject] objectForKey:@"url"];
+                if(!image) image = @"";
+                
+                if(title && desc && ![title isEqualToString:@""] && ![desc isEqualToString:@""])
+                {
+                    [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y,
+                                              self.frame.size.width, 290) display:NO animate:YES];
+                    
+                    self.showDetailView.frame = self.detailField.bounds;
+                    self.showDetailView.autoresizingMask = 63;
+                    [self.detailField addSubview:self.showDetailView];
+                    
+                    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+                    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+                     {
+                         NSImage *image = [[NSImage alloc] initWithData:data];
+                         self.showDetailImage.image = image;
+                     }];
+                    
+                    self.showDetailTitle.stringValue = title;
+                    self.showDetailDesc.stringValue = desc;
+                    [self.addButton setEnabled:YES];
+                }
+            }
             else
             {
                 NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:&error];

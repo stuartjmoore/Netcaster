@@ -101,7 +101,11 @@
                 [scanner scanUpToString:@"<" intoString:NULL];
                 [scanner scanUpToString:@">" intoString:&text];
                 text = [text stringByAppendingString:@">"];
-                
+                /*
+                [scanner scanUpToString:@"<" intoString:nil];
+                [scanner scanString:@"<" intoString:nil];
+                [scanner scanUpToString:@">" intoString:&stringBetweenBrackets];
+                */
                 if([text hasPrefix:@"<meta property=\"og:title\""]
                 || [text hasPrefix:@"<meta name=\"og:title\""])
                 {

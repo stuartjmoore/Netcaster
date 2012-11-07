@@ -123,6 +123,8 @@
             {
                 if(feed.type.intValue == FeedTypeHulu)
                     [self updateHuluFeed:feed];
+                else if(feed.type.intValue == FeedTypeYouTubePlaylist)
+                    [self updateYouTubePlaylistFeed:feed];
                 else
                     [self updatePodcastFeed:feed];
             }
@@ -329,7 +331,7 @@
             Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
             enclosure.url = enclosureURL;
             enclosure.size = [NSNumber numberWithInteger:fileSize.integerValue];
-            enclosure.type = fileType; // @"webpage/youtube" @"webpage/hulu"
+            enclosure.type = fileType;
             enclosure.episode = episode;
             [episode addEnclosuresObject:enclosure];
             
@@ -341,7 +343,7 @@
 
 /*
 http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&order=desc&items_per_page=50&show_id=70, 44, 1968, 2505, 7529, 2553, 6345
- */
+*/
 - (void)updateHuluFeed:(Feed*)feed
 {
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:feed.url]];
@@ -463,6 +465,184 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
             if(firstLoad)
             {
                 if([episodes indexOfObject:dict] == 0)
+                {
+                    episode.unwatched = [NSNumber numberWithBool:YES];
+                    self.unwatchedCount = [NSNumber numberWithInt:1];
+                }
+                else
+                {
+                    episode.unwatched = [NSNumber numberWithBool:NO];
+                }
+            }
+            else
+            {
+                episode.unwatched = [NSNumber numberWithBool:YES];
+                self.unwatchedCount = [NSNumber numberWithInt:(self.unwatchedCount.intValue+1)];
+            }
+            
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+            [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+             {
+                 [episode willChangeValueForKey:@"imageValue"];
+                 episode.image = data;
+                 [episode didChangeValueForKey:@"imageValue"];
+             }];
+            
+            
+            Enclosure *enclosure = [NSEntityDescription insertNewObjectForEntityForName:@"Enclosure" inManagedObjectContext:context];
+            enclosure.url = enclosureURL;
+            enclosure.size = [NSNumber numberWithInteger:fileSize.integerValue];
+            enclosure.type = fileType;
+            enclosure.episode = episode;
+            [episode addEnclosuresObject:enclosure];
+            
+            episode.show = self;
+            [self addEpisodesObject:episode];
+        }
+    }];
+}
+
+//http://gdata.youtube.com/feeds/api/playlists/4F80C7D2DC8D9B6C
+- (void)updateYouTubePlaylistFeed:(Feed*)feed
+{
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:feed.url]];
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+    completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        if([response respondsToSelector:@selector(allHeaderFields)])
+        {
+            NSDictionary *metaData = [httpResponse allHeaderFields];
+            NSString *lastModifiedString = [metaData objectForKey:@"Last-Modified"];
+            
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            df.dateFormat = @"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'";
+            
+            feed.updated = [df dateFromString:lastModifiedString];
+        }
+        
+        NCAppDelegate *delegate = [NSApp delegate];
+        NSManagedObjectContext *context = [delegate managedObjectContext];
+        NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:nil];
+        
+        BOOL firstLoad = NO;
+        
+        if(self.episodes.count == 0)
+            firstLoad = YES;
+        
+        if(!self.desc)
+        {
+            firstLoad = YES;
+            
+            NSDictionary *showDic = [RSS objectForKey:@"feed"];
+            
+            NSString *title = [XMLReader stringFromDictionary:showDic withKeys:@"title", @"text", nil];
+            if(!title) title = @"";
+            
+            NSString *desc = [XMLReader stringFromDictionary:showDic withKeys:@"subtitle", @"text", nil];
+            if(!desc) desc = @"";
+            
+            NSString *image = [[[[showDic objectForKey:@"media:group"] objectForKey:@"media:thumbnail"] lastObject] objectForKey:@"url"];
+            if(!image) image = @"";
+            
+            NSString *link = [[[showDic objectForKey:@"link"] objectAtIndex:0] objectForKey:@"href"];
+            if(!link) link = @"";
+            
+            NSString *author = [XMLReader stringFromDictionary:showDic withKeys:@"author", @"name", @"text", nil];
+            if(!author) author = @"";
+            
+            self.title = title;
+            self.desc = desc;
+            self.website = link;
+            
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:image]];
+            [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+            {
+                [self willChangeValueForKey:@"imageValue"];
+                self.image = data;
+                [self didChangeValueForKey:@"imageValue"];
+            }];
+        }
+        
+        NSArray *episodes = [[RSS objectForKey:@"feed"] objectForKey:@"entry"];
+        for(NSDictionary *epiDic in episodes)
+        {
+            
+            NSString *title = [XMLReader stringFromDictionary:epiDic withKeys:@"title", @"text", nil];
+            if(!title) title = [XMLReader stringFromDictionary:epiDic withKeys:@"media:group", @"media:title", @"text", nil];
+            if(!title) title = @"";
+            
+            NSString *desc = [XMLReader stringFromDictionary:epiDic withKeys:@"content", @"text", nil];
+            if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"media:group", @"media:description", nil];
+            if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"yt:description", @"text", nil];
+            if(!desc) desc = @"";
+            
+            NSString *descShort = desc;
+            if(!descShort) descShort = @"";
+            
+            NSString *image = [[[[epiDic objectForKey:@"media:group"] objectForKey:@"media:thumbnail"] objectAtIndex:0] objectForKey:@"url"];
+            if(!image) image = @"";
+            
+            NSString *pubDateString = [XMLReader stringFromDictionary:epiDic withKeys:@"published", @"text", nil];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+            NSDate *pubDate = [dateFormat dateFromString:pubDateString];
+            if(!pubDate) pubDate = [NSDate dateWithTimeIntervalSince1970:0];
+            
+            NSLog(@"%@", pubDateString);
+            NSLog(@"%@", pubDate);
+            
+            NSString *duration = [XMLReader stringFromDictionary:epiDic withKeys:@"yt:duration", @"seconds", nil];
+            if(!duration) duration = [XMLReader stringFromDictionary:epiDic withKeys:@"media:group", @"yt:duration", @"seconds", nil];
+            if(!duration) duration = @"";
+            
+            NSString *link = [XMLReader stringFromDictionary:epiDic withKeys:@"media:group", @"media:player", @"url", nil];
+            if(!link) link = @"";
+            
+            NSString *enclosureURL = link;
+            NSString *fileSize = @"0";
+            NSString *fileType = @"webpage/youtube";
+            
+            
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"title == %@ && published == %@", title, pubDate];
+            if([[self.episodes filteredSetUsingPredicate:predicate] count] > 0)
+            {
+                continue;
+            }
+            
+            
+            if(self.episodes.count >= MAX_EPISODES)
+            {
+                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:NO];
+                NSArray *descriptors = [NSArray arrayWithObject:descriptor];
+                NSArray *sortedEpisodes = [self.episodes sortedArrayUsingDescriptors:descriptors];
+                Episode *oldestEpisode = sortedEpisodes.lastObject;
+                
+                if([pubDate laterDate:oldestEpisode.published] == oldestEpisode.published)
+                {
+                    continue;
+                }
+                else
+                {
+                    [self removeEpisodesObject:oldestEpisode];
+                }
+            }
+            
+            self.hasNew = [NSNumber numberWithBool:YES];
+            
+            Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode" inManagedObjectContext:context];
+            episode.title = title;
+            episode.desc = desc;
+            episode.descShort = descShort;
+            episode.duration = [NSNumber numberWithInt:duration.intValue];
+            episode.website = link;
+            episode.published = pubDate;
+            
+            if(firstLoad)
+            {
+                if([episodes indexOfObject:epiDic] == 0)
                 {
                     episode.unwatched = [NSNumber numberWithBool:YES];
                     self.unwatchedCount = [NSNumber numberWithInt:1];
