@@ -152,7 +152,10 @@
         
         NCAppDelegate *delegate = [NSApp delegate];
         NSManagedObjectContext *context = [delegate managedObjectContext];
-        NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:nil];
+        NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:&error];
+        
+        if(error)
+            return;
         
         BOOL firstLoad = NO;
         
@@ -364,7 +367,10 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
          
         NCAppDelegate *delegate = [NSApp delegate];
         NSManagedObjectContext *context = [delegate managedObjectContext];
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        
+        if(error)
+            return;
         
         BOOL firstLoad = NO;
         
@@ -524,7 +530,6 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
         
         NCAppDelegate *delegate = [NSApp delegate];
         NSManagedObjectContext *context = [delegate managedObjectContext];
-        
         NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:&error];
         
         if(error)
