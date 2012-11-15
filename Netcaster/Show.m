@@ -524,7 +524,11 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
         
         NCAppDelegate *delegate = [NSApp delegate];
         NSManagedObjectContext *context = [delegate managedObjectContext];
-        NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:nil];
+        
+        NSDictionary *RSS = [XMLReader dictionaryForXMLData:data error:&error];
+        
+        if(error)
+            return;
         
         BOOL firstLoad = NO;
         
@@ -575,7 +579,7 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
             if(!title) title = @"";
             
             NSString *desc = [XMLReader stringFromDictionary:epiDic withKeys:@"content", @"text", nil];
-            if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"media:group", @"media:description", nil];
+            if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"media:group", @"media:description", @"text", nil];
             if(!desc) desc = [XMLReader stringFromDictionary:epiDic withKeys:@"yt:description", @"text", nil];
             if(!desc) desc = @"";
             
@@ -590,9 +594,6 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
             [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
             NSDate *pubDate = [dateFormat dateFromString:pubDateString];
             if(!pubDate) pubDate = [NSDate dateWithTimeIntervalSince1970:0];
-            
-            NSLog(@"%@", pubDateString);
-            NSLog(@"%@", pubDate);
             
             NSString *duration = [XMLReader stringFromDictionary:epiDic withKeys:@"yt:duration", @"seconds", nil];
             if(!duration) duration = [XMLReader stringFromDictionary:epiDic withKeys:@"media:group", @"yt:duration", @"seconds", nil];
