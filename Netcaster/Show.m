@@ -408,6 +408,11 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
         {
             NSDictionary *epiDic = [dict objectForKey:@"video"];
             
+            BOOL huluPlus = [[epiDic objectForKey:@"is_subscriber_only"] boolValue];
+            
+            if(huluPlus)
+                continue;
+            
             NSString *title = [epiDic objectForKey:@"title"];
             NSString *desc = [epiDic objectForKey:@"description"];
             NSString *descShort = [epiDic objectForKey:@"description"];
@@ -415,7 +420,7 @@ http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&or
             NSString *image =  [NSString stringWithFormat:@"http://ib1.huluim.com/video/%@?size=220x124",
                                 [epiDic objectForKey:@"content_id"]];
             
-            NSString *pubDateString = [epiDic objectForKey:@"available_at"];
+            NSString *pubDateString = [epiDic objectForKey:@"original_premiere_date"];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
             NSDate *pubDate = [dateFormat dateFromString:pubDateString];

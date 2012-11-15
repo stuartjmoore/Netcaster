@@ -98,6 +98,36 @@
     
     return [format stringFromDate:self.published];
 }
+- (NSString*)expiresInString
+{
+    if(!self.expires)
+        return @"";
+    
+    int seconds = [self.expires timeIntervalSinceNow];
+    
+    if(seconds <= 0)
+        return @" – Expired";
+    
+    int days = seconds/(60*60*24);
+    
+    return [NSString stringWithFormat:@" – Expires in %d days", days];
+}
+- (NSColor*)expiresInColor
+{
+    if(!self.expires)
+        return [NSColor blackColor];
+    
+    int seconds = [self.expires timeIntervalSinceNow];
+    
+    if(seconds <= 0)
+        return [NSColor colorWithCalibratedRed:0.82 green:0.15 blue:0.08 alpha:1.0];
+    
+    int days = seconds/(60*60*24);
+    
+    return [NSColor colorWithCalibratedRed:0.82*((30-days)/30.0) green:0.15 blue:0.08 alpha:1.0];
+}
+
+
 
 - (NSString*)durationString
 {
