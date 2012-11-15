@@ -174,6 +174,7 @@
             [watchBox didChangeValueForKey:@"unwatchedEpisodes"];
             
             [self.showsList selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
+            [self.window makeKeyAndOrderFront:self];
         }];
     }
 }
