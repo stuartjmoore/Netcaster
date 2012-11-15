@@ -48,20 +48,26 @@
     title = [title stringByReplacingOccurrencesOfString:self.show.title withString:@""];
     
     while([title rangeOfCharacterFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].location == 0
-          || [title rangeOfCharacterFromSet:[NSCharacterSet symbolCharacterSet]].location == 0
-          || [title rangeOfString:@"#"].location == 0
-          || [title rangeOfString:@","].location == 0
-          || [title rangeOfString:@":"].location == 0
-          || [title rangeOfString:@"-"].location == 0
-          || [title rangeOfString:@"."].location == 0
-          || [title rangeOfString:@"/"].location == 0
-          || [title rangeOfString:@"Episode"].location == 0
-          || [title rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]].location == 0)
+       || [title rangeOfCharacterFromSet:[NSCharacterSet symbolCharacterSet]].location == 0
+       || [title rangeOfString:@"#"].location == 0
+       || [title rangeOfString:@","].location == 0
+       || [title rangeOfString:@":"].location == 0
+       || [title rangeOfString:@"-"].location == 0
+       || [title rangeOfString:@"."].location == 0
+       || [title rangeOfString:@"/"].location == 0
+       || [title rangeOfString:@"Episode"].location == 0
+       || [title rangeOfString:@"episode"].location == 0
+       || [title rangeOfString:@"ep"].location == 0
+       || [title rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]].location == 0)
     {
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
-        if(title.length > 7)
+        if(title.length >= 7)
             title = [title stringByReplacingOccurrencesOfString:@"Episode" withString:@"" options:0 range:NSMakeRange(0, 7)];
+        if(title.length >= 7)
+            title = [title stringByReplacingOccurrencesOfString:@"episode" withString:@"" options:0 range:NSMakeRange(0, 7)];
+        if(title.length >= 2)
+            title = [title stringByReplacingOccurrencesOfString:@"ep" withString:@"" options:0 range:NSMakeRange(0, 2)];
         
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
         title = [title stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
@@ -95,6 +101,9 @@
 
 - (NSString*)durationString
 {
+    if(self.duration.intValue == 0)
+        return @"";
+    
     int hrUntil = 0;
     int minUntil = self.duration.intValue/60;
     
@@ -103,7 +112,7 @@
         hrUntil++;
         minUntil -= 60;
     }
-    
+
     return [NSString stringWithFormat:@"%d:%0.2d:%0.2d", hrUntil, minUntil, self.duration.intValue%60];
 }
 
