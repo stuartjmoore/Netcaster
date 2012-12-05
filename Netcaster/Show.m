@@ -345,7 +345,7 @@
 }
 
 /*
-http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&order=desc&items_per_page=50&show_id=70, 44, 1968, 2505, 7529, 2553, 6345
+http://www.hulu.com/api/2.0/videos.json?video_type[]=episode&sort=released_at&order=desc&free_only=true&items_per_page=50&show_id=70, 44, 1968, 2505, 7529, 2553, 6345
 */
 - (void)updateHuluFeed:(Feed*)feed
 {
