@@ -17,6 +17,8 @@
 #import "Episode.h"
 #import "Enclosure.h"
 
+#define MAX_EPISODES 50
+
 @implementation NCAppDelegate
 
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
@@ -133,6 +135,7 @@
                 }
             }
             
+            
             NSManagedObjectContext *context = [self managedObjectContext];
             NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"WatchBox"
                                                                  inManagedObjectContext:context];
@@ -140,6 +143,16 @@
             [request setEntity:entityDescription];
             NSArray *watchBoxes = [context executeFetchRequest:request error:nil];
             WatchBox *watchBox = watchBoxes.lastObject;
+            
+            while(watchBox.episodes.count >= MAX_EPISODES)
+            {
+                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"published" ascending:NO];
+                NSArray *descriptors = [NSArray arrayWithObject:descriptor];
+                NSArray *sortedEpisodes = [watchBox.episodes sortedArrayUsingDescriptors:descriptors];
+                Episode *oldestEpisode = sortedEpisodes.lastObject;
+
+                [watchBox removeEpisodesObject:oldestEpisode];
+            }
             
             [watchBox willChangeValueForKey:@"unwatchedEpisodes"];
             Episode *episode = [NSEntityDescription insertNewObjectForEntityForName:@"Episode"
